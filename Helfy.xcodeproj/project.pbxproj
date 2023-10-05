@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */; };
+		2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */; };
+		2AFC98B22ACD4A2100AB349D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98B12ACD4A2100AB349D /* ViewController.swift */; };
+		2AFC98B52ACD4A2100AB349D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFC98B32ACD4A2100AB349D /* Main.storyboard */; };
+		2AFC98B72ACD4A3400AB349D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AFC98B62ACD4A3400AB349D /* Assets.xcassets */; };
+		2AFC98BA2ACD4A3400AB349D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFC98B82ACD4A3400AB349D /* LaunchScreen.storyboard */; };
+		2AFC98C52ACD4A3500AB349D /* HelfyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98C42ACD4A3500AB349D /* HelfyTests.swift */; };
+		2AFC98CF2ACD4A3500AB349D /* HelfyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98CE2ACD4A3500AB349D /* HelfyUITests.swift */; };
+		2AFC98D12ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */; };
+		2AFC98DE2ACD4A6C00AB349D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AFC98DD2ACD4A6C00AB349D /* GoogleService-Info.plist */; };
+		2AFC98E12ACD4DB700AB349D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E02ACD4DB700AB349D /* FirebaseAnalytics */; };
+		2AFC98E32ACD4DB700AB349D /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E22ACD4DB700AB349D /* FirebaseAnalyticsOnDeviceConversion */; };
+		2AFC98E52ACD4DB700AB349D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E42ACD4DB700AB349D /* FirebaseAnalyticsSwift */; };
+		2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2AFC98C12ACD4A3500AB349D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AFC98A22ACD4A2100AB349D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AFC98A92ACD4A2100AB349D;
+			remoteInfo = Helfy;
+		};
+		2AFC98CB2ACD4A3500AB349D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AFC98A22ACD4A2100AB349D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AFC98A92ACD4A2100AB349D;
+			remoteInfo = Helfy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2AFC98AA2ACD4A2100AB349D /* Helfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2AFC98B12ACD4A2100AB349D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2AFC98B42ACD4A2100AB349D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2AFC98B62ACD4A3400AB349D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2AFC98B92ACD4A3400AB349D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2AFC98BB2ACD4A3400AB349D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AFC98C02ACD4A3500AB349D /* HelfyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelfyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AFC98C42ACD4A3500AB349D /* HelfyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyTests.swift; sourceTree = "<group>"; };
+		2AFC98CA2ACD4A3500AB349D /* HelfyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelfyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AFC98CE2ACD4A3500AB349D /* HelfyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITests.swift; sourceTree = "<group>"; };
+		2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2AFC98DD2ACD4A6C00AB349D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2AFC98A72ACD4A2100AB349D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AFC98E52ACD4DB700AB349D /* FirebaseAnalyticsSwift in Frameworks */,
+				2AFC98E12ACD4DB700AB349D /* FirebaseAnalytics in Frameworks */,
+				2AFC98E32ACD4DB700AB349D /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */,
+				2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AFC98BD2ACD4A3500AB349D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AFC98C72ACD4A3500AB349D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2AFC98A12ACD4A2100AB349D = {
+			isa = PBXGroup;
+			children = (
+				2AFC98AC2ACD4A2100AB349D /* Helfy */,
+				2AFC98C32ACD4A3500AB349D /* HelfyTests */,
+				2AFC98CD2ACD4A3500AB349D /* HelfyUITests */,
+				2AFC98AB2ACD4A2100AB349D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2AFC98AB2ACD4A2100AB349D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC98AA2ACD4A2100AB349D /* Helfy.app */,
+				2AFC98C02ACD4A3500AB349D /* HelfyTests.xctest */,
+				2AFC98CA2ACD4A3500AB349D /* HelfyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2AFC98AC2ACD4A2100AB349D /* Helfy */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */,
+				2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */,
+				2AFC98B12ACD4A2100AB349D /* ViewController.swift */,
+				2AFC98B32ACD4A2100AB349D /* Main.storyboard */,
+				2AFC98B62ACD4A3400AB349D /* Assets.xcassets */,
+				2AFC98B82ACD4A3400AB349D /* LaunchScreen.storyboard */,
+				2AFC98BB2ACD4A3400AB349D /* Info.plist */,
+				2AFC98DD2ACD4A6C00AB349D /* GoogleService-Info.plist */,
+			);
+			path = Helfy;
+			sourceTree = "<group>";
+		};
+		2AFC98C32ACD4A3500AB349D /* HelfyTests */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC98C42ACD4A3500AB349D /* HelfyTests.swift */,
+			);
+			path = HelfyTests;
+			sourceTree = "<group>";
+		};
+		2AFC98CD2ACD4A3500AB349D /* HelfyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC98CE2ACD4A3500AB349D /* HelfyUITests.swift */,
+				2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */,
+			);
+			path = HelfyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2AFC98A92ACD4A2100AB349D /* Helfy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AFC98D42ACD4A3500AB349D /* Build configuration list for PBXNativeTarget "Helfy" */;
+			buildPhases = (
+				2AFC98A62ACD4A2100AB349D /* Sources */,
+				2AFC98A72ACD4A2100AB349D /* Frameworks */,
+				2AFC98A82ACD4A2100AB349D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Helfy;
+			packageProductDependencies = (
+				2AFC98E02ACD4DB700AB349D /* FirebaseAnalytics */,
+				2AFC98E22ACD4DB700AB349D /* FirebaseAnalyticsOnDeviceConversion */,
+				2AFC98E42ACD4DB700AB349D /* FirebaseAnalyticsSwift */,
+				2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */,
+				2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */,
+			);
+			productName = Helfy;
+			productReference = 2AFC98AA2ACD4A2100AB349D /* Helfy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2AFC98BF2ACD4A3500AB349D /* HelfyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AFC98D72ACD4A3500AB349D /* Build configuration list for PBXNativeTarget "HelfyTests" */;
+			buildPhases = (
+				2AFC98BC2ACD4A3500AB349D /* Sources */,
+				2AFC98BD2ACD4A3500AB349D /* Frameworks */,
+				2AFC98BE2ACD4A3500AB349D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AFC98C22ACD4A3500AB349D /* PBXTargetDependency */,
+			);
+			name = HelfyTests;
+			productName = HelfyTests;
+			productReference = 2AFC98C02ACD4A3500AB349D /* HelfyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2AFC98C92ACD4A3500AB349D /* HelfyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AFC98DA2ACD4A3500AB349D /* Build configuration list for PBXNativeTarget "HelfyUITests" */;
+			buildPhases = (
+				2AFC98C62ACD4A3500AB349D /* Sources */,
+				2AFC98C72ACD4A3500AB349D /* Frameworks */,
+				2AFC98C82ACD4A3500AB349D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AFC98CC2ACD4A3500AB349D /* PBXTargetDependency */,
+			);
+			name = HelfyUITests;
+			productName = HelfyUITests;
+			productReference = 2AFC98CA2ACD4A3500AB349D /* HelfyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2AFC98A22ACD4A2100AB349D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					2AFC98A92ACD4A2100AB349D = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					2AFC98BF2ACD4A3500AB349D = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 2AFC98A92ACD4A2100AB349D;
+					};
+					2AFC98C92ACD4A3500AB349D = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 2AFC98A92ACD4A2100AB349D;
+					};
+				};
+			};
+			buildConfigurationList = 2AFC98A52ACD4A2100AB349D /* Build configuration list for PBXProject "Helfy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2AFC98A12ACD4A2100AB349D;
+			packageReferences = (
+				2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 2AFC98AB2ACD4A2100AB349D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2AFC98A92ACD4A2100AB349D /* Helfy */,
+				2AFC98BF2ACD4A3500AB349D /* HelfyTests */,
+				2AFC98C92ACD4A3500AB349D /* HelfyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2AFC98A82ACD4A2100AB349D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AFC98BA2ACD4A3400AB349D /* LaunchScreen.storyboard in Resources */,
+				2AFC98DE2ACD4A6C00AB349D /* GoogleService-Info.plist in Resources */,
+				2AFC98B72ACD4A3400AB349D /* Assets.xcassets in Resources */,
+				2AFC98B52ACD4A2100AB349D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AFC98BE2ACD4A3500AB349D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AFC98C82ACD4A3500AB349D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2AFC98A62ACD4A2100AB349D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AFC98B22ACD4A2100AB349D /* ViewController.swift in Sources */,
+				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
+				2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AFC98BC2ACD4A3500AB349D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AFC98C52ACD4A3500AB349D /* HelfyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AFC98C62ACD4A3500AB349D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AFC98CF2ACD4A3500AB349D /* HelfyUITests.swift in Sources */,
+				2AFC98D12ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2AFC98C22ACD4A3500AB349D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AFC98A92ACD4A2100AB349D /* Helfy */;
+			targetProxy = 2AFC98C12ACD4A3500AB349D /* PBXContainerItemProxy */;
+		};
+		2AFC98CC2ACD4A3500AB349D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AFC98A92ACD4A2100AB349D /* Helfy */;
+			targetProxy = 2AFC98CB2ACD4A3500AB349D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2AFC98B32ACD4A2100AB349D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AFC98B42ACD4A2100AB349D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2AFC98B82ACD4A3400AB349D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AFC98B92ACD4A3400AB349D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2AFC98D22ACD4A3500AB349D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2AFC98D32ACD4A3500AB349D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2AFC98D52ACD4A3500AB349D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Helfy/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.Helfy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2AFC98D62ACD4A3500AB349D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Helfy/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.Helfy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2AFC98D82ACD4A3500AB349D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.HelfyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Helfy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Helfy";
+			};
+			name = Debug;
+		};
+		2AFC98D92ACD4A3500AB349D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.HelfyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Helfy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Helfy";
+			};
+			name = Release;
+		};
+		2AFC98DB2ACD4A3500AB349D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.HelfyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Helfy;
+			};
+			name = Debug;
+		};
+		2AFC98DC2ACD4A3500AB349D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.HelfyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Helfy;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2AFC98A52ACD4A2100AB349D /* Build configuration list for PBXProject "Helfy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AFC98D22ACD4A3500AB349D /* Debug */,
+				2AFC98D32ACD4A3500AB349D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AFC98D42ACD4A3500AB349D /* Build configuration list for PBXNativeTarget "Helfy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AFC98D52ACD4A3500AB349D /* Debug */,
+				2AFC98D62ACD4A3500AB349D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AFC98D72ACD4A3500AB349D /* Build configuration list for PBXNativeTarget "HelfyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AFC98D82ACD4A3500AB349D /* Debug */,
+				2AFC98D92ACD4A3500AB349D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AFC98DA2ACD4A3500AB349D /* Build configuration list for PBXNativeTarget "HelfyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AFC98DB2ACD4A3500AB349D /* Debug */,
+				2AFC98DC2ACD4A3500AB349D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.16.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2AFC98E02ACD4DB700AB349D /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		2AFC98E22ACD4DB700AB349D /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		2AFC98E42ACD4DB700AB349D /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2AFC98A22ACD4A2100AB349D /* Project object */;
+}
