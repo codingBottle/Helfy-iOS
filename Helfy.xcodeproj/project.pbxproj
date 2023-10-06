@@ -86,6 +86,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AB9D1412ACFF42400686F83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2AB9D1422ACFF42B00686F83 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC98B12ACD4A2100AB349D /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2AB9D1432ACFF43100686F83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2AFC98A12ACD4A2100AB349D = {
 			isa = PBXGroup;
 			children = (
@@ -109,9 +131,11 @@
 		2AFC98AC2ACD4A2100AB349D /* Helfy */ = {
 			isa = PBXGroup;
 			children = (
+				2AB9D1432ACFF43100686F83 /* Model */,
+				2AB9D1412ACFF42400686F83 /* View */,
+				2AB9D1422ACFF42B00686F83 /* Controller */,
 				2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */,
 				2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */,
-				2AFC98B12ACD4A2100AB349D /* ViewController.swift */,
 				2AFC98B62ACD4A3400AB349D /* Assets.xcassets */,
 				2AFC98B82ACD4A3400AB349D /* LaunchScreen.storyboard */,
 				2AFC98BB2ACD4A3400AB349D /* Info.plist */,
