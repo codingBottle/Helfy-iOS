@@ -26,11 +26,12 @@ class LoginViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         view.addSubview(textLabel)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
-        googleSigninButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        googleSigninButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        googleSigninButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         view.addSubview(googleSigninButton)
         googleSigninButton.translatesAutoresizingMaskIntoConstraints = false
         googleSigninButton.topAnchor.constraint(equalTo: textLabel.topAnchor, constant: 50).isActive = true
