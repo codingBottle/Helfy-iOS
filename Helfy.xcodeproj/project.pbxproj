@@ -13,6 +13,8 @@
 		2A2E02E62AD5510F0026C495 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */; };
 		2A2E02E82AD5551C0026C495 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2A2E02E72AD5551C0026C495 /* GoogleSignIn */; };
 		2A2E02EA2AD5551C0026C495 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2A2E02E92AD5551C0026C495 /* GoogleSignInSwift */; };
+		2A99A2652AD681DB0090155C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2642AD681DB0090155C /* QuizView.swift */; };
+		2A99A2672AD682050090155C /* QuizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2662AD682050090155C /* QuizeModel.swift */; };
 		2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */; };
 		2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */; };
 		2AFC98B72ACD4A3400AB349D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AFC98B62ACD4A3400AB349D /* Assets.xcassets */; };
@@ -25,12 +27,9 @@
 		2AFC98E52ACD4DB700AB349D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E42ACD4DB700AB349D /* FirebaseAnalyticsSwift */; };
 		2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */; };
-		C1735B362ACFFD54002FFB77 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B352ACFFD54002FFB77 /* QuizView.swift */; };
-		C1735B382AD03E2C002FFB77 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B372AD03E2C002FFB77 /* QuizModel.swift */; };
 		C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */; };
 		C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3D2AD042E5002FFB77 /* RankingView.swift */; };
 		C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B412AD04532002FFB77 /* RankingModel.swift */; };
-		C1735B442AD049A4002FFB77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B432AD049A4002FFB77 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +54,8 @@
 		26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		2A2E02E22AD54D970026C495 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2A99A2642AD681DB0090155C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		2A99A2662AD682050090155C /* QuizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizeModel.swift; sourceTree = "<group>"; };
 		2AFC98AA2ACD4A2100AB349D /* Helfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,8 +67,6 @@
 		2AFC98CA2ACD4A3500AB349D /* HelfyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelfyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AFC98CE2ACD4A3500AB349D /* HelfyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITests.swift; sourceTree = "<group>"; };
 		2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITestsLaunchTests.swift; sourceTree = "<group>"; };
-    C1735B352ACFFD54002FFB77 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizView.swift; path = ../../../DiaryApp/DiaryApp/Controller/QuizView.swift; sourceTree = "<group>"; };
-		C1735B372AD03E2C002FFB77 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizModel.swift; path = ../../../DiaryApp/DiaryApp/Controller/QuizModel.swift; sourceTree = "<group>"; };
 		C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		C1735B3D2AD042E5002FFB77 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		C1735B412AD04532002FFB77 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
@@ -105,19 +104,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2AB9D1412ACFF42400686F83 /* View */ = {
+		2A99A2632AD681820090155C /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				26EA7E492AD153C800FFE7ED /* ReportView.swift */,
 			);
-			path = View;
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		2AB9D1422ACFF42B00686F83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */,
-				2AFC98B12ACD4A2100AB349D /* ViewController.swift */,
 				26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */,
 				2A2E02E22AD54D970026C495 /* LoginViewController.swift */,
 			);
@@ -131,6 +129,7 @@
 				2AFC98C32ACD4A3500AB349D /* HelfyTests */,
 				2AFC98CD2ACD4A3500AB349D /* HelfyUITests */,
 				2AFC98AB2ACD4A2100AB349D /* Products */,
+				2A99A2632AD681820090155C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -180,8 +179,8 @@
 		C1735B332ACFFB46002FFB77 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C1735B372AD03E2C002FFB77 /* QuizModel.swift */,
 				C1735B412AD04532002FFB77 /* RankingModel.swift */,
+				2A99A2662AD682050090155C /* QuizeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,7 +188,7 @@
 		C1735B342ACFFB57002FFB77 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C1735B352ACFFD54002FFB77 /* QuizView.swift */,
+				2A99A2642AD681DB0090155C /* QuizView.swift */,
 				C1735B3D2AD042E5002FFB77 /* RankingView.swift */,
 			);
 			path = View;
@@ -340,16 +339,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */,
-				C1735B362ACFFD54002FFB77 /* QuizView.swift in Sources */,
+				2A99A2652AD681DB0090155C /* QuizView.swift in Sources */,
+				2A99A2672AD682050090155C /* QuizeModel.swift in Sources */,
 				C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */,
 				2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */,
-				2AFC98B22ACD4A2100AB349D /* ViewController.swift in Sources */,
 				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
 				26EA7E4A2AD153C800FFE7ED /* ReportView.swift in Sources */,
 				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
 				C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */,
 				2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */,
-				C1735B382AD03E2C002FFB77 /* QuizModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
