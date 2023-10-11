@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26EA7E4A2AD153C800FFE7ED /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA7E492AD153C800FFE7ED /* ReportView.swift */; };
+		26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */; };
 		2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2E02E22AD54D970026C495 /* LoginViewController.swift */; };
 		2A2E02E62AD5510F0026C495 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */; };
 		2A2E02E82AD5551C0026C495 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2A2E02E72AD5551C0026C495 /* GoogleSignIn */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26EA7E492AD153C800FFE7ED /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		2A2E02E22AD54D970026C495 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AFC98AA2ACD4A2100AB349D /* Helfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,11 +105,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AB9D1412ACFF42400686F83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26EA7E492AD153C800FFE7ED /* ReportView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2AB9D1422ACFF42B00686F83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */,
 				2AFC98B12ACD4A2100AB349D /* ViewController.swift */,
+				26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */,
 				2A2E02E22AD54D970026C495 /* LoginViewController.swift */,
 			);
 			path = Controller;
@@ -332,6 +345,8 @@
 				2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */,
 				2AFC98B22ACD4A2100AB349D /* ViewController.swift in Sources */,
 				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
+				26EA7E4A2AD153C800FFE7ED /* ReportView.swift in Sources */,
+				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
 				C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */,
 				2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */,
 				C1735B382AD03E2C002FFB77 /* QuizModel.swift in Sources */,
@@ -434,7 +449,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -491,7 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -508,7 +523,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Helfy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -535,7 +550,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Helfy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
