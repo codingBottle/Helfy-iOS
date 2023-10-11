@@ -13,7 +13,6 @@
 		2A2E02EA2AD5551C0026C495 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2A2E02E92AD5551C0026C495 /* GoogleSignInSwift */; };
 		2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */; };
 		2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */; };
-		2AFC98B22ACD4A2100AB349D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98B12ACD4A2100AB349D /* ViewController.swift */; };
 		2AFC98B72ACD4A3400AB349D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AFC98B62ACD4A3400AB349D /* Assets.xcassets */; };
 		2AFC98BA2ACD4A3400AB349D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFC98B82ACD4A3400AB349D /* LaunchScreen.storyboard */; };
 		2AFC98C52ACD4A3500AB349D /* HelfyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98C42ACD4A3500AB349D /* HelfyTests.swift */; };
@@ -24,6 +23,12 @@
 		2AFC98E52ACD4DB700AB349D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E42ACD4DB700AB349D /* FirebaseAnalyticsSwift */; };
 		2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */; };
+		C1735B362ACFFD54002FFB77 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B352ACFFD54002FFB77 /* QuizView.swift */; };
+		C1735B382AD03E2C002FFB77 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B372AD03E2C002FFB77 /* QuizModel.swift */; };
+		C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */; };
+		C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3D2AD042E5002FFB77 /* RankingView.swift */; };
+		C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B412AD04532002FFB77 /* RankingModel.swift */; };
+		C1735B442AD049A4002FFB77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B432AD049A4002FFB77 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +54,6 @@
 		2AFC98AA2ACD4A2100AB349D /* Helfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2AFC98B12ACD4A2100AB349D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2AFC98B62ACD4A3400AB349D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AFC98B92ACD4A3400AB349D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AFC98BB2ACD4A3400AB349D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +62,11 @@
 		2AFC98CA2ACD4A3500AB349D /* HelfyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelfyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AFC98CE2ACD4A3500AB349D /* HelfyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITests.swift; sourceTree = "<group>"; };
 		2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+    C1735B352ACFFD54002FFB77 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizView.swift; path = ../../../DiaryApp/DiaryApp/Controller/QuizView.swift; sourceTree = "<group>"; };
+		C1735B372AD03E2C002FFB77 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizModel.swift; path = ../../../DiaryApp/DiaryApp/Controller/QuizModel.swift; sourceTree = "<group>"; };
+		C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		C1735B3D2AD042E5002FFB77 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		C1735B412AD04532002FFB77 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,27 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2AB9D1412ACFF42400686F83 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		2AB9D1422ACFF42B00686F83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */,
 				2AFC98B12ACD4A2100AB349D /* ViewController.swift */,
 				2A2E02E22AD54D970026C495 /* LoginViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		2AB9D1432ACFF43100686F83 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		2AFC98A12ACD4A2100AB349D = {
@@ -138,8 +134,8 @@
 		2AFC98AC2ACD4A2100AB349D /* Helfy */ = {
 			isa = PBXGroup;
 			children = (
-				2AB9D1432ACFF43100686F83 /* Model */,
-				2AB9D1412ACFF42400686F83 /* View */,
+				C1735B342ACFFB57002FFB77 /* View */,
+				C1735B332ACFFB46002FFB77 /* Model */,
 				2AB9D1422ACFF42B00686F83 /* Controller */,
 				2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */,
 				2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */,
@@ -166,6 +162,24 @@
 				2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */,
 			);
 			path = HelfyUITests;
+			sourceTree = "<group>";
+		};
+		C1735B332ACFFB46002FFB77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C1735B372AD03E2C002FFB77 /* QuizModel.swift */,
+				C1735B412AD04532002FFB77 /* RankingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C1735B342ACFFB57002FFB77 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1735B352ACFFD54002FFB77 /* QuizView.swift */,
+				C1735B3D2AD042E5002FFB77 /* RankingView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,10 +326,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */,
+				C1735B362ACFFD54002FFB77 /* QuizView.swift in Sources */,
+				C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */,
 				2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */,
 				2AFC98B22ACD4A2100AB349D /* ViewController.swift in Sources */,
 				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
+				C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */,
 				2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */,
+				C1735B382AD03E2C002FFB77 /* QuizModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
