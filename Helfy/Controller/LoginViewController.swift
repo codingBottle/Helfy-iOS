@@ -7,7 +7,6 @@
 
 import UIKit
 import GoogleSignIn
-import FirebaseCore
 
 class LoginViewController : UIViewController {
     private let googleSigninButton : GIDSignInButton = {
