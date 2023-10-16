@@ -14,6 +14,8 @@
 		2A2E02E62AD5510F0026C495 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */; };
 		2A2E02E82AD5551C0026C495 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2A2E02E72AD5551C0026C495 /* GoogleSignIn */; };
 		2A2E02EA2AD5551C0026C495 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2A2E02E92AD5551C0026C495 /* GoogleSignInSwift */; };
+		2A74D6772ADD2C4300800E9E /* GoogleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A74D6762ADD2C4200800E9E /* GoogleSignIn.swift */; };
+		2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */; };
 		2A99A2652AD681DB0090155C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2642AD681DB0090155C /* QuizView.swift */; };
 		2A99A2672AD682050090155C /* QuizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2662AD682050090155C /* QuizeModel.swift */; };
 		2A99A2692AD6882F0090155C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2682AD6882F0090155C /* ReportView.swift */; };
@@ -56,6 +58,8 @@
 		26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		2A2E02E22AD54D970026C495 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2A74D6762ADD2C4200800E9E /* GoogleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignIn.swift; sourceTree = "<group>"; };
+		2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		2A99A2642AD681DB0090155C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		2A99A2662AD682050090155C /* QuizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizeModel.swift; sourceTree = "<group>"; };
 		2A99A2682AD6882F0090155C /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
@@ -110,9 +114,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A74D6752ADD2C3300800E9E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2A74D6762ADD2C4200800E9E /* GoogleSignIn.swift */,
+				2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		2AB9D1422ACFF42B00686F83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2A74D6752ADD2C3300800E9E /* Login */,
 				C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */,
 				26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */,
 				2A2E02E22AD54D970026C495 /* LoginViewController.swift */,
@@ -345,6 +359,8 @@
 				C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */,
 				2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */,
 				2A99A2692AD6882F0090155C /* ReportView.swift in Sources */,
+				2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */,
+				2A74D6772ADD2C4300800E9E /* GoogleSignIn.swift in Sources */,
 				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
 				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
 				2A99A26B2AD688660090155C /* TextView.swift in Sources */,
