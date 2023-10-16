@@ -22,6 +22,13 @@ class LoginViewController : UIViewController {
         return button
     }()
     
+    // Apple Sign In Flow -> AppleSignIn
+    private let appleSigninButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(startSignInWithAppleFlow), for: .touchUpInside)
+        return button
+    }()
+    
     private var textLabel: UILabel = {
         var label = UILabel()
         label.textColor = .black
@@ -73,7 +80,7 @@ extension LoginViewController {
             
             self.firebaseLogin(credential)
         }
-        
+
     }
     
     func firebaseLogin(_ credential: AuthCredential) {
