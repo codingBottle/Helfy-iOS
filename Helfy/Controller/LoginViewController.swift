@@ -7,13 +7,24 @@
 
 import UIKit
 import GoogleSignIn
+import FirebaseCore
+import FirebaseAuth
+import FirebaseAppCheck
+
 
 class LoginViewController : UIViewController {
-    private let googleSigninButton : GIDSignInButton = {
+    
+    private let googleSigninButton: GIDSignInButton = {
         let button = GIDSignInButton()
+        button.style = .standard
         button.colorScheme = .light
-        button.style = .iconOnly
-        button.addTarget(self, action: #selector(didTapGoogleSigninButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startSignInWithGoogleFlow), for: .touchUpInside)
+        return button
+    }()
+    
+    private let appleSigninButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(startSignInWithAppleFlow), for: .touchUpInside)
         return button
     }()
     
@@ -26,6 +37,10 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        configureUI()
+    }
+    
+    func configureUI() {
         view.addSubview(textLabel)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
@@ -41,27 +56,47 @@ class LoginViewController : UIViewController {
 }
 
 extension LoginViewController {
-    @objc func didTapGoogleSigninButton(_ sender: Any) {
+    @objc func startSignInWithGoogleFlow() {
         print("Google Sign in button tapped")
-//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//        let signInConfig = GIDConfiguration.init(clientID: clientID)
+        self.textLabel.text = "Welcome To GoogleSignIn!"
         
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        
+        // Start the sign in flow!
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-            self.textLabel.text = "Welcome To GoogleSignIn!"
             
-            guard error == nil else { return }
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
             
-            // If sign in succeeded, display the app's main content View.
-            guard let signInResult = signInResult else { return }
-            let user = signInResult.user
+            guard let user = signInResult?.user,
+                  let idToken = user.idToken?.tokenString else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
             
-//            let emailAddress = user.profile?.email
-            let fullName = user.profile?.name
-//            let familyName = user.profile?.familyName
-//            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+            self.firebaseLogin(credential)
+        }
+        
+    }
+    
+    @objc func startSignInWithAppleFlow() {
+        print("Apple Sign in button tapped")
+    }
+    
+    func firebaseLogin(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Failed to login with Firebase: ", error)
+                return
+            }
             
-            self.textLabel.text = "Hi \(fullName ?? "")"
-            
+            guard let user = authResult?.user else { return }
+            let emailAddress = user.email ?? ""
+            let fullName = user.displayName ?? ""
+            self.textLabel.text = "Hi \(fullName)"
         }
     }
 }
