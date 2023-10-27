@@ -4,57 +4,58 @@
 //
 //  Created by 윤성은 on 10/11/23.
 //
+//
 
 import UIKit
 
-class CategoryButton: UIButton {
+class CategoryButton: UIView {
+    let myImageView = UIImageView()
+    let myTitleLabel = UILabel()
+
     init(image: UIImage?, title: String) {
         super.init(frame: .zero)
         
-        self.setImage(image, for: .normal)
-        self.setTitle(title, for: .normal)
-        self.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-
-       if image == nil {
-           self.backgroundColor = .red
-       }
-       
-       // Add an action for the touch up inside event.
-       self.addTarget(self, action:#selector(buttonTapped), for:.touchUpInside)
-
-       // Set content mode of image view to scale aspect fit.
-       self.imageView?.contentMode = .scaleAspectFit
+        myImageView.image = image
+        myTitleLabel.text = title
+        myTitleLabel.font = UIFont.systemFont(ofSize: 12)
+        myTitleLabel.textAlignment = .center
+                
+        self.addSubview(myImageView)
+        self.addSubview(myTitleLabel)
         
-        self.translatesAutoresizingMaskIntoConstraints = false
+        // Set content mode of image view to scale aspect fit.
+        myImageView.contentMode = .scaleAspectFit
+        
+        // Image 설정
+        myImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.widthAnchor.constraint(equalToConstant: 60),
-            self.heightAnchor.constraint(equalToConstant: 60)
+            myImageView.widthAnchor.constraint(equalToConstant: 90),
+            myImageView.heightAnchor.constraint(equalToConstant: 60),
+            myImageView.topAnchor.constraint(equalTo:self.topAnchor),
+            myImageView.centerXAnchor.constraint(equalTo:self.centerXAnchor)
         ])
-
-      // Set constraints on the image view of the button
-      if let imageView = self.imageView {
-          imageView.translatesAutoresizingMaskIntoConstraints = false
-          
-          NSLayoutConstraint.activate([
-              imageView.widthAnchor.constraint(equalToConstant: 50),
-              imageView.heightAnchor.constraint(equalToConstant: 50),
-              imageView.centerYAnchor.constraint(equalTo:self.centerYAnchor),
-              imageView.centerXAnchor.constraint(equalTo:self.centerXAnchor)
-          ])
-      }
-       
-      self.addTarget(self, action:#selector(buttonTapped), for:.touchUpInside)
-   }
-
+        
+        // TitleLabel 설정
+        myTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            myTitleLabel.topAnchor.constraint(equalTo:myImageView.bottomAnchor, constant: 5),
+            myTitleLabel.leadingAnchor.constraint(equalTo:self.leadingAnchor),
+            myTitleLabel.trailingAnchor.constraint(equalTo:self.trailingAnchor),
+            myTitleLabel.bottomAnchor.constraint(lessThanOrEqualTo:self.bottomAnchor)
+        ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
     @objc func buttonTapped() {
-         print("Button was tapped!")
-     }
+        print("Button was tapped!")
+    }
      
-     required init?(coder aDecoder:NSCoder) {
-         fatalError("init(coder:) has not been implemented")
-     }
+    required init?(coder aDecoder:NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
-
 
 
 class CategoryView : UIView {
@@ -76,15 +77,15 @@ class CategoryView : UIView {
                             UIImage(named:"자연우주물체추락"), UIImage(named:"우주전파재난"), UIImage(named:"녹조"), UIImage(named:"적조") ]
 
         let stackView = UIStackView()
-            stackView.axis = .vertical
-            stackView.distribution = .fillEqually
-            stackView.spacing = 5
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
                 
         for i in stride(from:0, to:buttonTitles.count, by:4) {
             let hStack = UIStackView()
             hStack.axis = .horizontal
             hStack.distribution = .fillEqually
-            hStack.spacing = 10
+            hStack.spacing = 5
 
             for j in i..<min(i + 4, buttonTitles.count) {
                 let buttonTitle = buttonTitles[j]
@@ -100,7 +101,6 @@ class CategoryView : UIView {
        self.addSubview(stackView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false;
-        
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo:self.topAnchor),
             stackView.bottomAnchor.constraint(equalTo:self.bottomAnchor),
