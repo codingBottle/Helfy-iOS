@@ -7,18 +7,13 @@
 
 import UIKit
 import GoogleSignIn
-import FirebaseCore
-import FirebaseAuth
-import FirebaseAppCheck
-
 
 class LoginViewController : UIViewController {
-    
-    private let googleSigninButton: GIDSignInButton = {
+    private let googleSigninButton : GIDSignInButton = {
         let button = GIDSignInButton()
-        button.style = .standard
         button.colorScheme = .light
-        button.addTarget(self, action: #selector(startSignInWithGoogleFlow), for: .touchUpInside)
+        button.style = .iconOnly
+        button.addTarget(self, action: #selector(didTapGoogleSigninButton), for: .touchUpInside)
         return button
     }()
     
@@ -31,10 +26,6 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configureUI()
-    }
-    
-    func configureUI() {
         view.addSubview(textLabel)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
@@ -48,4 +39,3 @@ class LoginViewController : UIViewController {
     }
     
 }
-
