@@ -17,7 +17,7 @@ class LoginViewController : UIViewController {
         return button
     }()
     
-    private var textLabel: UILabel = {
+    var textLabel: UILabel = {
         var label = UILabel()
         label.textColor = .black
         return label
@@ -39,30 +39,3 @@ class LoginViewController : UIViewController {
     }
     
 }
-
-extension LoginViewController {
-    @objc func didTapGoogleSigninButton(_ sender: Any) {
-        print("Google Sign in button tapped")
-//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//        let signInConfig = GIDConfiguration.init(clientID: clientID)
-        
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-            self.textLabel.text = "Welcome To GoogleSignIn!"
-            
-            guard error == nil else { return }
-            
-            // If sign in succeeded, display the app's main content View.
-            guard let signInResult = signInResult else { return }
-            let user = signInResult.user
-            
-//            let emailAddress = user.profile?.email
-            let fullName = user.profile?.name
-//            let familyName = user.profile?.familyName
-//            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
-            
-            self.textLabel.text = "Hi \(fullName ?? "")"
-            
-        }
-    }
-}
-
