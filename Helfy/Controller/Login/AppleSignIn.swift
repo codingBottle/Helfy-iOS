@@ -13,7 +13,7 @@ import FirebaseAuth
 fileprivate var currentNonce: String?
 
 extension LoginViewController {
-    @available(iOS 13, *)
+    @available(iOS 16, *)
     @objc func startSignInWithAppleFlow() {
         print("Apple Sign in button tapped")
         let nonce = randomNonceString()
@@ -30,7 +30,7 @@ extension LoginViewController {
     }
     
     // Firebase는 원래의 nonce를 해싱하고 Apple에서 전달한 값과 비교하여 응답을 검증
-    @available(iOS 13, *)
+    @available(iOS 16, *)
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
@@ -43,6 +43,7 @@ extension LoginViewController {
     
     // ID 토큰이 명시적으로 부여되었는지 확인하는 데 사용
     private func randomNonceString(length: Int = 32) -> String {
+        print("check id token")
         precondition(length > 0)
         var randomBytes = [UInt8](repeating: 0, count: length)
         let errorCode = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
@@ -64,9 +65,11 @@ extension LoginViewController {
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 16.0, *)
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        print("Sign in with Apple completed")
+        
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
