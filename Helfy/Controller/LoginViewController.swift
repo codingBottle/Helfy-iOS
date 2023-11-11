@@ -7,18 +7,13 @@
 
 import UIKit
 import GoogleSignIn
-import FirebaseCore
-import FirebaseAuth
-import FirebaseAppCheck
-
 
 class LoginViewController : UIViewController {
-    
-    private let googleSigninButton: GIDSignInButton = {
+    private let googleSigninButton : GIDSignInButton = {
         let button = GIDSignInButton()
-        button.style = .standard
         button.colorScheme = .light
-        button.addTarget(self, action: #selector(startSignInWithGoogleFlow), for: .touchUpInside)
+        button.style = .iconOnly
+        button.addTarget(self, action: #selector(didTapGoogleSigninButton), for: .touchUpInside)
         return button
     }()
     
@@ -30,6 +25,7 @@ class LoginViewController : UIViewController {
     }()
     
     private var textLabel: UILabel = {
+    var textLabel: UILabel = {
         var label = UILabel()
         label.textColor = .black
         return label
@@ -38,10 +34,6 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configureUI()
-    }
-    
-    func configureUI() {
         view.addSubview(textLabel)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
@@ -55,46 +47,3 @@ class LoginViewController : UIViewController {
     }
     
 }
-
-extension LoginViewController {
-    @objc func startSignInWithGoogleFlow() {
-        print("Google Sign in button tapped")
-        self.textLabel.text = "Welcome To GoogleSignIn!"
-        
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        
-        // Create Google Sign In configuration object.
-        let config = GIDConfiguration(clientID: clientID)
-        
-        // Start the sign in flow!
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-            
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            
-            guard let user = signInResult?.user,
-                  let idToken = user.idToken?.tokenString else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
-            
-            self.firebaseLogin(credential)
-        }
-
-    }
-    
-    func firebaseLogin(_ credential: AuthCredential) {
-        Auth.auth().signIn(with: credential) { (authResult, error) in
-            if let error = error {
-                print("Failed to login with Firebase: ", error)
-                return
-            }
-            
-            guard let user = authResult?.user else { return }
-            let emailAddress = user.email ?? ""
-            let fullName = user.displayName ?? ""
-            self.textLabel.text = "Hi \(fullName)"
-        }
-    }
-}
-
