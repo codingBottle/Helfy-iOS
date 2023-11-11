@@ -100,7 +100,7 @@ class WriteViewController: UITableViewController, UIImagePickerControllerDelegat
         let picker = UIImagePickerController() // 이미지를 선택할 수 있는 이미지 피커
         picker.sourceType = .photoLibrary // 이미지 피커의 소스 타입을 포토 라이브러리로 설정
         picker.delegate = self // 이미지 피커의 델리게이트를 self로 설정
-        present(picker, animated: true) // 이미지 피커를 화면에 표시
+        present(picker, animated: true) // 이미지 피커를 화면에 표시 
     }
     
     // 텍스트 필드에 문자를 입력할 때마다 호출되는 메서드
