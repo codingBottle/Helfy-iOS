@@ -13,7 +13,7 @@ class LoginViewController : UIViewController {
         let button = GIDSignInButton()
         button.colorScheme = .light
         button.style = .iconOnly
-        button.addTarget(self, action: #selector(didTapGoogleSigninButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startSignInWithGoogleFlow), for: .touchUpInside)
         return button
     }()
     
