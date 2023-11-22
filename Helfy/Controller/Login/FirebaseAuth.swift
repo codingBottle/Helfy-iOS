@@ -8,7 +8,6 @@
 import FirebaseAuth
 
 extension LoginViewController {
-
     // firebase
     func firebaseLogin(_ credential: AuthCredential) {
         // Firebase Auth
