@@ -7,17 +7,25 @@
 
 import UIKit
 import GoogleSignIn
+import AuthenticationServices
 
 class LoginViewController : UIViewController {
     private let googleSigninButton : GIDSignInButton = {
         let button = GIDSignInButton()
         button.colorScheme = .light
         button.style = .iconOnly
-        button.addTarget(self, action: #selector(didTapGoogleSigninButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startSignInWithGoogleFlow), for: .touchUpInside)
         return button
     }()
     
-    private var textLabel: UILabel = {
+    // Apple Sign In Flow -> AppleSignIn
+    private let appleSigninButton: ASAuthorizationAppleIDButton = {
+        let button = ASAuthorizationAppleIDButton()
+        button.addTarget(self, action: #selector(startSignInWithAppleFlow), for: .touchUpInside)
+        return button
+    }()
+    
+    public var textLabel: UILabel = {
         var label = UILabel()
         label.textColor = .black
         return label
@@ -33,36 +41,14 @@ class LoginViewController : UIViewController {
         textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         view.addSubview(googleSigninButton)
         googleSigninButton.translatesAutoresizingMaskIntoConstraints = false
-        googleSigninButton.topAnchor.constraint(equalTo: textLabel.topAnchor, constant: 50).isActive = true
+        googleSigninButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
         googleSigninButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         googleSigninButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        view.addSubview(appleSigninButton)
+        appleSigninButton.translatesAutoresizingMaskIntoConstraints = false
+        appleSigninButton.topAnchor.constraint(equalTo: googleSigninButton.bottomAnchor, constant: 20).isActive = true
+        appleSigninButton.leadingAnchor.constraint(equalTo: googleSigninButton.leadingAnchor, constant: 20).isActive = true
+        appleSigninButton.trailingAnchor.constraint(equalTo: googleSigninButton.trailingAnchor, constant: -20).isActive = true
     }
     
 }
-
-extension LoginViewController {
-    @objc func didTapGoogleSigninButton(_ sender: Any) {
-        print("Google Sign in button tapped")
-//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//        let signInConfig = GIDConfiguration.init(clientID: clientID)
-        
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-            self.textLabel.text = "Welcome To GoogleSignIn!"
-            
-            guard error == nil else { return }
-            
-            // If sign in succeeded, display the app's main content View.
-            guard let signInResult = signInResult else { return }
-            let user = signInResult.user
-            
-//            let emailAddress = user.profile?.email
-            let fullName = user.profile?.name
-//            let familyName = user.profile?.familyName
-//            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
-            
-            self.textLabel.text = "Hi \(fullName ?? "")"
-            
-        }
-    }
-}
-

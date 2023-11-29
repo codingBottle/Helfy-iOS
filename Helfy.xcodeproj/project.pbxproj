@@ -7,9 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		26094BFB2AD69724000AAD3B /* NaviButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094BFA2AD69724000AAD3B /* NaviButtonView.swift */; };
+		26094C022AD87577000AAD3B /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094C012AD87577000AAD3B /* NavigationController.swift */; };
+		26094C042AD87943000AAD3B /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094C032AD87943000AAD3B /* WriteView.swift */; };
+		26094C072AD87971000AAD3B /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094C062AD87971000AAD3B /* WriteViewController.swift */; };
+		26094C0A2ADC3E9E000AAD3B /* WriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094C092ADC3E9E000AAD3B /* WriteModel.swift */; };
 		26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */; };
 		2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2E02E22AD54D970026C495 /* LoginViewController.swift */; };
 		2A2E02E62AD5510F0026C495 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */; };
+		2A2E02E82AD5551C0026C495 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2A2E02E72AD5551C0026C495 /* GoogleSignIn */; };
+		2A2E02EA2AD5551C0026C495 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2A2E02E92AD5551C0026C495 /* GoogleSignInSwift */; };
+		2A74D6742ADD27DF00800E9E /* AppleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A74D6732ADD27DF00800E9E /* AppleSignIn.swift */; };
+		2A74D6772ADD2C4300800E9E /* GoogleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A74D6762ADD2C4200800E9E /* GoogleSignIn.swift */; };
+		2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */; };
+
 		2A99A2652AD681DB0090155C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2642AD681DB0090155C /* QuizView.swift */; };
 		2A99A2672AD682050090155C /* QuizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2662AD682050090155C /* QuizeModel.swift */; };
 		2A99A2692AD6882F0090155C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2682AD6882F0090155C /* ReportView.swift */; };
@@ -25,12 +37,19 @@
 		2AFC98E52ACD4DB700AB349D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E42ACD4DB700AB349D /* FirebaseAnalyticsSwift */; };
 		2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */; };
-		C11E8BFD2AD68A230073C17F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C11E8BFC2AD68A230073C17F /* GoogleSignIn */; };
-		C11E8BFF2AD68A230073C17F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C11E8BFE2AD68A230073C17F /* GoogleSignInSwift */; };
-		C11E8C012AD68DC20073C17F /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11E8C002AD68DC20073C17F /* CategoryView.swift */; };
+
+		C141B8FB2AFB49D10000FFA8 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B8FA2AFB49D10000FFA8 /* MypageView.swift */; };
+		C141B8FD2AFB4A750000FFA8 /* MypageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B8FC2AFB4A750000FFA8 /* MypageModel.swift */; };
+		C141B8FF2AFB4AC80000FFA8 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B8FE2AFB4AC80000FFA8 /* MypageViewController.swift */; };
+		2AFDABE22AFF8E0200A8E19C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFDABE12AFF8E0200A8E19C /* FirebaseAuth */; };
+
 		C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */; };
 		C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3D2AD042E5002FFB77 /* RankingView.swift */; };
 		C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B412AD04532002FFB77 /* RankingModel.swift */; };
+		C1CF0F322AED41270052EC8F /* BottomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */; };
+		C1CF0F342AED472F0052EC8F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */; };
+		C1CF0F362AEFA9E70052EC8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */; };
+		C1CF0F382AEFAA2C0052EC8F /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,10 +70,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		26EA7E492AD153C800FFE7ED /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		26094BFA2AD69724000AAD3B /* NaviButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviButtonView.swift; sourceTree = "<group>"; };
+		26094C012AD87577000AAD3B /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		26094C032AD87943000AAD3B /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
+		26094C062AD87971000AAD3B /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		26094C092ADC3E9E000AAD3B /* WriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModel.swift; sourceTree = "<group>"; };
 		26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		2A2E02E22AD54D970026C495 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2A74D6732ADD27DF00800E9E /* AppleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignIn.swift; sourceTree = "<group>"; };
+		2A74D6762ADD2C4200800E9E /* GoogleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignIn.swift; sourceTree = "<group>"; };
+		2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		2A99A2642AD681DB0090155C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		2A99A2662AD682050090155C /* QuizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizeModel.swift; sourceTree = "<group>"; };
 		2A99A2682AD6882F0090155C /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
@@ -70,10 +96,19 @@
 		2AFC98CA2ACD4A3500AB349D /* HelfyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelfyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AFC98CE2ACD4A3500AB349D /* HelfyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITests.swift; sourceTree = "<group>"; };
 		2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C11E8C002AD68DC20073C17F /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+
+		C141B8FA2AFB49D10000FFA8 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
+		C141B8FC2AFB4A750000FFA8 /* MypageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageModel.swift; sourceTree = "<group>"; };
+		C141B8FE2AFB4AC80000FFA8 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
+		2AFDABE02AFF8B3400A8E19C /* Helfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helfy.entitlements; sourceTree = "<group>"; };
+
 		C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		C1735B3D2AD042E5002FFB77 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		C1735B412AD04532002FFB77 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
+		C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarView.swift; sourceTree = "<group>"; };
+		C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +122,11 @@
 				2AFC98E32ACD4DB700AB349D /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */,
 				2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				C11E8BFD2AD68A230073C17F /* GoogleSignIn in Frameworks */,
+
+				C141B9012AFCB09B0000FFA8 /* FirebaseDatabase in Frameworks */,
+				2A2E02E82AD5551C0026C495 /* GoogleSignIn in Frameworks */,
+				2AFDABE22AFF8E0200A8E19C /* FirebaseAuth in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,20 +147,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A99A2632AD681820090155C /* Recovered References */ = {
+		2A74D6752ADD2C3300800E9E /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				26EA7E492AD153C800FFE7ED /* ReportView.swift */,
+				2A74D6762ADD2C4200800E9E /* GoogleSignIn.swift */,
+				2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */,
+				2A74D6732ADD27DF00800E9E /* AppleSignIn.swift */,
 			);
-			name = "Recovered References";
+			path = Login;
 			sourceTree = "<group>";
 		};
 		2AB9D1422ACFF42B00686F83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2A74D6752ADD2C3300800E9E /* Login */,
 				C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */,
 				26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */,
 				2A2E02E22AD54D970026C495 /* LoginViewController.swift */,
+				C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */,
+				C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */,
+				C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */,
+				26094C012AD87577000AAD3B /* NavigationController.swift */,
+				26094C062AD87971000AAD3B /* WriteViewController.swift */,
+				C141B8FE2AFB4AC80000FFA8 /* MypageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -133,7 +181,7 @@
 				2AFC98C32ACD4A3500AB349D /* HelfyTests */,
 				2AFC98CD2ACD4A3500AB349D /* HelfyUITests */,
 				2AFC98AB2ACD4A2100AB349D /* Products */,
-				2A99A2632AD681820090155C /* Recovered References */,
+				C141B8F72AFB44910000FFA8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +198,7 @@
 		2AFC98AC2ACD4A2100AB349D /* Helfy */ = {
 			isa = PBXGroup;
 			children = (
+				2AFDABE02AFF8B3400A8E19C /* Helfy.entitlements */,
 				C1735B342ACFFB57002FFB77 /* View */,
 				C1735B332ACFFB46002FFB77 /* Model */,
 				2AB9D1422ACFF42B00686F83 /* Controller */,
@@ -180,11 +229,20 @@
 			path = HelfyUITests;
 			sourceTree = "<group>";
 		};
+		C141B8F72AFB44910000FFA8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C1735B332ACFFB46002FFB77 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C1735B412AD04532002FFB77 /* RankingModel.swift */,
 				2A99A2662AD682050090155C /* QuizeModel.swift */,
+				26094C092ADC3E9E000AAD3B /* WriteModel.swift */,
+				C141B8FC2AFB4A750000FFA8 /* MypageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,7 +254,12 @@
 				C1735B3D2AD042E5002FFB77 /* RankingView.swift */,
 				2A99A2682AD6882F0090155C /* ReportView.swift */,
 				2A99A26A2AD688660090155C /* TextView.swift */,
-				C11E8C002AD68DC20073C17F /* CategoryView.swift */,
+
+				C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */,
+				26094BFA2AD69724000AAD3B /* NaviButtonView.swift */,
+				26094C032AD87943000AAD3B /* WriteView.swift */,
+				C141B8FA2AFB49D10000FFA8 /* MypageView.swift */,
+
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,8 +286,11 @@
 				2AFC98E42ACD4DB700AB349D /* FirebaseAnalyticsSwift */,
 				2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */,
 				2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */,
-				C11E8BFC2AD68A230073C17F /* GoogleSignIn */,
-				C11E8BFE2AD68A230073C17F /* GoogleSignInSwift */,
+
+				2A2E02E72AD5551C0026C495 /* GoogleSignIn */,
+				2A2E02E92AD5551C0026C495 /* GoogleSignInSwift */,
+				2AFDABE12AFF8E0200A8E19C /* FirebaseAuth */,
+
 			);
 			productName = Helfy;
 			productReference = 2AFC98AA2ACD4A2100AB349D /* Helfy.app */;
@@ -344,14 +410,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C141B8FF2AFB4AC80000FFA8 /* MypageViewController.swift in Sources */,
+				26094BFB2AD69724000AAD3B /* NaviButtonView.swift in Sources */,
 				C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */,
 				2A99A2652AD681DB0090155C /* QuizView.swift in Sources */,
-				C11E8C012AD68DC20073C17F /* CategoryView.swift in Sources */,
+
+				C141B8FB2AFB49D10000FFA8 /* MypageView.swift in Sources */,
+				26094C072AD87971000AAD3B /* WriteViewController.swift in Sources */,
+
 				2A99A2672AD682050090155C /* QuizeModel.swift in Sources */,
 				C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */,
+				C1CF0F342AED472F0052EC8F /* TabBarViewController.swift in Sources */,
+				C141B8FD2AFB4A750000FFA8 /* MypageModel.swift in Sources */,
+				C1CF0F362AEFA9E70052EC8F /* HomeViewController.swift in Sources */,
+				C1CF0F322AED41270052EC8F /* BottomTabBarView.swift in Sources */,
 				2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */,
+				C1CF0F382AEFAA2C0052EC8F /* CommunityViewController.swift in Sources */,
+				26094C0A2ADC3E9E000AAD3B /* WriteModel.swift in Sources */,
+				26094C042AD87943000AAD3B /* WriteView.swift in Sources */,
 				2A99A2692AD6882F0090155C /* ReportView.swift in Sources */,
+				2A74D6742ADD27DF00800E9E /* AppleSignIn.swift in Sources */,
+				2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */,
+				2A74D6772ADD2C4300800E9E /* GoogleSignIn.swift in Sources */,
 				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
+
+				26094C022AD87577000AAD3B /* NavigationController.swift in Sources */,
+
 				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
 				2A99A26B2AD688660090155C /* TextView.swift in Sources */,
 				C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */,
@@ -529,9 +613,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Helfy/Helfy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = A95XXD5WT7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Helfy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -545,6 +633,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.Helfy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Helfy;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -556,9 +646,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Helfy/Helfy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = A95XXD5WT7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Helfy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -572,6 +666,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.Helfy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Helfy;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -583,14 +679,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = A95XXD5WT7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.HelfyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Helfy;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -603,14 +703,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JVBAL8CV7V;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = A95XXD5WT7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanni.HelfyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Helfy;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -740,15 +844,17 @@
 			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAppCheck;
 		};
-		C11E8BFC2AD68A230073C17F /* GoogleSignIn */ = {
+
+		2AFDABE12AFF8E0200A8E19C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C11E8BFB2AD68A230073C17F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignIn;
+			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
-		C11E8BFE2AD68A230073C17F /* GoogleSignInSwift */ = {
+		C141B9002AFCB09B0000FFA8 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C11E8BFB2AD68A230073C17F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignInSwift;
+			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
