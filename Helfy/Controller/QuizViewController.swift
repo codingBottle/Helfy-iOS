@@ -6,78 +6,76 @@
 
 import UIKit
 
-class QuizViewController: UIViewController, UITabBarDelegate {
-    
+class QuizViewController: UIViewController {
     private var quizView = QuizView()
     private var rankingView = RankingView()
-
-    private lazy var segmentControl : UISegmentedControl = {
-        let control = UISegmentedControl(items: ["퀴즈", "랭킹"])
-        
-        control.selectedSegmentIndex = 0
-        control.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
-        
-        control.backgroundColor = .white
-//        control.selectedSegmentTintColor = UIColor.clear
-
-        
-        // 세그먼트의 텍스트 속성 변경
-        let attributesNormal = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor : UIColor.black]
-            
-        control.setTitleTextAttributes(attributesNormal, for:.normal)
-        
-        // 모서리 라운딩 제거
-       control.layer.cornerRadius = 0.0
-       control.layer.masksToBounds = true
-
-       return control
+    
+    private lazy var quizButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("퀴즈", for: .normal)
+        button.tintColor = UIColor.orange
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 23) // Set font size here
+        button.addTarget(self, action: #selector(quizButtonTapped), for: .touchUpInside)
+        return button
     }()
-
+    
+    private lazy var rankingButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("랭킹", for: .normal)
+        button.tintColor = UIColor.black
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 23)
+        button.addTarget(self, action: #selector(rankingButtonTapped), for: .touchUpInside)
+        return button
+    }()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         
-        self.view.addSubview(segmentControl)
-        self.view.addSubview(quizView)
-        self.view.addSubview(rankingView)
+        view.addSubview(quizView)
+        view.addSubview(rankingView)
         
-        setupConstraints()
-    }
-
-    @objc func segmentChanged(_ sender:UISegmentedControl){
-        switch sender.selectedSegmentIndex{
-        case 0:
-            quizView.isHidden = false;
-            rankingView.isHidden = true;
-        case 1:
-            quizView.isHidden = true;
-            rankingView.isHidden = false;
-        default:
-            break;
-        }
-    }
-    
-    private func setupConstraints() {
-        segmentControl.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(quizButton)
+        view.addSubview(rankingButton)
+        
+        quizButton.translatesAutoresizingMaskIntoConstraints = false
+        rankingButton.translatesAutoresizingMaskIntoConstraints = false
+        
         quizView.translatesAutoresizingMaskIntoConstraints = false
         rankingView.translatesAutoresizingMaskIntoConstraints = false
         
+        // 버튼 레이아웃
         NSLayoutConstraint.activate([
-            segmentControl.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            segmentControl.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            segmentControl.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            quizButton.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant : 15),
+            quizButton.leadingAnchor.constraint(equalTo:view.leadingAnchor, constant : 20),
             
-            quizView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor),
-            quizView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            quizView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            quizView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            
-            rankingView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor),
-            rankingView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            rankingView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            rankingView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            rankingButton.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant : 15),
+            rankingButton.leadingAnchor.constraint(equalTo : self.quizButton.trailingAnchor, constant : 15),
         ])
         
         rankingView.isHidden = true
     }
+    
+    // 퀴즈 버튼 눌렀을 때 동작
+    @objc func quizButtonTapped() {
+        print("Quiz Button Tapped")
 
+        quizView.isHidden = false
+        rankingView.isHidden = true
+         
+        self.quizButton.tintColor = UIColor.orange
+        self.rankingButton.tintColor = UIColor.black
+
+    }
+
+    // 랭킹 버튼 눌렀을 때 동작
+    @objc func rankingButtonTapped() {
+        print("Ranking Button Tapped")
+
+        quizView.isHidden = true
+        rankingView.isHidden = false
+
+        self.quizButton.tintColor = UIColor.black
+        self.rankingButton.tintColor = UIColor.orange
+    }
 }
