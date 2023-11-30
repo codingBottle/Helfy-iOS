@@ -8,7 +8,7 @@
 import UIKit
 
 // User 모델 클래스
-class User {
+class User2 {
     var nickname: String
     var location: String
     
@@ -19,9 +19,8 @@ class User {
 }
 
 class MypageModel {
-    var user: User
-    
-    init(user: User) {
+    var user: User2
+    init(user: User2) {
         self.user = user
     }
     
