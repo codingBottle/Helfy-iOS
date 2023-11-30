@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct CommunityModel {
+    let title: String
+    let content: String
+    let hashTag: String
+    let imageName: String
+}
