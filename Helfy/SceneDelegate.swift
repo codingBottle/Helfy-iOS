@@ -17,8 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = LoginViewController() // 첫 화면으로 표시할 ViewController 지정
         self.window = window
         window.makeKeyAndVisible()
-       
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

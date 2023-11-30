@@ -8,11 +8,12 @@
 import UIKit
 import GoogleSignIn
 import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    var currentUser: User?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
@@ -21,7 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           if error != nil || user == nil {
             // Show the app's signed-out state.
           } else {
-            // Show the app's signed-in state.
+              // Show the app's signed-in state.
+              guard let firebaseUser = Auth.auth().currentUser else {
+                  // firebaseUser is nil, handle this case as appropriate.
+                  return
+              }
+              let user = User(uid: firebaseUser.uid,
+                              email: firebaseUser.email,
+                              photoURL: firebaseUser.photoURL)
+              // Store the user information somewhere accessible in the app, for example in a property of AppDelegate
+              self.currentUser = user
           }
         }
         return true
@@ -34,10 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           if handled {
             return true
       }
-
-      // Handle other custom URL types.
-
-      // If not handled by this app, return false.
       return false
     }
     // MARK: UISceneSession Lifecycle
