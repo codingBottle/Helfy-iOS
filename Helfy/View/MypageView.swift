@@ -143,7 +143,7 @@ class MypageView: UIView {
     }
     
     // User 정보를 기반으로 UI 업데이트
-    func updateUserUI(user: User) {
+    func updateUserUI(user: User2) {
         nicknameLabel.text = user.nickname
         locationLabel.text = user.location
     }

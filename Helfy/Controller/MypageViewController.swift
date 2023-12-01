@@ -14,10 +14,10 @@ class MypageViewController: UIViewController, UIImagePickerControllerDelegate, U
     let imagePicker = UIImagePickerController()
     
     private let myPageModel: MypageModel
-    private let user: User
+    private let user2: User2
     
-    init(user: User) {
-        self.user = user
+    init(user: User2) {
+        self.user2 = user
         self.myPageModel = MypageModel(user: user)
         super.init(nibName: nil, bundle: nil)
         
@@ -32,7 +32,7 @@ class MypageViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        myPageView.updateUserUI(user: user)
+        myPageView.updateUserUI(user: user2)
     }
     
     private func setupUI() {

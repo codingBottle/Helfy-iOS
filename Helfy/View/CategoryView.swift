@@ -8,108 +8,129 @@
 
 import UIKit
 
-class CategoryButton: UIView {
-    let myImageView = UIImageView()
-    let myTitleLabel = UILabel()
+enum Category: String, CaseIterable {
+    case category1 = "침수"
+    case category2 = "태풍"
+    case category3 = "호우"
+    case category4 = "낙뢰"
+    case category5 = "강풍"
+    case category6 = "풍랑"
+    case category7 = "대설"
+    case category8 = "한파"
+    case category9 = "폭염"
+    case category10 = "황사"
+    case category11 = "지진"
+    case category12 = "해일"
+    case category13 = "지진해일"
+    case category14 = "화산폭발"
+    case category15 = "가뭄"
+    case category16 = "홍수"
+    case category17 = "해수면상승"
+    case category18 = "산사태"
+    case category19 = "자연우주물체추락"
+    case category20 = "우주전파재난"
+    case category21 = "녹조"
+    case category22 = "적조"
+}
 
-    init(image: UIImage?, title: String) {
-        super.init(frame: .zero)
+// Custom UICollectionViewCell
+class CategoryCell: UICollectionViewCell {
+    static let identifier = "CategoryCell"
+
+    private let myImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    private let myTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        contentView.addSubview(myImageView)
+        contentView.addSubview(myTitleLabel)
         
-        myImageView.image = image
-        myTitleLabel.text = title
-        myTitleLabel.font = UIFont.systemFont(ofSize: 12)
-        myTitleLabel.textAlignment = .center
-                
-        self.addSubview(myImageView)
-        self.addSubview(myTitleLabel)
-        
-        // Set content mode of image view to scale aspect fit.
-        myImageView.contentMode = .scaleAspectFit
-        
-        // Image 설정
-        myImageView.translatesAutoresizingMaskIntoConstraints = false
+        myImageView.isUserInteractionEnabled = false
+        myTitleLabel.isUserInteractionEnabled = false
+
+
         NSLayoutConstraint.activate([
+            myImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            myImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             myImageView.widthAnchor.constraint(equalToConstant: 90),
             myImageView.heightAnchor.constraint(equalToConstant: 60),
-            myImageView.topAnchor.constraint(equalTo:self.topAnchor),
-            myImageView.centerXAnchor.constraint(equalTo:self.centerXAnchor)
+
+            myTitleLabel.topAnchor.constraint(equalTo: myImageView.bottomAnchor, constant: 5),
+            myTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            myTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            myTitleLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
         ])
-        
-        // TitleLabel 설정
-        myTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            myTitleLabel.topAnchor.constraint(equalTo:myImageView.bottomAnchor, constant: 5),
-            myTitleLabel.leadingAnchor.constraint(equalTo:self.leadingAnchor),
-            myTitleLabel.trailingAnchor.constraint(equalTo:self.trailingAnchor),
-            myTitleLabel.bottomAnchor.constraint(lessThanOrEqualTo:self.bottomAnchor)
-        ])
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
-        self.addGestureRecognizer(tapGesture)
     }
-    
-    @objc func buttonTapped() {
-        print("Button was tapped!")
-    }
-     
-    required init?(coder aDecoder:NSCoder) {
+
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(with image: UIImage?, title: String) {
+        myImageView.image = image
+        myTitleLabel.text = title
     }
 }
 
+// Collection View
+class CategoryView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    private var buttonTitles = ["침수", "태풍", "호우","낙뢰", "강풍", "풍랑", "대설", "한파", "폭염", "황사", "지진", "해일", "지진해일", "화산폭발", "가뭄","홍수", "해수면상승", "산사태","자연우주물체추락", "우주전파재난", "녹조", "적조"]
+    private var buttonImages = [UIImage(named:"침수"), UIImage(named:"태풍"), UIImage(named: "호우"), UIImage(named:"낙뢰"), UIImage(named:"강풍"), UIImage(named: "풍랑"), UIImage(named:"대설"), UIImage(named:"한파"), UIImage(named:"폭염"), UIImage(named:"황사"), UIImage(named:"지진"), UIImage(named:"해일"), UIImage(named:"지진해일"), UIImage(named:"화산폭발"), UIImage(named:"가뭄"), UIImage(named:"홍수"), UIImage(named:"해수면상승"), UIImage(named:"산사태"), UIImage(named:"자연우주물체추락"), UIImage(named:"우주전파재난"), UIImage(named:"녹조"), UIImage(named:"적조")]
 
-class CategoryView : UIView {
-    override init(frame:CGRect) {
-        super.init(frame:frame)
+
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: layout)
         
-        let buttonTitles = ["침수", "태풍", "호우","낙뢰",
-                            "강풍", "풍랑", "대설", "한파",
-                            "폭염", "황사", "지진", "해일",
-                            "지진해일", "화산폭발", "가뭄","홍수",
-                            "해수면상승", "산사태","자연우주물체추락", "우주전파재난",
-                            "녹조", "적조"]
-        let buttonImages = [UIImage(named:"침수"), UIImage(named:"태풍"), UIImage(named: "호우"),
-                            UIImage(named:"낙뢰"), UIImage(named:"강풍"), UIImage(named: "풍랑"),
-                            UIImage(named:"대설"), UIImage(named:"한파"), UIImage(named:"폭염"),
-                            UIImage(named:"황사"), UIImage(named:"지진"), UIImage(named:"해일"),
-                            UIImage(named:"지진해일"), UIImage(named:"화산폭발"), UIImage(named:"가뭄"),
-                            UIImage(named:"홍수"), UIImage(named:"해수면상승"), UIImage(named:"산사태"),
-                            UIImage(named:"자연우주물체추락"), UIImage(named:"우주전파재난"), UIImage(named:"녹조"), UIImage(named:"적조") ]
+        if let flowLayout = layout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .horizontal
+        }
 
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 5
-                
-        for i in stride(from:0, to:buttonTitles.count, by:4) {
-            let hStack = UIStackView()
-            hStack.axis = .horizontal
-            hStack.distribution = .fillEqually
-            hStack.spacing = 5
+        self.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+        self.dataSource = self
+        self.delegate = self
+    }
 
-            for j in i..<min(i + 4, buttonTitles.count) {
-                let buttonTitle = buttonTitles[j]
-                let buttonImage = buttonImages[j]
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-                let categoryBtn = CategoryButton(image: buttonImage ,title: buttonTitle)
+    // MARK: UICollectionViewDataSource
 
-                hStack.addArrangedSubview(categoryBtn)
-            }
-            stackView.addArrangedSubview(hStack)
-       }
-       
-       self.addSubview(stackView)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return buttonTitles.count
+    }
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false;
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo:self.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo:self.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo:self.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo:self.trailingAnchor)
-       ])
-   }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
+        let title = buttonTitles[indexPath.row]
+        let image = buttonImages[indexPath.row]
+        cell.configure(with: image, title: title)
+        return cell
+    }
 
-   required init?(coder aDecoder:NSCoder) {
-     fatalError("init(coder:) has not been implemented")
-   }
+    // MARK: UICollectionViewDelegateFlowLayout
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.frame.width - 15 * 2) / 3
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCategory = Category.allCases[indexPath.item]
+        print("\(selectedCategory.rawValue) was tapped!")
+        
+    }
 }
