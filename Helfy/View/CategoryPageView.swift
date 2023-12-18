@@ -8,6 +8,15 @@ import UIKit
 
 class CategoryPageView: UIView {
     
+    var newsURL = ""
+    var youtubeURL = ""
+    
+    // API 사용하기 위한 객체
+    var CategoryApiHandler : APIHandler = APIHandler()
+
+    // 데이터 모델 객체
+    var categoryPageData: CategoryPageModel?
+    
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Category"
@@ -32,7 +41,7 @@ class CategoryPageView: UIView {
         return imageView
     }()
     
-    private let catextView: UITextView = {
+    private let contentView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = UIColor(red: 249/255, green: 223/255, blue: 86/255, alpha: 1.0)
         textView.isEditable = false
@@ -66,23 +75,25 @@ class CategoryPageView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        setData()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
+        
     }
     
     private func setupUI() {
         addSubview(categoryLabel)
         addSubview(categoryImageView)
-        addSubview(catextView)
+        addSubview(contentView)
         addSubview(newsButton)
         addSubview(youtubeButton)
         
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false
         categoryImageView.translatesAutoresizingMaskIntoConstraints = false
-        catextView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         newsButton.translatesAutoresizingMaskIntoConstraints = false
         youtubeButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -98,11 +109,11 @@ class CategoryPageView: UIView {
             categoryImageView.heightAnchor.constraint(equalToConstant: 200),
             
             // catextView View
-            catextView.topAnchor.constraint(equalTo: categoryImageView.bottomAnchor, constant: 20),
-            catextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            catextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            catextView.widthAnchor.constraint(equalToConstant: 480),
-            catextView.heightAnchor.constraint(equalToConstant: 380),
+            contentView.topAnchor.constraint(equalTo: categoryImageView.bottomAnchor, constant: 20),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            contentView.widthAnchor.constraint(equalToConstant: 180),
+            contentView.heightAnchor.constraint(equalToConstant: 380),
             
             // News Button
             newsButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -80),
@@ -121,6 +132,37 @@ class CategoryPageView: UIView {
         ])
     }
     
+    
+    private func setData() {
+        DispatchQueue.global(qos: .userInteractive).async {
+            // API 통해 데이터 불러오기
+            self.CategoryApiHandler.getCategoryPageData { data in
+                // 정의해둔 모델 객체에 할당
+                self.categoryPageData = data
+                
+                // 데이터를 제대로 잘 받아왔다면
+                guard let data = self.categoryPageData else {
+                    return
+                }
+                guard let url = URL(string: data.image.imageURL) else {
+                    print("Invalid URL")
+                    return
+                }
+                
+                print(data, "🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
+                
+                ImageLoader.loadImage(url: data.image.imageURL) { [weak self] image in
+                    // 메인 쓰레드임
+                    self?.categoryLabel.text = data.category
+                    self?.contentView.text = data.content
+                    self?.newsURL = data.newsURL
+                    self?.youtubeURL = data.youtubeURL
+                    self?.categoryImageView.image = image
+                }
+            }
+        }
+    }
+    
     func setNewsButtonTarget(_ target: Any?, action: Selector) {
         newsButton.addTarget(target, action: action, for: .touchUpInside)
     }
@@ -130,10 +172,10 @@ class CategoryPageView: UIView {
     }
     
     func setTextViewText(_ text: String) {
-        catextView.text = text
+        contentView.text = text
     }
     
     func getTextViewText() -> String {
-        return catextView.text
+        return contentView.text
     }
 }

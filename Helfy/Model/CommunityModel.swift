@@ -13,3 +13,4 @@ struct CommunityModel {
     let hashTag: String
     let imageName: String
 }
+
