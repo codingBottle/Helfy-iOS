@@ -186,17 +186,22 @@ class CommunityView: UIView {
         guard let tappedImageView = sender.view as? UIImageView else { return }
         
         // 이미지가 터치되었을 때의 동작을 정의
+        
+        // 확대된 이미지를 담을 이미지 뷰 생성
         let zoomedImageView = UIImageView(image: tappedImageView.image)
         zoomedImageView.contentMode = .scaleAspectFit
         zoomedImageView.frame = UIScreen.main.bounds
         
+        // 확대된 이미지를 담을 뷰 생성
         let zoomedView = UIView(frame: UIScreen.main.bounds)
         zoomedView.backgroundColor = .black
         zoomedView.addSubview(zoomedImageView)
         
+        // 확대된 이미지 뷰를 탭했을 때 원래 크기로 돌아가는 동작을 위한 탭 제스처 생성
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissZoomedView(_:)))
         zoomedView.addGestureRecognizer(tapGesture)
         
+        // 현재 윈도우에 확대된 이미지 뷰를 추가
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
             window.addSubview(zoomedView)
@@ -204,6 +209,7 @@ class CommunityView: UIView {
     }
 
         @objc func dismissZoomedView(_ sender: UITapGestureRecognizer) {
+            // 확대된 이미지 뷰를 탭했을 때 해당 뷰를 제거
             sender.view?.removeFromSuperview()
         }
     
