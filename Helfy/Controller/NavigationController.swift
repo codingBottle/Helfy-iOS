@@ -76,5 +76,6 @@ class NavigationController: UIViewController {
         let reportViewController = ReportViewController()
         navigationController?.pushViewController(reportViewController, animated: true)
     }
+    
 
     }

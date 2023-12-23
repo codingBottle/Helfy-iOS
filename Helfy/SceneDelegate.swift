@@ -15,7 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         //window.rootViewController = LoginViewController() // 첫 화면으로 표시할 ViewController 지정
-        window.rootViewController = LoginViewController()
+        let communityViewController = CommunityViewController()
+        let navigationController = UINavigationController(rootViewController: communityViewController)
+        window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
        

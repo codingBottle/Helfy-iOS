@@ -28,8 +28,8 @@ class CommunityView: UIView {
     
     var communityPosts: [CommunityModel] = [
         // 커뮤니티 게시물을 여기에 추가
-        CommunityModel(title: "안전사고 발생했으니 조심하세요", content: "게시글 내용", hashTag: "#ㅇㅇ동 #안전사고 #조심", imageName: "imageName"),
-        CommunityModel(title: "안전사고", content: "게시글 내용", hashTag: "#ㅇㅇ동 #안전사고 #조심", imageName: "imageName"),
+        CommunityModel(title: "안전사고 발생했으니 조심하세요", content: "게시글 내용", hashTag: "#ㅇㅇ동 #안전사고 #조심", imageName: "img1"),
+        CommunityModel(title: "안전사고", content: "게시글 내용", hashTag: "#ㅇㅇ동 #안전사고 #조심", imageName: "img2"),
         CommunityModel(title: "안전사고", content: "게시글 내용", hashTag: "#ㅇㅇ동 #안전사고 #조심", imageName: "imageName"),
         CommunityModel(title: "안전사고", content: "게시글 내용", hashTag: "#ㅇㅇ동 #안전사고 #조심", imageName: "imageName"),
         CommunityModel(title: "안전사고 발생했으니 조심하세요", content: "게시글 내용", hashTag: "#ㅇㅇ동 #안전사고 #조심", imageName: "imageName")
@@ -109,11 +109,17 @@ class CommunityView: UIView {
             
             let imageView = UIImageView() // 이미지 뷰 생성
             imageView.image = UIImage(named: post.imageName) // 이미지 설정
-            imageView.backgroundColor = .black // 배경색 설정
+            imageView.backgroundColor = .clear // 배경색 설정
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.widthAnchor.constraint(equalToConstant: 70).isActive = true // 이미지 뷰 너비 설정
             imageView.heightAnchor.constraint(equalToConstant: 70).isActive = true // 이미지 뷰 높이 설정
-
+            
+            imageView.isUserInteractionEnabled = true // 이미지 뷰를 터치 가능하도록
+            // 터치 제스처 추가
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
+                        imageView.addGestureRecognizer(tapGesture)
+            
+            
             let titleLabel = UILabel() // 타이틀 라벨 생성
             titleLabel.text = post.title // 텍스트 설정
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -171,13 +177,35 @@ class CommunityView: UIView {
                 buttonAndLabelStackView.bottomAnchor.constraint(equalTo: postView.bottomAnchor, constant: -10), // postView 아래쪽에 10포인트 여백을 두고 배치
                 buttonAndLabelStackView.leadingAnchor.constraint(equalTo: postView.leadingAnchor, constant: 20) // postView 왼쪽에 20포인트 여백을 두고 배치
             ])
-            
-            // Your existing code...
-            
+        
             stackView.addArrangedSubview(postView)
         }
+        
     }
-    
+    @objc func imageTapped(_ sender: UITapGestureRecognizer) {
+        guard let tappedImageView = sender.view as? UIImageView else { return }
+        
+        // 이미지가 터치되었을 때의 동작을 정의
+        let zoomedImageView = UIImageView(image: tappedImageView.image)
+        zoomedImageView.contentMode = .scaleAspectFit
+        zoomedImageView.frame = UIScreen.main.bounds
+        
+        let zoomedView = UIView(frame: UIScreen.main.bounds)
+        zoomedView.backgroundColor = .black
+        zoomedView.addSubview(zoomedImageView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissZoomedView(_:)))
+        zoomedView.addGestureRecognizer(tapGesture)
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.addSubview(zoomedView)
+        }
+    }
+
+        @objc func dismissZoomedView(_ sender: UITapGestureRecognizer) {
+            sender.view?.removeFromSuperview()
+        }
     
     
     required init?(coder aDecoder: NSCoder) {
