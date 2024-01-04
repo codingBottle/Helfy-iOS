@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26094BFB2AD69724000AAD3B /* NaviButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094BFA2AD69724000AAD3B /* NaviButtonView.swift */; };
 		26094C022AD87577000AAD3B /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094C012AD87577000AAD3B /* NavigationController.swift */; };
 		26094C042AD87943000AAD3B /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094C032AD87943000AAD3B /* WriteView.swift */; };
 		26094C072AD87971000AAD3B /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094C062AD87971000AAD3B /* WriteViewController.swift */; };
 		26094C0A2ADC3E9E000AAD3B /* WriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26094C092ADC3E9E000AAD3B /* WriteModel.swift */; };
+		26296FBE2B3700880058C923 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26296FBD2B3700880058C923 /* BannerView.swift */; };
+		26296FC02B3700D20058C923 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26296FBF2B3700D20058C923 /* BannerViewController.swift */; };
 		26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */; };
 		2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2E02E22AD54D970026C495 /* LoginViewController.swift */; };
 		2A2E02E62AD5510F0026C495 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */; };
@@ -56,11 +57,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		26094BFA2AD69724000AAD3B /* NaviButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviButtonView.swift; sourceTree = "<group>"; };
 		26094C012AD87577000AAD3B /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		26094C032AD87943000AAD3B /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		26094C062AD87971000AAD3B /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		26094C092ADC3E9E000AAD3B /* WriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModel.swift; sourceTree = "<group>"; };
+		26296FBD2B3700880058C923 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		26296FBF2B3700D20058C923 /* BannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerViewController.swift; path = Helfy/Controller/BannerViewController.swift; sourceTree = SOURCE_ROOT; };
 		26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		2A2E02E22AD54D970026C495 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		2AB9D1422ACFF42B00686F83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				26296FBF2B3700D20058C923 /* BannerViewController.swift */,
 				C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */,
 				26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */,
 				2A2E02E22AD54D970026C495 /* LoginViewController.swift */,
@@ -206,7 +209,7 @@
 				C1735B3D2AD042E5002FFB77 /* RankingView.swift */,
 				2A99A2682AD6882F0090155C /* ReportView.swift */,
 				2A99A26A2AD688660090155C /* TextView.swift */,
-				26094BFA2AD69724000AAD3B /* NaviButtonView.swift */,
+				26296FBD2B3700880058C923 /* BannerView.swift */,
 				26094C032AD87943000AAD3B /* WriteView.swift */,
 			);
 			path = View;
@@ -356,7 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26094BFB2AD69724000AAD3B /* NaviButtonView.swift in Sources */,
+				26296FC02B3700D20058C923 /* BannerViewController.swift in Sources */,
 				C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */,
 				2A99A2652AD681DB0090155C /* QuizView.swift in Sources */,
 				26094C072AD87971000AAD3B /* WriteViewController.swift in Sources */,
@@ -371,6 +374,7 @@
 				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
 				2A99A26B2AD688660090155C /* TextView.swift in Sources */,
 				C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */,
+				26296FBE2B3700880058C923 /* BannerView.swift in Sources */,
 				2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
