@@ -27,7 +27,6 @@
 		2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */; };
 		2A8304742B176BB300979B23 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8304732B176BB300979B23 /* MainViewController.swift */; };
 		2A99A2652AD681DB0090155C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2642AD681DB0090155C /* QuizView.swift */; };
-		2A99A2672AD682050090155C /* QuizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2662AD682050090155C /* QuizeModel.swift */; };
 		2A99A2692AD6882F0090155C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2682AD6882F0090155C /* ReportView.swift */; };
 		2A99A26B2AD688660090155C /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A26A2AD688660090155C /* TextView.swift */; };
 		2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */; };
@@ -43,6 +42,12 @@
 		2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */; };
 		2AFDABE22AFF8E0200A8E19C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFDABE12AFF8E0200A8E19C /* FirebaseAuth */; };
 		2AFDABEC2B0498A000A8E19C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDABEB2B04989F00A8E19C /* UserModel.swift */; };
+		C1154CDE2B30A2A600EB767E /* QuizTobBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CDD2B30A2A600EB767E /* QuizTobBarViewController.swift */; };
+		C1154CE02B3C0B6B00EB767E /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CDF2B3C0B6B00EB767E /* QuizModel.swift */; };
+		C1154CE22B459E8100EB767E /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CE12B459E8100EB767E /* APIHandler.swift */; };
+		C1154CE52B46C8A000EB767E /* TodayQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CE42B46C8A000EB767E /* TodayQuizViewController.swift */; };
+		C1154CE72B46C8B200EB767E /* DoQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CE62B46C8B100EB767E /* DoQuizViewController.swift */; };
+		C1154CE92B46C8C500EB767E /* WrongQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CE82B46C8C500EB767E /* WrongQuizViewController.swift */; };
 		C10FC4542B70635D00356F1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FC4532B70635D00356F1B /* MainView.swift */; };
 		C10FC4562B70AD7900356F1B /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FC4552B70AD7900356F1B /* MainModel.swift */; };
 		C10FC45A2B70ADF800356F1B /* MainAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FC4592B70ADF800356F1B /* MainAPIHandler.swift */; };
@@ -109,7 +114,6 @@
 		2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		2A8304732B176BB300979B23 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2A99A2642AD681DB0090155C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
-		2A99A2662AD682050090155C /* QuizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizeModel.swift; sourceTree = "<group>"; };
 		2A99A2682AD6882F0090155C /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		2A99A26A2AD688660090155C /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		2AFC98AA2ACD4A2100AB349D /* Helfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +129,12 @@
 		2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2AFDABE02AFF8B3400A8E19C /* Helfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helfy.entitlements; sourceTree = "<group>"; };
 		2AFDABEB2B04989F00A8E19C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		C1154CDD2B30A2A600EB767E /* QuizTobBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizTobBarViewController.swift; path = "../../../../.Trash/참고4/Helfy-iOS/Helfy/Controller/QuizTobBarViewController.swift"; sourceTree = "<group>"; };
+		C1154CDF2B3C0B6B00EB767E /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		C1154CE12B459E8100EB767E /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		C1154CE42B46C8A000EB767E /* TodayQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayQuizViewController.swift; sourceTree = "<group>"; };
+		C1154CE62B46C8B100EB767E /* DoQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoQuizViewController.swift; sourceTree = "<group>"; };
+		C1154CE82B46C8C500EB767E /* WrongQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongQuizViewController.swift; sourceTree = "<group>"; };
 		C10FC4532B70635D00356F1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C10FC4552B70AD7900356F1B /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		C10FC4592B70ADF800356F1B /* MainAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAPIHandler.swift; sourceTree = "<group>"; };
@@ -199,6 +209,7 @@
 		2AB9D1422ACFF42B00686F83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C1154CE32B46C68500EB767E /* Quiz */,
 				2A74D6752ADD2C3300800E9E /* Login */,
 				C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */,
 				26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */,
@@ -209,6 +220,7 @@
 				26094C062AD87971000AAD3B /* WriteViewController.swift */,
 				2A8304732B176BB300979B23 /* MainViewController.swift */,
 				C141B8FE2AFB4AC80000FFA8 /* MypageViewController.swift */,
+				C1154CDD2B30A2A600EB767E /* QuizTobBarViewController.swift */,
 				C13470C62B6A0CCF00626442 /* EditModalViewController.swift */,
 				C1F638E72B0DD27D00D4F8C8 /* QuestionViewController.swift */,
 				C173D3D42B18751100F72A86 /* CategoryViewController.swift */,
@@ -255,6 +267,7 @@
 				2AFC98B82ACD4A3400AB349D /* LaunchScreen.storyboard */,
 				2AFC98BB2ACD4A3400AB349D /* Info.plist */,
 				2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */,
+				C1154CE12B459E8100EB767E /* APIHandler.swift */,
 			);
 			path = Helfy;
 			sourceTree = "<group>";
@@ -274,6 +287,16 @@
 				2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */,
 			);
 			path = HelfyUITests;
+			sourceTree = "<group>";
+		};
+		C1154CE32B46C68500EB767E /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				C1154CE42B46C8A000EB767E /* TodayQuizViewController.swift */,
+				C1154CE62B46C8B100EB767E /* DoQuizViewController.swift */,
+				C1154CE82B46C8C500EB767E /* WrongQuizViewController.swift */,
+			);
+			path = Quiz;
 			sourceTree = "<group>";
 		};
 		C10FC4582B70ADA500356F1B /* APIHandler */ = {
@@ -298,11 +321,11 @@
 			isa = PBXGroup;
 			children = (
 				C1735B412AD04532002FFB77 /* RankingModel.swift */,
-				2A99A2662AD682050090155C /* QuizeModel.swift */,
 				26094C092ADC3E9E000AAD3B /* WriteModel.swift */,
 				2AFDABEB2B04989F00A8E19C /* UserModel.swift */,
 				C141B8FC2AFB4A750000FFA8 /* MypageModel.swift */,
 				C1F638E52B0DD26600D4F8C8 /* QuestionModel.swift */,
+				C1154CDF2B3C0B6B00EB767E /* QuizModel.swift */,
 				C10FC4552B70AD7900356F1B /* MainModel.swift */,
 				2658C04A2B7A21C9002099FC /* CategoryPageModel.swift */,
 				C1E521402B81ECEB0055D8BE /* CategoryModel.swift */,
@@ -503,9 +526,13 @@
 				C13470C52B6A043700626442 /* MyPageAPIHandler.swift in Sources */,
 				C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */,
 				2A8304742B176BB300979B23 /* MainViewController.swift in Sources */,
+				C1154CE22B459E8100EB767E /* APIHandler.swift in Sources */,
 				C1CF0F342AED472F0052EC8F /* TabBarViewController.swift in Sources */,
 				C141B8FD2AFB4A750000FFA8 /* MypageModel.swift in Sources */,
 				C1CF0F362AEFA9E70052EC8F /* HomeViewController.swift in Sources */,
+				C1154CE92B46C8C500EB767E /* WrongQuizViewController.swift in Sources */,
+				C1154CE72B46C8B200EB767E /* DoQuizViewController.swift in Sources */,
+				C1154CE02B3C0B6B00EB767E /* QuizModel.swift in Sources */,
 				C1CF0F322AED41270052EC8F /* BottomTabBarView.swift in Sources */,
 				2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */,
 				2AFDABEC2B0498A000A8E19C /* UserModel.swift in Sources */,
@@ -513,12 +540,14 @@
 				C1CF0F382AEFAA2C0052EC8F /* CommunityViewController.swift in Sources */,
 				C173D3D52B18751100F72A86 /* CategoryViewController.swift in Sources */,
 				26094C0A2ADC3E9E000AAD3B /* WriteModel.swift in Sources */,
+				C1154CDE2B30A2A600EB767E /* QuizTobBarViewController.swift in Sources */,
 				26094C042AD87943000AAD3B /* WriteView.swift in Sources */,
 				C10FC45A2B70ADF800356F1B /* MainAPIHandler.swift in Sources */,
 				2A99A2692AD6882F0090155C /* ReportView.swift in Sources */,
 				2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */,
 				C1F638F02B0F485000D4F8C8 /* TrueOrFalseQuestionView.swift in Sources */,
 				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
+				C1154CE52B46C8A000EB767E /* TodayQuizViewController.swift in Sources */,
 				26094C022AD87577000AAD3B /* NavigationController.swift in Sources */,
 				C10FC4542B70635D00356F1B /* MainView.swift in Sources */,
 				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
