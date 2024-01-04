@@ -6,8 +6,20 @@
 //
 
 import FirebaseAuth
+import UIKit
 
 extension LoginViewController {
+    
+    private func showMainViewController() {
+        let mainViewController = MainViewController()
+        mainViewController.modalPresentationStyle = .fullScreen
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                window.rootViewController?.show(mainViewController, sender: nil)
+            }
+        }
+    }
+    
     // firebase
     func firebaseLogin(_ credential: AuthCredential) {
         // Firebase Auth
@@ -17,11 +29,7 @@ extension LoginViewController {
                 return
             }
             
-            guard let user = authResult?.user else { return }
-            let emailAddress = user.email ?? ""
-            let fullName = user.displayName ?? ""
-            let idToken = user.refreshToken ?? ""
-            self.textLabel.text = "Hi \(fullName)"
+            self.showMainViewController()
         }
         
         // idToken Refresh
@@ -42,7 +50,7 @@ extension LoginViewController {
     
     // sendIDTokenToServer
     func sendIDTokenToServer(_ idToken: String) {
-        guard let url = URL(string: "https://helfy-server.duckdns.org/categories") else { return }
+        guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/categories") else { return }
         
         var request = URLRequest(url: url)
         

@@ -14,9 +14,9 @@ class MypageViewController: UIViewController, UIImagePickerControllerDelegate, U
     let imagePicker = UIImagePickerController()
     
     private let myPageModel: MypageModel
-    private let user: User
+    private let user: User2
     
-    init(user: User) {
+    init(user: User2) {
         self.user = user
         self.myPageModel = MypageModel(user: user)
         super.init(nibName: nil, bundle: nil)
