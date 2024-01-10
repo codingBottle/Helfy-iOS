@@ -50,8 +50,8 @@ extension UIViewController {
     }
 
     @objc func firstButtonTapped() {
-        let writeViewController = WriteViewController()
-        navigationController?.pushViewController(writeViewController, animated: true)
+        //let writeViewController = WriteViewController()
+        //navigationController?.pushViewController(writeViewController, animated: true)
     }
 
     @objc func secondButtonTapped() {

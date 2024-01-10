@@ -136,7 +136,7 @@ class CategoryPageView: UIView {
     private func setData() {
         DispatchQueue.global(qos: .userInteractive).async {
             // API 통해 데이터 불러오기
-            self.CategoryApiHandler.getCategoryPageData { data in
+            self.CategoryApiHandler.getCategoryPageData(category: "TYPHOON") { data in
                 // 정의해둔 모델 객체에 할당
                 self.categoryPageData = data
                 
@@ -144,7 +144,7 @@ class CategoryPageView: UIView {
                 guard let data = self.categoryPageData else {
                     return
                 }
-                guard let url = URL(string: data.image.imageURL) else {
+                guard URL(string: data.image.imageURL) != nil else {
                     print("Invalid URL")
                     return
                 }

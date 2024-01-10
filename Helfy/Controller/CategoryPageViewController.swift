@@ -41,7 +41,6 @@ class CategoryPageViewController: UIViewController {
     
     
     
-    
     @objc func newsButtonTapped() {
         // Handle news button tap
         print("News URL:", newsURL) //디버깅 용도

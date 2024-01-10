@@ -8,15 +8,16 @@
 import Foundation
 
 class APIHandler {
-    func getCategoryPageData(completion: @escaping (CategoryPageModel) -> ()) {
-        let key = "발급받은 API키"
+    func getCategoryPageData(category: String,completion: @escaping (CategoryPageModel) -> ()) {
+        //let key = "발급받은 API키"
 
         // 1. 사전준비 단계에서 발급받은 key를 활용하여 requestURL 생성
-        guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/information?category=FLOODING") else {
+        guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/information?category=\(category)") else {
             print("유효하지 않은 url입니다.")
             return
         }
-        let requestURL = URLRequest(url: url)
+        var requestURL = URLRequest(url: url)
+            requestURL.httpMethod = "GET"
         
         // 2. 데이터를 받아오기 위한 URLSession의 dataTask를 생성
         URLSession.shared.dataTask(with: requestURL) { data, response, error in
@@ -32,10 +33,11 @@ class APIHandler {
                let parsedData = try JSONDecoder().decode(CategoryPageModel.self, from: data)
              completion(parsedData)
             } catch {
-                  print(error.localizedDescription)
+                print("Error decoding data: \(error.localizedDescription)")
               }
                 
           }
        }.resume()
     }
 }
+
