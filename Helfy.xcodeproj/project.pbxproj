@@ -34,6 +34,8 @@
 		2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */; };
 		2AFDABE22AFF8E0200A8E19C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFDABE12AFF8E0200A8E19C /* FirebaseAuth */; };
+		C13470C32B67D85C00626442 /* MyPageAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13470C22B67D85C00626442 /* MyPageAPIHandler.swift */; };
+		2AFDABE22AFF8E0200A8E19C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFDABE12AFF8E0200A8E19C /* FirebaseAuth */; };
 
 		2AFDABEC2B0498A000A8E19C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDABEB2B04989F00A8E19C /* UserModel.swift */; };
 
@@ -100,6 +102,8 @@
 		2AFC98CA2ACD4A3500AB349D /* HelfyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelfyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AFC98CE2ACD4A3500AB349D /* HelfyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITests.swift; sourceTree = "<group>"; };
 		2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2AFDABE02AFF8B3400A8E19C /* Helfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helfy.entitlements; sourceTree = "<group>"; };
+		C13470C22B67D85C00626442 /* MyPageAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAPIHandler.swift; sourceTree = "<group>"; };
 		2AFDABE02AFF8B3400A8E19C /* Helfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helfy.entitlements; sourceTree = "<group>"; };
 		2AFDABEB2B04989F00A8E19C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C141B8FA2AFB49D10000FFA8 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				2AFC98B82ACD4A3400AB349D /* LaunchScreen.storyboard */,
 				2AFC98BB2ACD4A3400AB349D /* Info.plist */,
 				2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */,
+				C13470C22B67D85C00626442 /* MyPageAPIHandler.swift */,
 			);
 			path = Helfy;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */,
 				2A99A2652AD681DB0090155C /* QuizView.swift in Sources */,
 				C141B8FB2AFB49D10000FFA8 /* MypageView.swift in Sources */,
+				C13470C32B67D85C00626442 /* MyPageAPIHandler.swift in Sources */,
 				26094C072AD87971000AAD3B /* WriteViewController.swift in Sources */,
 				2A99A2672AD682050090155C /* QuizeModel.swift in Sources */,
 				C1F638EC2B0F483100D4F8C8 /* ChoiceView.swift in Sources */,
