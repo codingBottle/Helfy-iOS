@@ -5,4 +5,11 @@
 //  Created by 윤성은 on 1/4/24.
 //
 
-import Foundation
+import UIKit
+
+class WrongQuizViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .gray
+    }
+}

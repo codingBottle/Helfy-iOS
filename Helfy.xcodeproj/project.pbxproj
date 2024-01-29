@@ -18,7 +18,7 @@
 		2A2E02E82AD5551C0026C495 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */; };
 		2A8304742B176BB300979B23 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8304732B176BB300979B23 /* MainViewController.swift */; };
-		2A99A2652AD681DB0090155C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2642AD681DB0090155C /* QuizView.swift */; };
+		2A99A2652AD681DB0090155C /* QuizHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2642AD681DB0090155C /* QuizHomeView.swift */; };
 		2A99A2692AD6882F0090155C /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A2682AD6882F0090155C /* ReportView.swift */; };
 		2A99A26B2AD688660090155C /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A99A26A2AD688660090155C /* TextView.swift */; };
 		2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */; };
@@ -33,7 +33,6 @@
 		2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E62ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */; };
 		2AFDABE22AFF8E0200A8E19C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFDABE12AFF8E0200A8E19C /* FirebaseAuth */; };
-
 		2AFDABEC2B0498A000A8E19C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDABEB2B04989F00A8E19C /* UserModel.swift */; };
 		C1154CDE2B30A2A600EB767E /* QuizTobBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CDD2B30A2A600EB767E /* QuizTobBarViewController.swift */; };
 		C1154CE02B3C0B6B00EB767E /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CDF2B3C0B6B00EB767E /* QuizModel.swift */; };
@@ -41,10 +40,13 @@
 		C1154CE52B46C8A000EB767E /* TodayQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CE42B46C8A000EB767E /* TodayQuizViewController.swift */; };
 		C1154CE72B46C8B200EB767E /* DoQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CE62B46C8B100EB767E /* DoQuizViewController.swift */; };
 		C1154CE92B46C8C500EB767E /* WrongQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CE82B46C8C500EB767E /* WrongQuizViewController.swift */; };
+		C1154CEB2B4A5F6600EB767E /* QuizHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CEA2B4A5F6600EB767E /* QuizHomeModel.swift */; };
+		C1154CED2B4AD28000EB767E /* CorrectOrWrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1154CEC2B4AD28000EB767E /* CorrectOrWrongViewController.swift */; };
+		C13470C12B57D4C900626442 /* Qtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13470C02B57D4C900626442 /* Qtest.swift */; };
 		C141B8FB2AFB49D10000FFA8 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B8FA2AFB49D10000FFA8 /* MypageView.swift */; };
 		C141B8FD2AFB4A750000FFA8 /* MypageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B8FC2AFB4A750000FFA8 /* MypageModel.swift */; };
 		C141B8FF2AFB4AC80000FFA8 /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B8FE2AFB4AC80000FFA8 /* MypageViewController.swift */; };
-		C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */; };
+		C1735B3C2AD03F61002FFB77 /* QuizHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3B2AD03F61002FFB77 /* QuizHomeViewController.swift */; };
 		C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B3D2AD042E5002FFB77 /* RankingView.swift */; };
 		C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B412AD04532002FFB77 /* RankingModel.swift */; };
 		C173D42C2B19E62700F72A86 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C173D42B2B19E62700F72A86 /* GoogleSignIn */; };
@@ -53,12 +55,11 @@
 		C1CF0F342AED472F0052EC8F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */; };
 		C1CF0F362AEFA9E70052EC8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */; };
 		C1CF0F382AEFAA2C0052EC8F /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */; };
-		C1F638E42B0DD24700D4F8C8 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E32B0DD24700D4F8C8 /* QuestionView.swift */; };
-		C1F638E62B0DD26600D4F8C8 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E52B0DD26600D4F8C8 /* QuestionModel.swift */; };
-		C1F638E82B0DD27D00D4F8C8 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E72B0DD27D00D4F8C8 /* QuestionViewController.swift */; };
+		C1F638E42B0DD24700D4F8C8 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E32B0DD24700D4F8C8 /* QuizView.swift */; };
+		C1F638E62B0DD26600D4F8C8 /* QuestionTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E52B0DD26600D4F8C8 /* QuestionTestModel.swift */; };
+		C1F638E82B0DD27D00D4F8C8 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E72B0DD27D00D4F8C8 /* QuizViewController.swift */; };
 		C1F638EC2B0F483100D4F8C8 /* ChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638EB2B0F483100D4F8C8 /* ChoiceView.swift */; };
-		C1F638EE2B0F484100D4F8C8 /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638ED2B0F484100D4F8C8 /* MultipleChoiceView.swift */; };
-		C1F638F02B0F485000D4F8C8 /* TrueOrFalseQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638EF2B0F485000D4F8C8 /* TrueOrFalseQuestionView.swift */; };
+		C1F638F02B0F485000D4F8C8 /* TrueOrFalseQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638EF2B0F485000D4F8C8 /* TrueOrFalseQuizView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +90,7 @@
 		2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A74D6782ADD2CBB00800E9E /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		2A8304732B176BB300979B23 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		2A99A2642AD681DB0090155C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		2A99A2642AD681DB0090155C /* QuizHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHomeView.swift; sourceTree = "<group>"; };
 		2A99A2682AD6882F0090155C /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		2A99A26A2AD688660090155C /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		2AFC98AA2ACD4A2100AB349D /* Helfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,22 +112,24 @@
 		C1154CE42B46C8A000EB767E /* TodayQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayQuizViewController.swift; sourceTree = "<group>"; };
 		C1154CE62B46C8B100EB767E /* DoQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoQuizViewController.swift; sourceTree = "<group>"; };
 		C1154CE82B46C8C500EB767E /* WrongQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongQuizViewController.swift; sourceTree = "<group>"; };
+		C1154CEA2B4A5F6600EB767E /* QuizHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHomeModel.swift; sourceTree = "<group>"; };
+		C1154CEC2B4AD28000EB767E /* CorrectOrWrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectOrWrongViewController.swift; sourceTree = "<group>"; };
+		C13470C02B57D4C900626442 /* Qtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qtest.swift; sourceTree = "<group>"; };
 		C141B8FA2AFB49D10000FFA8 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		C141B8FC2AFB4A750000FFA8 /* MypageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageModel.swift; sourceTree = "<group>"; };
 		C141B8FE2AFB4AC80000FFA8 /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
-		C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		C1735B3B2AD03F61002FFB77 /* QuizHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHomeViewController.swift; sourceTree = "<group>"; };
 		C1735B3D2AD042E5002FFB77 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		C1735B412AD04532002FFB77 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
 		C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarView.swift; sourceTree = "<group>"; };
 		C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
-		C1F638E32B0DD24700D4F8C8 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
-		C1F638E52B0DD26600D4F8C8 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
-		C1F638E72B0DD27D00D4F8C8 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		C1F638E32B0DD24700D4F8C8 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		C1F638E52B0DD26600D4F8C8 /* QuestionTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTestModel.swift; sourceTree = "<group>"; };
+		C1F638E72B0DD27D00D4F8C8 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		C1F638EB2B0F483100D4F8C8 /* ChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceView.swift; sourceTree = "<group>"; };
-		C1F638ED2B0F484100D4F8C8 /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
-		C1F638EF2B0F485000D4F8C8 /* TrueOrFalseQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrueOrFalseQuestionView.swift; sourceTree = "<group>"; };
+		C1F638EF2B0F485000D4F8C8 /* TrueOrFalseQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrueOrFalseQuizView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,11 +144,8 @@
 				2AFC98E32ACD4DB700AB349D /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */,
 				2AFC98E72ACD4DB700AB349D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-
-				2A2E02E82AD5551C0026C495 /* GoogleSignIn in Frameworks */,
-
 				2A2E02E82AD5551C0026C495 /* (null) in Frameworks */,
-
+				2A2E02E82AD5551C0026C495 /* (null) in Frameworks */,
 				2AFDABE22AFF8E0200A8E19C /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,7 +181,7 @@
 			children = (
 				C1154CE32B46C68500EB767E /* Quiz */,
 				2A74D6752ADD2C3300800E9E /* Login */,
-				C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */,
+				C1735B3B2AD03F61002FFB77 /* QuizHomeViewController.swift */,
 				26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */,
 				C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */,
 				C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */,
@@ -191,7 +191,8 @@
 				2A8304732B176BB300979B23 /* MainViewController.swift */,
 				C141B8FE2AFB4AC80000FFA8 /* MypageViewController.swift */,
 				C1154CDD2B30A2A600EB767E /* QuizTobBarViewController.swift */,
-				C1F638E72B0DD27D00D4F8C8 /* QuestionViewController.swift */,
+				C1F638E72B0DD27D00D4F8C8 /* QuizViewController.swift */,
+				C1154CEC2B4AD28000EB767E /* CorrectOrWrongViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -276,8 +277,9 @@
 				26094C092ADC3E9E000AAD3B /* WriteModel.swift */,
 				2AFDABEB2B04989F00A8E19C /* UserModel.swift */,
 				C141B8FC2AFB4A750000FFA8 /* MypageModel.swift */,
-				C1F638E52B0DD26600D4F8C8 /* QuestionModel.swift */,
+				C1F638E52B0DD26600D4F8C8 /* QuestionTestModel.swift */,
 				C1154CDF2B3C0B6B00EB767E /* QuizModel.swift */,
+				C1154CEA2B4A5F6600EB767E /* QuizHomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,7 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F638EA2B0F481200D4F8C8 /* Question */,
-				2A99A2642AD681DB0090155C /* QuizView.swift */,
+				2A99A2642AD681DB0090155C /* QuizHomeView.swift */,
 				C1735B3D2AD042E5002FFB77 /* RankingView.swift */,
 				2A99A2682AD6882F0090155C /* ReportView.swift */,
 				2A99A26A2AD688660090155C /* TextView.swift */,
@@ -294,6 +296,7 @@
 				26094BFA2AD69724000AAD3B /* NaviButtonView.swift */,
 				26094C032AD87943000AAD3B /* WriteView.swift */,
 				C141B8FA2AFB49D10000FFA8 /* MypageView.swift */,
+				C13470C02B57D4C900626442 /* Qtest.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,10 +304,9 @@
 		C1F638EA2B0F481200D4F8C8 /* Question */ = {
 			isa = PBXGroup;
 			children = (
-				C1F638E32B0DD24700D4F8C8 /* QuestionView.swift */,
+				C1F638E32B0DD24700D4F8C8 /* QuizView.swift */,
 				C1F638EB2B0F483100D4F8C8 /* ChoiceView.swift */,
-				C1F638ED2B0F484100D4F8C8 /* MultipleChoiceView.swift */,
-				C1F638EF2B0F485000D4F8C8 /* TrueOrFalseQuestionView.swift */,
+				C1F638EF2B0F485000D4F8C8 /* TrueOrFalseQuizView.swift */,
 			);
 			path = Question;
 			sourceTree = "<group>";
@@ -455,15 +457,16 @@
 			files = (
 				C141B8FF2AFB4AC80000FFA8 /* MypageViewController.swift in Sources */,
 				26094BFB2AD69724000AAD3B /* NaviButtonView.swift in Sources */,
+				C1154CED2B4AD28000EB767E /* CorrectOrWrongViewController.swift in Sources */,
 				C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */,
-				2A99A2652AD681DB0090155C /* QuizView.swift in Sources */,
+				2A99A2652AD681DB0090155C /* QuizHomeView.swift in Sources */,
 				C141B8FB2AFB49D10000FFA8 /* MypageView.swift in Sources */,
+				C1154CEB2B4A5F6600EB767E /* QuizHomeModel.swift in Sources */,
 				26094C072AD87971000AAD3B /* WriteViewController.swift in Sources */,
-				2A99A2672AD682050090155C /* QuizeModel.swift in Sources */,
 				C1F638EC2B0F483100D4F8C8 /* ChoiceView.swift in Sources */,
-				C1F638E62B0DD26600D4F8C8 /* QuestionModel.swift in Sources */,
-				C1F638E42B0DD24700D4F8C8 /* QuestionView.swift in Sources */,
-				C1F638EE2B0F484100D4F8C8 /* MultipleChoiceView.swift in Sources */,
+				C1F638E62B0DD26600D4F8C8 /* QuestionTestModel.swift in Sources */,
+				C13470C12B57D4C900626442 /* Qtest.swift in Sources */,
+				C1F638E42B0DD24700D4F8C8 /* QuizView.swift in Sources */,
 				C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */,
 				2A8304742B176BB300979B23 /* MainViewController.swift in Sources */,
 				C1154CE22B459E8100EB767E /* APIHandler.swift in Sources */,
@@ -482,17 +485,14 @@
 				26094C042AD87943000AAD3B /* WriteView.swift in Sources */,
 				2A99A2692AD6882F0090155C /* ReportView.swift in Sources */,
 				2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */,
-
-				C1F638F02B0F485000D4F8C8 /* TrueOrFalseQuestionView.swift in Sources */,
-				2A74D6772ADD2C4300800E9E /* GoogleSignIn.swift in Sources */,
-
+				C1F638F02B0F485000D4F8C8 /* TrueOrFalseQuizView.swift in Sources */,
 				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
 				C1154CE52B46C8A000EB767E /* TodayQuizViewController.swift in Sources */,
 				26094C022AD87577000AAD3B /* NavigationController.swift in Sources */,
 				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
 				2A99A26B2AD688660090155C /* TextView.swift in Sources */,
-				C1F638E82B0DD27D00D4F8C8 /* QuestionViewController.swift in Sources */,
-				C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */,
+				C1F638E82B0DD27D00D4F8C8 /* QuizViewController.swift in Sources */,
+				C1735B3C2AD03F61002FFB77 /* QuizHomeViewController.swift in Sources */,
 				2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -903,7 +903,6 @@
 			package = 2AFC98DF2ACD4DB700AB349D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-
 		C173D42B2B19E62700F72A86 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C11E8BFB2AD68A230073C17F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
@@ -914,7 +913,6 @@
 			package = C11E8BFB2AD68A230073C17F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
 		};
-
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2AFC98A22ACD4A2100AB349D /* Project object */;

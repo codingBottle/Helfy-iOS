@@ -10,26 +10,20 @@ import Foundation
 // MARK: - WelcomeElement
 struct QuizModel: Codable {
     let id: Int
-    let question, answer, quizType: String
-    let choices: Choices
-    let image: Image
-}
-
-// MARK: - Choices
-struct Choices: Codable {
-    let additionalProp1, additionalProp2, additionalProp3: String
+    let question, answer: String
+    let choices: [String: String]
+    let image: Image?
+    let quizType: String
 }
 
 // MARK: - Image
 struct Image: Codable {
-    let createdTime, modifiedTime: String
     let id: Int
-    let imageURL, directory, convertImageName: String
+    let imageURL: String
 
     enum CodingKeys: String, CodingKey {
-        case createdTime, modifiedTime, id
+        case id
         case imageURL = "imageUrl"
-        case directory, convertImageName
     }
 }
 
