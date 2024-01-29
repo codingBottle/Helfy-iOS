@@ -65,11 +65,16 @@ class LoginViewController : UIViewController {
             guard let user = user?.user,
                   let idToken = user.idToken?.tokenString else { return }
             
+            
+            
             let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
+//            print(credential.accesst)
+            // UserDefaults에 토큰 값을 저장합니다.
             
             self.firebaseLogin(credential)
         }
     }
+
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {

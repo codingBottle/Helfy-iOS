@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionModel {
+class QuestionTestModel {
     var text: String
     var image: UIImage?
     
@@ -17,7 +17,7 @@ class QuestionModel {
     }
 }
 
-class MultipleChoiceQuestion: QuestionModel {
+class MultipleChoiceQuiz: QuestionTestModel {
     var choices: [String]
     var answerIndex: Int
     
@@ -27,16 +27,16 @@ class MultipleChoiceQuestion: QuestionModel {
         super.init(text: text, image: image)
     }
     
-    static func dictionaryMultiple(data: [String: Any]) -> MultipleChoiceQuestion {
+    static func dictionaryMultiple(data: [String: Any]) -> MultipleChoiceQuiz {
         let text = data["text"] as! String
         let choices = data["choices"] as! [String]
         let answerIndex = data["answerIndex"] as! Int
         let image = data["image"] as? UIImage
-        return MultipleChoiceQuestion(text: text, choices: choices, answerIndex: answerIndex, image: image)
+        return MultipleChoiceQuiz(text: text, choices: choices, answerIndex: answerIndex, image: image)
     }
 }
 
-class TrueOrFalseQuestion: QuestionModel {
+class TrueOrFalseQuestion: QuestionTestModel {
     var answer: Bool
     
     init(text: String, answer: Bool, image: UIImage? = nil) {

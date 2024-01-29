@@ -28,7 +28,6 @@ extension LoginViewController {
                 print("Failed to login with Firebase: ", error)
                 return
             }
-            
             self.showMainViewController()
         }
         
@@ -43,6 +42,8 @@ extension LoginViewController {
                 print("ID token is nil")
                 return
             }
+            UserDefaults.standard.set(idToken, forKey: "GoogleToken")
+            print("sendIDTokenToServer 저장 완료 \n UserDefaults : \(idToken)")
             
             sendIDTokenToServer(idToken)
         })
