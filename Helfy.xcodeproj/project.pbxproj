@@ -35,6 +35,9 @@
 		2AFC98E92ACD4DB700AB349D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFC98E82ACD4DB700AB349D /* FirebaseAppCheck */; };
 		2AFDABE22AFF8E0200A8E19C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2AFDABE12AFF8E0200A8E19C /* FirebaseAuth */; };
 		2AFDABEC2B0498A000A8E19C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFDABEB2B04989F00A8E19C /* UserModel.swift */; };
+		C10FC4542B70635D00356F1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FC4532B70635D00356F1B /* MainView.swift */; };
+		C10FC4562B70AD7900356F1B /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FC4552B70AD7900356F1B /* MainModel.swift */; };
+		C10FC45A2B70ADF800356F1B /* MainAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FC4592B70ADF800356F1B /* MainAPIHandler.swift */; };
 		C13470C52B6A043700626442 /* MyPageAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13470C42B6A043700626442 /* MyPageAPIHandler.swift */; };
 		C13470C72B6A0CCF00626442 /* EditModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13470C62B6A0CCF00626442 /* EditModalViewController.swift */; };
 		C141B8FB2AFB49D10000FFA8 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141B8FA2AFB49D10000FFA8 /* MypageView.swift */; };
@@ -104,6 +107,9 @@
 		2AFC98D02ACD4A3500AB349D /* HelfyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelfyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2AFDABE02AFF8B3400A8E19C /* Helfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helfy.entitlements; sourceTree = "<group>"; };
 		2AFDABEB2B04989F00A8E19C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		C10FC4532B70635D00356F1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C10FC4552B70AD7900356F1B /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		C10FC4592B70ADF800356F1B /* MainAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAPIHandler.swift; sourceTree = "<group>"; };
 		C13470C42B6A043700626442 /* MyPageAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAPIHandler.swift; sourceTree = "<group>"; };
 		C13470C62B6A0CCF00626442 /* EditModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModalViewController.swift; sourceTree = "<group>"; };
 		C141B8FA2AFB49D10000FFA8 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
@@ -218,13 +224,14 @@
 				C1735B342ACFFB57002FFB77 /* View */,
 				C1735B332ACFFB46002FFB77 /* Model */,
 				2AB9D1422ACFF42B00686F83 /* Controller */,
+				C10FC4582B70ADA500356F1B /* APIHandler */,
 				2AFC98AD2ACD4A2100AB349D /* AppDelegate.swift */,
 				2AFC98AF2ACD4A2100AB349D /* SceneDelegate.swift */,
+				C13470C42B6A043700626442 /* MyPageAPIHandler.swift */,
 				2AFC98B62ACD4A3400AB349D /* Assets.xcassets */,
 				2AFC98B82ACD4A3400AB349D /* LaunchScreen.storyboard */,
 				2AFC98BB2ACD4A3400AB349D /* Info.plist */,
 				2A2E02E52AD5510F0026C495 /* GoogleService-Info.plist */,
-				C13470C42B6A043700626442 /* MyPageAPIHandler.swift */,
 			);
 			path = Helfy;
 			sourceTree = "<group>";
@@ -246,6 +253,14 @@
 			path = HelfyUITests;
 			sourceTree = "<group>";
 		};
+		C10FC4582B70ADA500356F1B /* APIHandler */ = {
+			isa = PBXGroup;
+			children = (
+				C10FC4592B70ADF800356F1B /* MainAPIHandler.swift */,
+			);
+			path = APIHandler;
+			sourceTree = "<group>";
+		};
 		C141B8F72AFB44910000FFA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +277,7 @@
 				2AFDABEB2B04989F00A8E19C /* UserModel.swift */,
 				C141B8FC2AFB4A750000FFA8 /* MypageModel.swift */,
 				C1F638E52B0DD26600D4F8C8 /* QuestionModel.swift */,
+				C10FC4552B70AD7900356F1B /* MainModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,6 +294,7 @@
 				26094BFA2AD69724000AAD3B /* NaviButtonView.swift */,
 				26094C032AD87943000AAD3B /* WriteView.swift */,
 				C141B8FA2AFB49D10000FFA8 /* MypageView.swift */,
+				C10FC4532B70635D00356F1B /* MainView.swift */,
 				C173D3D22B1874CC00F72A86 /* CategoryView.swift */,
 			);
 			path = View;
@@ -462,14 +479,17 @@
 				C173D3D52B18751100F72A86 /* CategoryViewController.swift in Sources */,
 				26094C0A2ADC3E9E000AAD3B /* WriteModel.swift in Sources */,
 				26094C042AD87943000AAD3B /* WriteView.swift in Sources */,
+				C10FC45A2B70ADF800356F1B /* MainAPIHandler.swift in Sources */,
 				2A99A2692AD6882F0090155C /* ReportView.swift in Sources */,
 				2A74D6792ADD2CBB00800E9E /* FirebaseAuth.swift in Sources */,
 				C1F638F02B0F485000D4F8C8 /* TrueOrFalseQuestionView.swift in Sources */,
 				2AFC98AE2ACD4A2100AB349D /* AppDelegate.swift in Sources */,
 				26094C022AD87577000AAD3B /* NavigationController.swift in Sources */,
+				C10FC4542B70635D00356F1B /* MainView.swift in Sources */,
 				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
 				2A99A26B2AD688660090155C /* TextView.swift in Sources */,
 				C1F638E82B0DD27D00D4F8C8 /* QuestionViewController.swift in Sources */,
+				C10FC4562B70AD7900356F1B /* MainModel.swift in Sources */,
 				C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */,
 				C13470C72B6A0CCF00626442 /* EditModalViewController.swift in Sources */,
 				2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */,
