@@ -9,10 +9,64 @@ import UIKit
 
 class CommunityViewController: UIViewController  {
     var communityView: CommunityView!
+    let apiHandler = APIHandler()
+    
+    var communityPosts: [PostContent] = []  // 게시글 데이터를 저장할 배열
+
+    //데이터 모델 객체
+    var postData: CreatePost?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+    var CreateResponseData: CreatePostResponse?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+    var ImageData: Image?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+    var getData: GetPost?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+    var postResponseData: GetPostResponse?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+    var postContentData: PostContent?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+    var postImageData: PostImage?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+    var postPageableData: PostPageable?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+    var postSortData: PostSort?{
+        didSet {
+            print("data fetch completed")
+        }
+    }
+   
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        //setLayout()
         
         // 뷰 생성 및 추가
         communityView = CommunityView(frame: self.view.bounds)
@@ -106,3 +160,4 @@ class CommunityViewController: UIViewController  {
     }
 
 }
+
