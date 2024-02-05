@@ -6,49 +6,46 @@
 //
 
 import UIKit
-import MessageUI
+import FirebaseAuth
+import GoogleSignIn
 
-class MypageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
+class MypageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let myPageView = MypageView()
     let imagePicker = UIImagePickerController()
+    let editModalViewController = EditModalViewController()
     
-    private let myPageModel: MypageModel
-    private let user: User2
+    // 수정 버튼
+    let editButton: UIButton = {
+        let button = UIButton()
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold)
+        button.setImage(UIImage(systemName: "pencil", withConfiguration: configuration)?.withTintColor(UIColor(hex: "#F9A456"), renderingMode: .alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
-    init(user: User2) {
-        self.user = user
-        self.myPageModel = MypageModel(user: user)
-        super.init(nibName: nil, bundle: nil)
-        
-        myPageView.tableView.delegate = self
-        myPageView.tableView.dataSource = self
+    // 로그아웃 버튼
+    let logoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("로그아웃", for: .normal)
+        button.setTitleColor(UIColor(hex: "#F9A456"), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        button.addTarget(self, action: #selector(tapLogoutButton), for: .touchUpInside)
+        return button
+    }()
+    
+    var myPageApiHandler : MyPageAPIHandler = MyPageAPIHandler()
+    var myPageModelData: MypageModel? {
+        didSet {
+            print("hi")
+        }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupUI()
-        myPageView.updateUserUI(user: user)
-    }
-    
-    private func setupUI() {
-        view.addSubview(myPageView)
-        
-        myPageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            myPageView.topAnchor.constraint(equalTo: view.topAnchor),
-            myPageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            myPageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            myPageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
-        view.backgroundColor = .white
-        
+
         // 프로필 이미지 변경 버튼에 대한 액션 설정
         myPageView.profileImageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
@@ -57,11 +54,59 @@ class MypageViewController: UIViewController, UIImagePickerControllerDelegate, U
         // 프로필 이미지에 대한 액션 설정
         let tapGestureImage = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         myPageView.profileImageView.addGestureRecognizer(tapGestureImage)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        // 버튼(닉네임 변경, 지역 변경, 로그아웃)에 대한 액션 설정
-        myPageView.changeNicknameButton.addTarget(self, action:#selector(didTapChangeNicknameButton), for:.touchUpInside)
-        myPageView.changeLocationButton.addTarget(self, action:#selector(didTapChangeLocationButton), for:.touchUpInside)
-        myPageView.logoutButton.addTarget(self, action:#selector(didTapLogoutButton), for:.touchUpInside)
+        print(myPageView)
+
+        DispatchQueue.global(qos: .userInteractive).async {
+            // API 통해 데이터 불러오기
+            self.myPageApiHandler.getMyPageData() { [weak self] data in
+                guard let self = self else { return }
+                // 정의해둔 모델 객체에 할당
+                self.myPageModelData = data
+
+                // 데이터를 제대로 잘 받아왔다면
+                guard let data = self.myPageModelData else {
+                    return print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
+                }
+
+                DispatchQueue.main.async {
+                    self.myPageView.nicknameLabel.text = data.userInfo.nickname
+                    let regionInKorean = self.editModalViewController.regionDictionary[data.userInfo.region] ?? data.userInfo.region
+                    self.myPageView.regionLabel.text = regionInKorean
+                    self.myPageView.rankLabel.text = String(data.rankInfo.rank)
+                    self.myPageView.scoreLabel.text = String(data.rankInfo.score)
+                }
+            }
+        }
+    }
+    
+    private func setupUI() {
+        view.addSubview(myPageView)
+        view.addSubview(editButton)
+        view.addSubview(logoutButton)
+        
+        myPageView.translatesAutoresizingMaskIntoConstraints = false
+        editButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            editButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            editButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            
+            myPageView.topAnchor.constraint(equalTo: view.topAnchor),
+            myPageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            myPageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            myPageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoutButton.topAnchor.constraint(equalTo: myPageView.containerStackView.bottomAnchor, constant: 100),
+        ])
+
+        view.backgroundColor = .white
     }
     
     // 이미지를 누르면 변경할 수 있는 버튼
@@ -72,12 +117,17 @@ class MypageViewController: UIViewController, UIImagePickerControllerDelegate, U
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    // 프로필 이미지 업데이트
+    func updateProfileImage(_ image: UIImage) {
+        myPageView.profileImageView.image = image
+    }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            myPageView.updateProfileImage(selectedImage)
+            self.updateProfileImage(selectedImage)
         } else if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            myPageView.updateProfileImage(selectedImage)
+            self.updateProfileImage(selectedImage)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -87,67 +137,48 @@ class MypageViewController: UIViewController, UIImagePickerControllerDelegate, U
         picker.dismiss(animated: true, completion: nil)
     }
     
-    @objc private func didTapChangeNicknameButton() {
-        print("닉네임 변경 버튼이 눌렸습니다.")
-    }
-    
-    @objc private func didTapChangeLocationButton() {
-        print("지역 변경 버튼이 눌렸습니다.")
-    }
-    
-    @objc private func didTapLogoutButton() {
-        print("로그아웃 버튼이 눌렸습니다.")
-    }
-    
-    @objc private func didTableButton() {
-        print("테이블 버튼이 눌렸습니다.")
-    }
-    
-    // tableView 설정
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myPageView.buttons.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonCell", for: indexPath)
-        cell.textLabel?.text = myPageView.buttons[indexPath.row]
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 22)
-        cell.textLabel?.textColor = UIColor.black
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedButton = myPageView.buttons[indexPath.row]
-        switch selectedButton {
-        case "뭐1":
-            didTableButton()
-        case "뭐2":
-            didTableButton()
-        case "뭐3":
-            didTableButton()
-        case "뭐4":
-            didTableButton()
-        case "문의":
-            // "문의" 셀을 선택했을 때
-            if MFMailComposeViewController.canSendMail() {
-                let mailComposeViewController = MFMailComposeViewController()
-                mailComposeViewController.mailComposeDelegate = self
-                mailComposeViewController.setToRecipients(["Helfy@gmail.com"])
-                mailComposeViewController.setSubject("문의") // 여기에 메일 제목을 설정하세요.
-                
-                self.present(mailComposeViewController, animated: true, completion: nil)
-            } else {
-                print("이 장치에서는 메일을 보낼 수 없습니다.")
+    @objc func editButtonTapped() {
+        editModalViewController.modalPresentationStyle = .fullScreen
+        editModalViewController.modalPresentationStyle = .overCurrentContext
+        editModalViewController.modalTransitionStyle = .crossDissolve
+        editModalViewController.nickname = myPageModelData?.userInfo.nickname
+        editModalViewController.region = myPageModelData?.userInfo.region
+
+        editModalViewController.onConfirm = { [weak self] nickname, region in
+            // 서버에서 최신 데이터를 받아옵니다.
+            self?.myPageApiHandler.getMyPageData() { data in
+                self?.myPageModelData = data
+                DispatchQueue.main.async {
+                    self?.myPageView.nicknameLabel.text = data.userInfo.nickname
+                    let regionInKorean = self?.editModalViewController.regionDictionary[region ?? ""] ?? region
+                    self?.myPageView.regionLabel.text = regionInKorean
+                }
             }
-        
-        default:
-            break
         }
+
+        present(editModalViewController, animated: true, completion: nil)
     }
+
     
-    // 메일 작성을 완료하거나 취소했을 때 호출되는 메소드
-    @objc(mailComposeController:didFinishWithResult:error:) func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
+    @objc func tapLogoutButton() {
+        let firebaseAuth = Auth.auth()
+        do {
+            // google logout
+            GIDSignIn.sharedInstance.signOut()
+            try firebaseAuth.signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+            print("popToRootViewController")
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                if let window = windowScene.windows.first {
+                    let navigationController = UINavigationController(rootViewController: LoginViewController())
+                    UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromRight, animations: {
+                        window.rootViewController = navigationController
+                    }, completion: nil)
+                }
+            }
+        } catch let signOutError as NSError {
+            print("ERROR: signOutError \(signOutError.localizedDescription)")
+        }
     }
 }

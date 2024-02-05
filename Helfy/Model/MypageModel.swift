@@ -5,32 +5,20 @@
 //  Created by 윤성은 on 11/8/23.
 //
 
-import UIKit
+import Foundation
 
-// User 모델 클래스
-class User2 {
-    var nickname: String
-    var location: String
-    
-    init(nickname: String, location: String) {
-        self.nickname = nickname
-        self.location = location
-    }
+// MARK: - Welcome
+struct MypageModel: Codable {
+    let userInfo: UserInfo
+    let rankInfo: RankInfo
 }
 
-class MypageModel {
-    var user: User2
-    
-    init(user: User2) {
-        self.user = user
-    }
-    
-    // myPageView를 사용하여 UI를 업데이트하는 메서드
-    func updateUI() {
-        let myPageView = MypageView()
-        myPageView.nicknameLabel.text = user.nickname
-        myPageView.locationLabel.text = user.location
-    }
+// MARK: - RankInfo
+struct RankInfo: Codable {
+    let rank, score: Int
 }
 
-
+// MARK: - UserInfo
+struct UserInfo: Codable {
+    let region, nickname: String
+}
