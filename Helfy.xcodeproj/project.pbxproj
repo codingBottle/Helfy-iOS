@@ -45,6 +45,8 @@
 		C1735B422AD04532002FFB77 /* RankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1735B412AD04532002FFB77 /* RankingModel.swift */; };
 		C173D42C2B19E62700F72A86 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C173D42B2B19E62700F72A86 /* GoogleSignIn */; };
 		C173D42E2B19E62700F72A86 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C173D42D2B19E62700F72A86 /* GoogleSignInSwift */; };
+		C173D3D32B1874CC00F72A86 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C173D3D22B1874CC00F72A86 /* CategoryView.swift */; };
+		C173D3D52B18751100F72A86 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C173D3D42B18751100F72A86 /* CategoryViewController.swift */; };
 		C1CF0F322AED41270052EC8F /* BottomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */; };
 		C1CF0F342AED472F0052EC8F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */; };
 		C1CF0F362AEFA9E70052EC8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */; };
@@ -110,6 +112,8 @@
 		C1735B3B2AD03F61002FFB77 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		C1735B3D2AD042E5002FFB77 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		C1735B412AD04532002FFB77 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
+		C173D3D22B1874CC00F72A86 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		C173D3D42B18751100F72A86 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarView.swift; sourceTree = "<group>"; };
 		C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				C141B8FE2AFB4AC80000FFA8 /* MypageViewController.swift */,
 				C13470C62B6A0CCF00626442 /* EditModalViewController.swift */,
 				C1F638E72B0DD27D00D4F8C8 /* QuestionViewController.swift */,
+				C173D3D42B18751100F72A86 /* CategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				26094BFA2AD69724000AAD3B /* NaviButtonView.swift */,
 				26094C032AD87943000AAD3B /* WriteView.swift */,
 				C141B8FA2AFB49D10000FFA8 /* MypageView.swift */,
+				C173D3D22B1874CC00F72A86 /* CategoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */,
 				2AFDABEC2B0498A000A8E19C /* UserModel.swift in Sources */,
 				C1CF0F382AEFAA2C0052EC8F /* CommunityViewController.swift in Sources */,
+				C173D3D52B18751100F72A86 /* CategoryViewController.swift in Sources */,
 				26094C0A2ADC3E9E000AAD3B /* WriteModel.swift in Sources */,
 				26094C042AD87943000AAD3B /* WriteView.swift in Sources */,
 				2A99A2692AD6882F0090155C /* ReportView.swift in Sources */,
@@ -466,6 +473,7 @@
 				C1735B3C2AD03F61002FFB77 /* QuizViewController.swift in Sources */,
 				C13470C72B6A0CCF00626442 /* EditModalViewController.swift in Sources */,
 				2AFC98B02ACD4A2100AB349D /* SceneDelegate.swift in Sources */,
+				C173D3D32B1874CC00F72A86 /* CategoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
