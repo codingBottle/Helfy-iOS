@@ -12,79 +12,143 @@ class MypageView: UIView {
     // 프로필 이미지
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(systemName: "person.circle.fill")
+        imageView.image = UIImage(systemName: "person.crop.square.fill")?.withTintColor(UIColor(hex: "#F9DF56"), renderingMode: .alwaysOriginal)
         imageView.isUserInteractionEnabled = true
-        imageView.layer.cornerRadius = 100
+        imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
-    // 닉네임
+
+    let smallIconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: "camera.circle.fill")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
+        imageView.backgroundColor = UIColor.white
+        imageView.layer.cornerRadius = 25
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
     let nicknameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 27)
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = false
+        label.numberOfLines = 0
+        label.isUserInteractionEnabled = true
+        label.minimumScaleFactor = 0.1
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    // 지역
-    let locationLabel: UILabel = {
+
+    let regionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 23)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = false
+        label.isUserInteractionEnabled = true
+        label.minimumScaleFactor = 0.1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var idStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [nicknameLabel, regionLabel])
+        sv.axis = .vertical
+        sv.spacing = 15
+        sv.distribution = .fill
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
+    }()
+    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let rankTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "순위"
+        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 22)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
+        label.isUserInteractionEnabled = true
+        label.minimumScaleFactor = 0.1
         return label
     }()
     
-    // 닉네임, 지역 변경 버튼
-    let changeNicknameButton: UIButton = createButton(withTitle: "닉네임 변경")
-    let changeLocationButton: UIButton = createButton(withTitle: "지역 변경")
-    
-    static func createButton(withTitle title: String) -> UIButton {
-        let button = UIButton(type: .system)
-        
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(UIColor.black, for:.normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-        button.backgroundColor = UIColor(hexString:"#F9DF56")
-        button.layer.cornerRadius = 20
-        
-        button.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        return button
-    }
-    
-    lazy var stackView: UIStackView = {
-        let stackButton = UIStackView()
-        stackButton.axis = .horizontal
-        stackButton.alignment = .center
-        stackButton.distribution = .fillEqually
-        stackButton.spacing = 20
-        
-        return stackButton
+    let rankLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 27)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
+        label.isUserInteractionEnabled = true // 사용자 상호작용 활성화
+        label.minimumScaleFactor = 0.1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    // 나중에 채울 버튼들
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ButtonCell")
-        tableView.separatorStyle = .singleLine
-        tableView.separatorColor = UIColor.black
-
-        return tableView
+    lazy var rankStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [rankTextLabel, rankLabel])
+        sv.axis = .vertical
+        sv.spacing = 10
+        sv.distribution = .fillEqually
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
     }()
     
-    let buttons: [String] = ["뭐1", "뭐2", "뭐3", "뭐4", "문의"]
+    let scoreTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "점수"
+        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 22)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
+        label.isUserInteractionEnabled = true // 사용자 상호작용 활성화
+        label.minimumScaleFactor = 0.1
+        return label
+    }()
     
-    // 로그아웃 버튼
-    let logoutButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("로그아웃", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        return button
+    let scoreLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 27)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
+        label.isUserInteractionEnabled = true // 사용자 상호작용 활성화
+        label.minimumScaleFactor = 0.1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var scoreStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [scoreTextLabel, scoreLabel])
+        sv.axis = .vertical
+        sv.spacing = 10
+        sv.distribution = .fillEqually
+        return sv
+    }()
+    
+    lazy var containerStackView: UIStackView = {
+        let container = UIStackView(arrangedSubviews: [rankStackView, scoreStackView])
+        container.axis = .horizontal
+        container.distribution = .fillEqually
+        container.spacing = 15
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
     }()
     
     override init(frame: CGRect) {
@@ -98,58 +162,54 @@ class MypageView: UIView {
     
     private func setupUI() {
         addSubview(profileImageView)
-        addSubview(nicknameLabel)
-        addSubview(locationLabel)
-        addSubview(stackView)
-        addSubview(tableView)
-        addSubview(logoutButton)
-        
-        stackView.addArrangedSubview(changeNicknameButton)
-        stackView.addArrangedSubview(changeLocationButton)
-        
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        nicknameLabel.translatesAutoresizingMaskIntoConstraints = false
-        locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        let cellHeight: CGFloat = 44
+        addSubview(smallIconImageView)
+        addSubview(idStackView)
+        addSubview(separatorView)
+        addSubview(containerStackView)
         
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: 110),
-            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
-            profileImageView.widthAnchor.constraint(equalToConstant: 200),
-            profileImageView.heightAnchor.constraint(equalToConstant: 200),
+            profileImageView.widthAnchor.constraint(equalToConstant: 180),
+            profileImageView.heightAnchor.constraint(equalToConstant: 180),
+            profileImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            nicknameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 50),
-            nicknameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
+            smallIconImageView.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 5),  // 수정된 부분
+            smallIconImageView.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),  // 수정된 부분
+            smallIconImageView.widthAnchor.constraint(equalToConstant: 50),
+            smallIconImageView.heightAnchor.constraint(equalToConstant: 50),
             
-            locationLabel.topAnchor.constraint(equalTo: nicknameLabel.bottomAnchor, constant: 15),
-            locationLabel.centerXAnchor.constraint(equalTo: nicknameLabel.centerXAnchor),
-
-            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stackView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 30),
-
-            tableView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
-            tableView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            tableView.heightAnchor.constraint(equalToConstant: (cellHeight + 8) * CGFloat(buttons.count)),
+            idStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            idStackView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 50),
+            idStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
             
-            logoutButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            logoutButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 35)
+            separatorView.topAnchor.constraint(equalTo: idStackView.bottomAnchor, constant: 40),
+            separatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            separatorView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            separatorView.heightAnchor.constraint(equalToConstant: 1),
+            
+            containerStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            containerStackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 40),
+            containerStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
         ])
     }
-    
-    // User 정보를 기반으로 UI 업데이트
-    func updateUserUI(user: User2) {
-        nicknameLabel.text = user.nickname
-        locationLabel.text = user.location
-    }
-    
-    // 프로필 이미지 업데이트
-    func updateProfileImage(_ image: UIImage) {
-        profileImageView.image = image
+}
+
+extension UIColor {
+    convenience init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int = UInt64()
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (255, 0, 0, 0)
+        }
+        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 }
