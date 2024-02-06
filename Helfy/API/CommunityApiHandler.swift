@@ -7,20 +7,26 @@
 
 
 import Foundation
+/*
 let token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjY5NjI5NzU5NmJiNWQ4N2NjOTc2Y2E2YmY0Mzc3NGE3YWE5OTMxMjkiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoi7KCE7ZmN7JiBIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0tEZVRjNVNWR1JsdlRPbjRkdFVHb0N4Qzk3Y01KSmR3UlhoUUV6Skpkej1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9oZWxmeS1mYmUwNSIsImF1ZCI6ImhlbGZ5LWZiZTA1IiwiYXV0aF90aW1lIjoxNzA2NjA0ODE0LCJ1c2VyX2lkIjoiQUZ1OEhGemlPMFJMQnRsbXhmSjRDZlViS0VIMyIsInN1YiI6IkFGdThIRnppTzBSTEJ0bG14Zko0Q2ZVYktFSDMiLCJpYXQiOjE3MDY2MDQ4MTQsImV4cCI6MTcwNjYwODQxNCwiZW1haWwiOiJqdW5ob25neW91bmc5OTA5MTZAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMTA0OTU0NDYyNzUxNjA0MzY5MjAiXSwiZW1haWwiOlsianVuaG9uZ3lvdW5nOTkwOTE2QGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.aPe-ypSrnEmajYms2TllUPqxOoE1uwGFwMURjrG9w4FI_HnXhGJDAVkBYRWiir2C3JpytAE0tnfE9PdqBu-7INHrDljaA-wun3SNCm1rIfts6eLzbCB4DiJpfrQ0SoDyDmTaEiqALM2dT1VisFHXlQUoG2WpZA6M0E0cm1a60nl0cIuUnC__ItPOb—27-_y6BTemoXLKa_MwIlLEOz3pOt05DFEs1NCwUATlYAdRK0fVL5XWdELUa5kau68yIsQHCwHm4F88UxWeS-qsPhwgWGwFfXgWvvvGQ1kPCbSSrVv49moZErJKeeyDRiUypfNtxArMmT2NEnBdsHqBd4bjA"
+*/
 
 class APIHandler {
+    let token = UserDefaults.standard.string(forKey: "GoogleToken") ?? ""
     func getPost(page: Int, size: Int, sort: [String], completion: @escaping (Result<GetPostResponse, Error>) -> Void) {
+       
         print("getpost")
         // API 요청을 보내고 응답을 처리하는 코드
         guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/posts") else {
             print("유효하지 않은 URL입니다.")
             return
         }
+        print("token 값 1: \(self.token)")
+        
+        
         var requestURL = URLRequest(url: url)
         requestURL.httpMethod = "GET"
-    
-         requestURL.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        requestURL.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: requestURL) { data, response, error in
             guard error == nil else {
@@ -57,12 +63,12 @@ class APIHandler {
             print("Invalid URL")
             return
         }
-        
+        print("token 값 2: \(self.token)")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
         
         do {
             let encoder = JSONEncoder()

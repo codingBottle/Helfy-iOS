@@ -65,6 +65,7 @@ class CommunityViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     
         //setLayout()
         
@@ -159,5 +160,7 @@ class CommunityViewController: UIViewController  {
         navigationController?.pushViewController(reportViewController, animated: true)
     }
 
+    
+    
 }
 
