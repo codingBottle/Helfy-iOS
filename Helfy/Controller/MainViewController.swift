@@ -10,19 +10,33 @@ import FirebaseAuth
 import GoogleSignIn
 
 class MainViewController: UIViewController {
+    let categoryViewController = CategoryViewController()
+
     let mainView = MainView()
+    
     var mainApiHandler : MainAPIHandler = MainAPIHandler()
     var mainModelData: MainModel? {
         didSet {
             print("hi")
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
         setData()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate), name: Notification.Name("profileUpdated"), object: nil)
+
+        // CategoryViewController를 메인뷰에 추가합니다.
+       addChild(categoryViewController)
+//       view.addSubview(categoryViewController.view)
+       categoryViewController.didMove(toParent: self)
+       
+       // CategoryViewController.view의 위치와 크기를 설정합니다.
+//        categoryViewController.view.frame = view.frame // 원하는 위치와 크기로 설정
+                
         mainView.profileImageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openMyPage))
         mainView.profileImageView.addGestureRecognizer(tapGesture)
@@ -35,15 +49,16 @@ class MainViewController: UIViewController {
                 guard let self = self else { return }
                 // 정의해둔 모델 객체에 할당
                 self.mainModelData = data
-
+                
                 // 데이터를 제대로 잘 받아왔다면
                 guard let data = self.mainModelData else {
                     return print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
                 }
-
+                
                 DispatchQueue.main.async {
-                    self.mainView.weatherImageView.image = UIImage(named: data.weatherCode)
-                    self.mainView.weatherLabel.text = "\(data.temp)℃ \(data.humidity)%"
+                    self.mainView.nicknameLabel.text = data.userInfo.nickname
+                    self.updateWeatherImageView(with: data.weatherInfo.weatherCode)  // 이미지 뷰의 이미지를 갱신합니다.
+                    self.mainView.weatherLabel.text = "\(data.weatherInfo.temp)℃ \(data.weatherInfo.humidity)%"
                 }
             }
         }
@@ -53,17 +68,25 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(mainView)
-
+        view.addSubview(categoryViewController.view)
+        
         mainView.translatesAutoresizingMaskIntoConstraints = false
-
+        categoryViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
+            // mainView의 제약 설정
             mainView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            mainView.bottomAnchor.constraint(equalTo: categoryViewController.view.topAnchor, constant: -100),
+
+            categoryViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            categoryViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            categoryViewController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            categoryViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
+
     @objc func openMyPage() {
         print("😀😀😀😀😀😀😀😀😀")
         let myPageViewController = MypageViewController()
@@ -71,6 +94,38 @@ class MainViewController: UIViewController {
         let navigationController = UINavigationController(rootViewController: mainViewController)
         UIApplication.shared.windows.first?.rootViewController = navigationController
         navigationController.pushViewController(myPageViewController, animated: true)
+    }
+    
+    @objc func handleProfileUpdate(notification: NSNotification) {
+        DispatchQueue.main.async { [weak self] in
+            if let userInfo = notification.userInfo, let nickname = userInfo["nickname"] as? String {
+                self?.mainView.nicknameLabel.text = nickname
+            }
+        }
+    }
+
+    func updateWeatherImageView(with weatherCode: String) {
+        let systemName: String
+        switch weatherCode {
+        case "THUNDERSTORM":
+            systemName = "cloud.bolt.rain.fill"  // 번개 이미지
+        case "DRIZZLE":
+            systemName = "cloud.drizzle.fill"  // 이슬비 이미지
+        case "RAIN":
+            systemName = "cloud.rain.fill"  // 비 이미지
+        case "SNOW":
+            systemName = "cloud.snow.fill"  // 눈 이미지
+        case "ATMOSPHERE":
+            systemName = "cloud.fog.fill"  // 대기 이미지
+        case "CLEAR":
+            systemName = "sun.max.fill"  // 맑음 이미지
+        case "CLOUDS":
+            systemName = "cloud.fill"  // 구름 이미지
+        default:
+            systemName = "questionmark.diamond.fill"  // 기본 이미지
+        }
+        
+        mainView.weatherImageView.image = UIImage(systemName: systemName)?.withTintColor(.darkGray, renderingMode: .alwaysOriginal)
     }
 }
 
