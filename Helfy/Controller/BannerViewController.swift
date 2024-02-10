@@ -6,26 +6,26 @@
 //
 
 import UIKit
-
+// 사용 예시
 class BannerViewController: UIViewController {
-
-    var bannerView: BannerView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // 배너뷰 설정
-        bannerView = BannerView(frame: view.bounds)
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-
-        // 배너뷰 제약조건 설정
-        NSLayoutConstraint.activate([
-            bannerView.topAnchor.constraint(equalTo: view.topAnchor),
-            bannerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
+        
+        let bannerWidth: CGFloat = view.bounds.width * 0.9
+        let bannerHeight: CGFloat = view.bounds.height * 0.7
+        let bannerX: CGFloat = (view.bounds.width - bannerWidth) / 2
+        let bannerY: CGFloat = (view.bounds.height - bannerHeight) / 2
+        let bannerFrame = CGRect(x: bannerX, y: bannerY, width: bannerWidth, height: bannerHeight)
+        
+        let banner = BannerView(frame: bannerFrame)
+        banner.banners = [
+            (image: UIImage(named: "bg2")!, text: "Text 1 줄바꿈 테스트 중 입니다. ext 1 줄바꿈 테스트 중 입니다. ext 1 줄바꿈 테스트 중 입니다. ext 1 줄바꿈 테스트 중 입니다. ext 1 줄바꿈 테스트 중 입니다. ext 1 줄바꿈 테스트 중 입니다. "),
+            (image: UIImage(named: "img2")!, text: "Text 2"),
+            (image: UIImage(named: "img3")!, text: "Text 3")
+        ]
+        view.addSubview(banner)
+        view.backgroundColor = .green // 여기를 추가합니다.
     }
+    
+    
 }
-

@@ -6,121 +6,109 @@
 //
 import UIKit
 
-class BannerView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    let collectionView = UICollectionView(frame: CGRect(x: 50, y: 100, width: 300, height: 100), collectionViewLayout: UICollectionViewFlowLayout())
-    let pageControl = UIPageControl()
-    let bannerDuration = 3.0
-    var currentIndex: Int = 0
-    let banners = [UIImage(named: "img1"),UIImage(named: "img2"),UIImage(named: "img3")]
-    
-    override init(frame: CGRect) {
-            super.init(frame: frame)
-            setupCollectionView()
-            setupPageControl()
-    }
-    required init?(coder: NSCoder) {
-           super.init(coder: coder)
-           self.backgroundColor = .white // 배경색을 흰색으로 설정
-           setupCollectionView()
-           setupPageControl()
-       }
-    
-    func setupCollectionView() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(BannerCell.self, forCellWithReuseIdentifier: "BannerCell")
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-        self.addSubview(pageControl)
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
-        
-        collectionView.reloadData()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBannerTap))
-        collectionView.addGestureRecognizer(tapGesture)
-    }
-    
-    func setupPageControl() {
-        pageControl.frame = CGRect(x: 50, y: 170, width: 300, height: 100) // 배너 아래에 위치
-        pageControl.numberOfPages = banners.count
-        pageControl.currentPage = currentIndex
-        pageControl.isUserInteractionEnabled = false
-        pageControl.currentPageIndicatorTintColor = UIColor(red: 249/255, green: 164/255, blue: 86/255, alpha: 1.0) // 현재 페이지 색상 설정
-        pageControl.pageIndicatorTintColor = UIColor(red: 249/255, green: 223/255, blue: 86/255, alpha: 1.0)
-        
-        self.addSubview(collectionView)
-    }
-    
-    
-    @objc func handleBannerTap() {
-        let currentImage = banners[currentIndex]
-        print("Current Image:", currentImage)
-    }
-    
-    // MARK: - UICollectionViewDataSource
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return banners.count
-    }
-  
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCell", for: indexPath) as! BannerCell
-        let image = banners[indexPath.item] // 해당 셀의 배너 이미지
-        cell.configure(with: image) // 이미지 파라미터 추가
-        return cell
-    }
-     
-    
-    // MARK: - UICollectionViewDelegateFlowLayout
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        updateCurrentIndex()
-    }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        updateCurrentIndex()
-    }
-    
-    private func updateCurrentIndex() {
-        let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        
-        if let indexPath = collectionView.indexPathForItem(at: visiblePoint) {
-            currentIndex = indexPath.item
-            pageControl.currentPage = currentIndex
+class BannerView: UIView, UIScrollViewDelegate {
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.bounces = false
+        scrollView.alwaysBounceVertical = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.clipsToBounds = true // 이 부분을 추가합니다.
+        return scrollView
+    }()
+
+    private let pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        return pageControl
+    }()
+
+    var banners: [(image: UIImage, text: String)] = [] {
+        didSet {
+            pageControl.numberOfPages = banners.count
+            pageControl.currentPage = 0
+            setupBanners()
         }
     }
-}
-
-class BannerCell: UICollectionViewCell {
-    var bannerView: UIImageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white // 배경색을 흰색으로 설정
-        setupBannerView()
+        scrollView.delegate = self
+        setupView()
+        
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.backgroundColor = .white // 배경색을 흰색으로 설정
-        setupBannerView()
+        scrollView.delegate = self
+        setupView()
+        
     }
 
-    private func setupBannerView() {
-        bannerView.frame = contentView.bounds
-        bannerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        contentView.addSubview(bannerView)
+    private func setupView() {
+        addSubview(scrollView)
+        addSubview(pageControl)
+        
+        self.layer.cornerRadius = 20
+        self.clipsToBounds = true
+        backgroundColor = .gray
+
+        let pageControlHeight: CGFloat = 50
+        let imageViewHeight = self.frame.size.height * 2 / 3
+        let labelHeight = self.frame.size.height / 3
+
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.heightAnchor.constraint(equalToConstant: imageViewHeight + labelHeight), // 스크롤뷰의 높이를 이미지 뷰와 레이블 높이의 합으로 설정합니다.
+
+            pageControl.topAnchor.constraint(equalTo: scrollView.bottomAnchor), // 페이지 컨트롤의 상단을 스크롤뷰의 하단에 위치시킵니다.
+            pageControl.leadingAnchor.constraint(equalTo: leadingAnchor),
+            pageControl.trailingAnchor.constraint(equalTo: trailingAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: bottomAnchor),
+            pageControl.heightAnchor.constraint(equalToConstant: pageControlHeight) // 페이지 컨트롤의 높이를 설정합니다.
+        ])
     }
 
-    func configure(with image: UIImage?) {
-        bannerView.image = image
+    
+
+    private func setupBanners() {
+        for i in 0..<banners.count {
+            let imageView = UIImageView(image: banners[i].image)
+            imageView.contentMode = .scaleAspectFit
+            imageView.frame = CGRect(x: CGFloat(i) * frame.size.width, y: 0, width: frame.size.width, height: frame.size.height * 2 / 3)
+
+            let label = UILabel()
+            label.text = banners[i].text
+            label.numberOfLines = 0  // 줄바꿈을 허용합니다.
+            label.lineBreakMode = .byWordWrapping  // 단어 단위로 줄바꿈합니다.
+            label.backgroundColor = .white
+            label.frame = CGRect(x: CGFloat(i) * frame.size.width, y: frame.size.height * 2 / 3, width: frame.size.width, height: frame.size.height / 3)
+
+            scrollView.addSubview(imageView)
+            scrollView.addSubview(label)
+            NSLayoutConstraint.activate([
+                        imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                        imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: CGFloat(i) * frame.size.width),
+                        imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+                        imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 2/3),
+                        
+                        label.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+                        label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: CGFloat(i) * frame.size.width),
+                        label.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+                        label.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1/3)
+                    ])
+        }
+
+        scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(banners.count), height: scrollView.frame.size.height)
     }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+    }
+    
+    
 }
