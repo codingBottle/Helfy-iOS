@@ -92,24 +92,24 @@ class SearchViewController: UIViewController {
                 print("검색어: \(searchTerm)")
                 
                 // API 호출을 통해 카테고리 페이지 데이터 가져오기
-                apiHandler.getCategoryPageData(category: searchTerm) { categoryPageModel in
-                    // 카테고리 페이지 데이터를 기반으로 한 페이지 업데이트
+                apiHandler.getCategoryPageData(category: searchTerm) { [weak self] categoryPageModel in
+                    guard let self = self else { return }
+                    // 카테고리 페이지 데이터를 가져왔을 때
                     DispatchQueue.main.async {
-                        self.updateCategoryPage(with: categoryPageModel)
+                        // 카테고리 페이지 데이터를 설정하고 업데이트
+                        let categoryPageView = CategoryPageView()
+                        categoryPageView.categoryPageData = categoryPageModel
+                        categoryPageView.setData()
+                        categoryPageView.backgroundColor = UIColor.white
+                        // 모달로 카테고리 페이지 뷰를 표시
+                        let categoryPageViewController = CategoryPageViewController()
+                        categoryPageViewController.view = categoryPageView
+                        self.present(categoryPageViewController, animated: true, completion: nil)
                     }
                 }
             } else {
-                print("검색어를 입력하세요.")
+                print("카테고리를 입력하세요.")
             }
         }
-        
-        // 카테고리 페이지 업데이트 메서드
-        func updateCategoryPage(with categoryPageModel: CategoryPageModel) {
-            // 카테고리 페이지 데이터를 설정하고 업데이트
-            let categoryPageViewController = CategoryPageViewController()
-            categoryPageView.categoryPageData = categoryPageModel
-            categoryPageView.setData()
-            self.present(categoryPageViewController, animated: true, completion: nil)
-            }
-        }
+    }
     
