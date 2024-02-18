@@ -1,50 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>NSAppTransportSecurity</key>
-        <dict>
-            <key>Allow Arbitrary Loads</key>
-            <true/>
-        </dict>
-        <key>GIDClientID</key>
-        <string>403343990842-af78k7r39uiq04h6o1p5dkh8kj1p9iof.apps.googleusercontent.com</string>
-        <key>CFBundleURLTypes</key>
-        <array>
-            <dict>
-                <key>CFBundleURLSchemes</key>
-                <array>
-                    <string>com.googleusercontent.apps.403343990842-af78k7r39uiq04h6o1p5dkh8kj1p9iof</string>
-                </array>
-            </dict>
-        </array>
-        <key>CFBundleURLTypes</key>
-        <array>
-            <dict>
-                <key>CFBundleTypeRole</key>
-                <string>Editor</string>
-                <key>CFBundleURLSchemes</key>
-                <array>
-                    <string>com.googleusercontent.apps.403343990842-af78k7r39uiq04h6o1p5dkh8kj1p9iof</string>
-                </array>
-            </dict>
-        </array>
-        <key>UIApplicationSceneManifest</key>
-        <dict>
-            <key>UIApplicationSupportsMultipleScenes</key>
-            <false/>
-            <key>UISceneConfigurations</key>
-            <dict>
-                <key>UIWindowSceneSessionRoleApplication</key>
-                <array>
-                    <dict>
-                        <key>UISceneConfigurationName</key>
-                        <string>Default Configuration</string>
-                        <key>UISceneDelegateClassName</key>
-                        <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-                    </dict>
-                </array>
-            </dict>
-        </dict>
-    </dict>
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.403343990842-af78k7r39uiq04h6o1p5dkh8kj1p9iof</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>403343990842-af78k7r39uiq04h6o1p5dkh8kj1p9iof.apps.googleusercontent.com</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>Allow Arbitrary Loads</key>
+		<true/>
+	</dict>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
 </plist>
