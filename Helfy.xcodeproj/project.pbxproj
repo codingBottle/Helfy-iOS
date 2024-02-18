@@ -215,8 +215,9 @@
 		2AB9D1422ACFF42B00686F83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2A74D6752ADD2C3300800E9E /* Login */,
 				C1154CE32B46C68500EB767E /* Quiz */,
+				2A74D6752ADD2C3300800E9E /* Login */,
+				C1735B3B2AD03F61002FFB77 /* QuizHomeViewController.swift */,
 				26EA7E4B2AD1540300FFE7ED /* ReportViewController.swift */,
 				C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */,
 				C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */,
@@ -347,6 +348,8 @@
 			isa = PBXGroup;
 			children = (
 				C1F638EA2B0F481200D4F8C8 /* Quiz */,
+				C1F638EA2B0F481200D4F8C8 /* Question */,
+				2A99A2642AD681DB0090155C /* QuizHomeView.swift */,
 				C1735B3D2AD042E5002FFB77 /* RankingView.swift */,
 				2A99A2682AD6882F0090155C /* ReportView.swift */,
 				2A99A26A2AD688660090155C /* TextView.swift */,
@@ -528,8 +531,6 @@
 				2A99A2672AD682050090155C /* QuizeModel.swift in Sources */,
 				2658C0492B7A21AE002099FC /* CategoryPageView.swift in Sources */,
 				C1F638EC2B0F483100D4F8C8 /* ChoiceView.swift in Sources */,
-				C1F638E62B0DD26600D4F8C8 /* QuestionTestModel.swift in Sources */,
-				C13470C12B57D4C900626442 /* Qtest.swift in Sources */,
 				C1F638E42B0DD24700D4F8C8 /* QuizView.swift in Sources */,
 				C1F638E62B0DD26600D4F8C8 /* QuestionModel.swift in Sources */,
 				C1F638E42B0DD24700D4F8C8 /* QuestionView.swift in Sources */,
