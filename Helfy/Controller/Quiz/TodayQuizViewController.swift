@@ -8,34 +8,24 @@
 import UIKit
 
 class TodayQuizViewController: UIViewController {
+    let quizVC = QuizViewController()
     
-//    var multipleChoiceView: MultipleChoiceView!
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        // QuizView의 인스턴스 생성
-//        multipleChoiceView = MultipleChoiceView(question: MultipleChoiceQuestion)
-//
-//        // Auto Layout 설정을 위해 false로 설정
-//        multipleChoiceView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        // 뷰에 추가
-//        view.addSubview(multipleChoiceView)
-//        view.backgroundColor = .white
-//        
-//        // Auto Layout 설정
-//        NSLayoutConstraint.activate([
-//            multipleChoiceView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            multipleChoiceView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            multipleChoiceView.topAnchor.constraint(equalTo: view.topAnchor),
-//            multipleChoiceView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-//    }
-//    
-//    func setLayout() {
-//    }
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        addChild(quizVC)
+        view.addSubview(quizVC.view)
+        quizVC.didMove(toParent: self)
+        
+        quizVC.setData(quizCategory: "TODAY")
+        quizVC.quizCategory = "TODAY"
+        
+        quizVC.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            quizVC.view.topAnchor.constraint(equalTo: view.topAnchor),
+            quizVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            quizVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            quizVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
 }
-
-

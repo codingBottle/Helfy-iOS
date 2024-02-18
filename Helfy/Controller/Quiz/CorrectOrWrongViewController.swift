@@ -14,11 +14,13 @@ enum AnswerType {
 
 class CorrectOrWrongViewController: UIViewController {
     var answerType: AnswerType
+    var id: String
     
     let iconLabel = UILabel()
     
-    init(answerType: AnswerType) {
+    init(answerType: AnswerType, id: String) {
         self.answerType = answerType
+        self.id = id
         super.init(nibName: nil, bundle: nil)
         setUI()
     }
@@ -26,14 +28,14 @@ class CorrectOrWrongViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setUI() {
         iconLabel.textAlignment = .center
         iconLabel.font = UIFont.systemFont(ofSize: 100)
         
         switch answerType {
         case .correct:
-            iconLabel.text = "✅"
+            iconLabel.text = "⭕️"
         case .wrong:
             iconLabel.text = "❌"
         }

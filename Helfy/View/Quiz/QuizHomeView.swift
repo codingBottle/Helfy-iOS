@@ -53,7 +53,7 @@ class QuizHomeView: UIView {
         button.setTitleColor(UIColor.black, for:.normal)
         
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 330).isActive = true
 
         return button
     }
@@ -74,6 +74,7 @@ class QuizHomeView: UIView {
             let stackView = UIStackView()
             stackView.axis = .vertical
             stackView.alignment = .center
+            stackView.distribution = .fill
             stackView.spacing = 20
             return stackView
         }()
@@ -98,6 +99,7 @@ class QuizHomeView: UIView {
             
             scoreLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 50),
             scoreLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            
             idLabel.topAnchor.constraint(equalTo: scoreLabel.topAnchor, constant: 70),
             idLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             
@@ -112,7 +114,11 @@ class QuizHomeView: UIView {
             buttonStack.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 50),
             buttonStack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             buttonStack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            buttonStack.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
+//            buttonStack.widthAnchor.constraint(equalToConstant: 330),
+//            buttonStack.heightAnchor.constraint(equalToConstant: 200),
+//            buttonStack.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+//            buttonStack.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
+
         ])
     }
 

@@ -7,10 +7,10 @@
 
 import Foundation
 
-class APIHandler {
+class QuizAPIHandler {
     
-    let token = UserDefaults.standard.string(forKey: "GoogleToken") ?? ""
-    
+    var token = UserDefaults.standard.string(forKey: "GoogleToken") ?? ""
+        
     func getQuizHomeData(completion: @escaping (QuizHomeModel) -> ()) {
         guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/quiz/users") else {
             return
@@ -44,7 +44,23 @@ class APIHandler {
     }
     
     func getQuizData(type: String, completion: @escaping (Quiz) -> ()) {
-        guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/quiz?type=\(type)") else { return }
+        var apiUrl: String
+        switch type {
+        case "TODAY":
+            apiUrl = "https://helfy-server.duckdns.org/api/v1/quiz?type=TODAY"
+        case "NORMAL":
+            apiUrl = "https://helfy-server.duckdns.org/api/v1/quiz?type=NORMAL"
+        case "WRONG":
+            apiUrl = "https://helfy-server.duckdns.org/api/v1/quiz/users/wrong"
+        default:
+            print("Invalid quiz category")
+            return
+        }
+        
+        guard let url = URL(string: apiUrl) else {
+            print("Invalid URL")
+            return
+        }
         
         print("token 값 : \(self.token)")
         
@@ -65,15 +81,52 @@ class APIHandler {
                 do {
                     let quizParsedData = try JSONDecoder().decode(Quiz.self, from: data)
                     completion(quizParsedData)
-
                     print("quizParsedData: \(quizParsedData)")
-                    print("❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥")
                 } catch {
                     print(error.localizedDescription)
                 }
             } else {
-                if let response = response as? HTTPURLResponse { print("Status code: \(response.statusCode)") }
+                if let response = response as? HTTPURLResponse {
+                    print("Status code: \(response.statusCode)")
+                }
+                
             }
         }.resume()
+    }
+    
+    func sendWrongAnswerStatus(id: String, answerType: AnswerType, completion: @escaping (Quiz) -> ()) {
+        if answerType == .wrong {
+            // URL 준비
+            guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/quiz/users/\(id)/result") else { return }
+            print("🔴🔴🔴ID : \(id)")
+            
+            // PUT 요청 생성
+            var request = URLRequest(url: url)
+            request.httpMethod = "PUT"
+            request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "accept")
+            request.setValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+            
+            // 필요한 경우 httpBody를 설정하여 요청에 데이터를 포함시킬 수 있습니다.
+            let parameters: [String: Any] = ["quizStatus": "WRONG"]
+            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
+            
+            // 요청 발행
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    // 응답 데이터 처리
+                    let str = String(data: data, encoding: .utf8)
+                    print("Received data:\n\(str ?? "")")
+                }
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("Response status code: \(httpResponse.statusCode)")
+                }
+            }
+            
+            task.resume()
+        }
     }
 }

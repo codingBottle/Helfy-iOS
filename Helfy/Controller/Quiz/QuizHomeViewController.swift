@@ -8,7 +8,8 @@ import UIKit
 
 class QuizHomeViewController: UIViewController {
     let quizHomeView = QuizHomeView()
-    var apiHandler : APIHandler = APIHandler()
+    var quizApiHandler : QuizAPIHandler = QuizAPIHandler()
+    let quizViewController = QuizViewController()
     var quizHomeModelData: QuizHomeModel? {
         didSet {
             print("Hi")
@@ -18,15 +19,20 @@ class QuizHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
+        
+//        if let tabBarViewController = parent as? TabBarViewController {
+//                print(tabBarViewController.selectedIndex)
+//            }
+
         view.addSubview(quizHomeView)
-  
+        
         quizHomeView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            quizHomeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            quizHomeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            quizHomeView.topAnchor.constraint(equalTo: view.topAnchor),
-            quizHomeView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            quizHomeView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            quizHomeView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            quizHomeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            quizHomeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
         
         quizHomeView.todayButton.addTarget(self, action:#selector(openTodayQuiz), for:.touchUpInside)
@@ -36,9 +42,9 @@ class QuizHomeViewController: UIViewController {
     
     func setData() {
         DispatchQueue.global(qos: .userInteractive).async {
-                    
+            
             // API 통해 데이터 불러오기
-            self.apiHandler.getQuizHomeData() { [self] data in
+            self.quizApiHandler.getQuizHomeData() { [self] data in
                 // 정의해둔 모델 객체에 할당
                 self.quizHomeModelData = data
                 
@@ -55,55 +61,30 @@ class QuizHomeViewController: UIViewController {
             }
         }
     }
-
-
-    // 버튼 링크 연결
+    
     @objc func openTodayQuiz() {
         print("오늘의 퀴즈!")
-        
-        // TodayQuizViewController 인스턴스 생성
         let todayQuizVC = TodayQuizViewController()
-        
-        // 화면 전환 애니메이션 설정 (옵션)
         todayQuizVC.modalTransitionStyle = .crossDissolve
-        
-        // 화면 전환 방식 설정 (옵션)
         todayQuizVC.modalPresentationStyle = .fullScreen
-        
-        // 화면 전환
         self.present(todayQuizVC, animated: true, completion: nil)
     }
-
-
+    
     @objc func openDoQuiz() {
         print("퀴즈 풀어보기!")
         
-        // TodayQuizViewController 인스턴스 생성
         let doQuizVC = DoQuizViewController()
-        
-        // 화면 전환 애니메이션 설정 (옵션)
         doQuizVC.modalTransitionStyle = .crossDissolve
-        
-        // 화면 전환 방식 설정 (옵션)
         doQuizVC.modalPresentationStyle = .fullScreen
-        
-        // 화면 전환
         self.present(doQuizVC, animated: true, completion: nil)
     }
-
-  @objc func openWrongQuiz() {
-      print("오답 다시 풀어보기")
-      
-      // TodayQuizViewController 인스턴스 생성
-      let wrongQuizVC = WrongQuizViewController()
-      
-      // 화면 전환 애니메이션 설정 (옵션)
-      wrongQuizVC.modalTransitionStyle = .crossDissolve
-      
-      // 화면 전환 방식 설정 (옵션)
-      wrongQuizVC.modalPresentationStyle = .fullScreen
-      
-      // 화면 전환
-      self.present(wrongQuizVC, animated: true, completion: nil)
-  }
+    
+    @objc func openWrongQuiz() {
+        print("오답 다시 풀어보기")
+        
+        let wrongQuizVC = WrongQuizViewController()
+        wrongQuizVC.modalTransitionStyle = .crossDissolve
+        wrongQuizVC.modalPresentationStyle = .fullScreen
+        self.present(wrongQuizVC, animated: true, completion: nil)
+    }
 }
