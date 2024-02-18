@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "해수면상승 1.png",
+      "filename" : "Sea level rise 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "해수면상승@2x.png",
+      "filename" : "Sea level rise@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "해수면상승@3x.png",
+      "filename" : "Sea level rise@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

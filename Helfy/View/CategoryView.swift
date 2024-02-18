@@ -8,40 +8,6 @@
 
 import UIKit
 
-enum Category: String, CaseIterable {
-    case category1 = "Drought"
-    case category2 = "Strong wind"
-    case category3 = "Lightning"
-    case category4 = "Green tide"
-    case category5 = "Heavy snow"
-    case category6 = "Landslide"
-    case category7 = "Red tide"
-    case category8 = "Earthquake"
-    case category9 = "Earthquake and tsunami"
-    case category10 = "Flooding"
-    case category11 = "Typhoon"
-    case category12 = "Heat wave"
-    case category13 = "Rough sea"
-    case category14 = "Cold wave"
-    case category15 = "Sea level rise"
-    case category16 = "Tsunami"
-    case category17 = "Flood"
-    case category18 = "Dust storm"
-    case category19 = "Heavy rain"
-    case category20 = "Volcanic eruption"
-    case category21 = "Space radio disaster"
-    case category22 = "Natural space object crash"
-    
-    static func from(string: String) -> Category? {
-        return Category.allCases.first { $0.rawValue == string }
-    }
-}
-
-var buttonTitles = ["가뭄", "강풍", "낙뢰", "녹조", "대설", "산사태", "적조", "지진", "지진해일", "침수", "태풍", "폭염", "풍랑", "한파", "해수면상승", "해일", "홍수", "황사", "호우", "화산폭발", "우주전파재난", "우주물체추락"]
-
-var buttonImages = [UIImage(named: "Drought"), UIImage(named: "Strong wind"), UIImage(named:"Lightning"), UIImage(named:"Green tide"), UIImage(named:"Heavy snow"), UIImage(named:"Landslide"), UIImage(named:"Red tide"), UIImage(named:"Earthquake"), UIImage(named:"Earthquake and tsunami"), UIImage(named:"Flooding"), UIImage(named:"Typhoon"), UIImage(named:"Heat wave"), UIImage(named:"Rough sea"), UIImage(named:"Cold wave"), UIImage(named:"Sea level rise"), UIImage(named:"Tsunami"), UIImage(named:"Flood"), UIImage(named:"Dust storm"), UIImage(named:"Heavy rain"), UIImage(named:"Volcanic eruption"), UIImage(named:"Space radio disaster"), UIImage(named:"Natural space object crash")]
-
-// Custom UICollectionViewCell
 class CategoryCell: UICollectionViewCell {
     
     let categoryView: CategoryView = {
@@ -49,6 +15,13 @@ class CategoryCell: UICollectionViewCell {
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
+    
+    override func prepareForReuse() {
+            super.prepareForReuse()
+
+            categoryView.buttonLabel.text = nil
+            categoryView.buttonImageView.image = nil
+        }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,6 +42,14 @@ class CategoryCell: UICollectionViewCell {
 }
 
 class CategoryView: UIView {
+    
+    var buttonAction: (() -> Void)?
+    
+    @objc func handleButtonPressed() {
+        buttonAction?()
+        print("Button was pressed!")
+        
+    }
     
     let buttonImageView: UIImageView = {
         let iv = UIImageView()
@@ -93,6 +74,13 @@ class CategoryView: UIView {
         
         addSubview(buttonImageView)
         addSubview(buttonLabel)
+        
+        let tapGestureRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(handleButtonPressed))
+        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(handleButtonPressed))
+        buttonImageView.addGestureRecognizer(tapGestureRecognizer1)
+        buttonLabel.addGestureRecognizer(tapGestureRecognizer2)
+        buttonImageView.isUserInteractionEnabled = true
+        buttonLabel.isUserInteractionEnabled = true
         
         NSLayoutConstraint.activate([
             buttonImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),

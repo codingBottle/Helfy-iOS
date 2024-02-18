@@ -8,6 +8,21 @@
 import UIKit
 
 class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var categoryView: CategoryView?
+    let categoryApiHandler = CategoryAPIHandler()
+    let categoryPageViewController = CategoryPageViewController()
+
+//    let categoryPageApiHandler = CategoryPageAPIHandler()
+    var categoryModelData: CategoryModel? {
+        didSet {
+            print("hi")
+        }
+    }
+    var categoryData: CategoryModel?
+    
+    var buttonLabels = ["가뭄", "강풍", "낙뢰", "녹조", "대설", "산사태", "적조", "지진", "지진해일", "침수", "태풍", "폭염", "풍랑", "한파", "해수면상승", "해일", "홍수", "황사", "호우", "화산폭발", "우주전파재난", "우주물체추락"]
+    
+    var buttonImages = [UIImage(named: "Drought"), UIImage(named: "Strong wind"), UIImage(named:"Lightning"), UIImage(named:"Green tide"), UIImage(named:"Heavy snow"), UIImage(named:"Landslide"), UIImage(named:"Red tide"), UIImage(named:"Earthquake"), UIImage(named:"Earthquake and tsunami"), UIImage(named:"Flooding"), UIImage(named:"Typhoon"), UIImage(named:"Heat wave"), UIImage(named:"Rough sea"), UIImage(named:"Cold wave"), UIImage(named:"Sea level rise"), UIImage(named:"Tsunami"), UIImage(named:"Flood"), UIImage(named:"Dust storm"), UIImage(named:"Heavy rain"), UIImage(named:"Volcanic eruption"), UIImage(named:"Space radio disaster"), UIImage(named:"Natural space object crash")]
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -23,13 +38,12 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-//        layout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)  // 추가된 부분
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(CategoryCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
-
+    
     
     var pageController: UIPageControl = {
         let pageControl = UIPageControl()
@@ -44,6 +58,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setData()
         view.backgroundColor = .white
         
         view.addSubview(titleLabel)
@@ -70,8 +85,24 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             pageController.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 30),
             pageController.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             pageController.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            pageController.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100)
         ])
+    }
+    
+    func setData() {
+        DispatchQueue.global(qos: .userInteractive).async {
+            print("About to call getCategoryData")
+
+            self.categoryApiHandler.getCategoryData() { [weak self] data in
+                guard let self = self else { return }
+                print("getCategoryData completion handler called")
+
+                
+                DispatchQueue.main.async {
+                    self.categoryData = data  // CategoryModel 배열 데이터 저장
+                    self.collectionView.reloadData()  // 컬렉션 뷰 리로드
+                }
+            }
+        }
     }
     
     @objc func handlePageControl(_ sender: UIPageControl) {
@@ -96,21 +127,73 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CategoryCell
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 선택된 카테고리 가져오기
-        let selectedCategory = Category.allCases[indexPath.row]
-        print("Selected category: \(selectedCategory.rawValue)")
-        
-        
-        // 카테고리 정보 뷰 컨트롤러 생성
-        //        let categoryVC = CategoryPageViewController()
-        //
-        //        // 카테고리 정보 뷰 컨트롤러에 선택된 카테고리 설정
-        //        categoryVC.category = selectedCategory
-        //
-        //        // 카테고리 정보 뷰 컨트롤러 표시
-        //        navigationController?.pushViewController(categoryVC, animated: true)
+        if let categoryModelData = categoryData {
+            let labelToKey: [String: CategoryModel.CodingKeys] = [
+                "가뭄": .drought,
+                "강풍": .strongWind,
+                "낙뢰": .lightning,
+                "녹조": .greenTide,
+                "대설": .heavySnow,
+                "산사태": .landslide,
+                "적조": .redTide,
+                "지진": .earthquake,
+                "지진해일": .tsunami,
+                "침수": .flooding,
+                "태풍": .typhoon,
+                "폭염": .heatWave,
+                "풍랑": .windAndWaves,
+                "한파": .coldWave,
+                "해수면상승": .risingSeaLevel,
+                "해일": .tidalWave,
+                "홍수": .flood,
+                "황사": .yellowDust,
+                "호우": .heavyRain,
+                "화산폭발": .volcanicEruption,
+                "우주전파재난": .spacePropagationDisaster,
+                "우주물체추락": .theFallOfNaturalSpaceObjects
+            ]
+            
+            if indexPath.row < buttonLabels.count {
+                let buttonLabel = buttonLabels[indexPath.row]
+                let buttonImage = buttonImages[indexPath.row]
+                cell.categoryView.buttonLabel.text = buttonLabel
+                cell.categoryView.buttonImageView.image = buttonImage
+
+                cell.categoryView.buttonAction = { [weak self] in
+                    guard let self = self,
+                          let buttonLabel = cell.categoryView.buttonLabel.text,
+                          let key = labelToKey[buttonLabel]?.stringValue else { return }
+                    print("key : \(key)")
+                    
+                    // key를 category로 전달
+//                    self.categoryPageApiHandler.getCategoryPageData(category: key) { [weak self] data in
+//                        guard let self = self else { return }
+//                        // 정의해둔 모델 객체에 할당
+//                        self.categoryPageViewController.categoryPageData = data
+//                        
+//                        // 데이터를 제대로 잘 받아왔다면
+//                        guard let data = self.categoryPageViewController.categoryPageData else {
+//                            return print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
+//                        }
+//                        
+//                        DispatchQueue.main.async {
+//                            let categoryPageViewController = CategoryPageViewController()
+//                            categoryPageViewController.presentCategory = key
+//
+//                            let categoryViewController = CategoryViewController()
+//                            let navigationController = UINavigationController(rootViewController: categoryViewController)
+//                            UIApplication.shared.windows.first?.rootViewController = navigationController
+//                            navigationController.pushViewController(categoryPageViewController, animated: true)
+//                        }
+//                    }
+                }
+            }
+        }
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -118,41 +201,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         let remainder = totalCells % 9
         return totalCells + (remainder > 0 ? (9 - remainder) : 0) // 빈 셀 추가
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CategoryCell
-        if indexPath.row < buttonImages.count {
-            cell.categoryView.buttonImageView.image = buttonImages[indexPath.row]
-            cell.categoryView.buttonLabel.text = buttonTitles[indexPath.row]
-        } else {
-            cell.categoryView.buttonImageView.image = nil
-            cell.categoryView.buttonLabel.text = nil
-        }
-        return cell
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            let totalSpacing = layout.minimumInteritemSpacing * 4
-//            let width = (collectionView.frame.width - totalSpacing) / 3
-//            let height = (collectionView.frame.height - totalSpacing) / 3
-//
-//            let height: CGFloat = 100 // 셀 높이를 원하는 값으로 고정
-//            return CGSize(width: width, height: height)
-//        }
-    
+        
         let width = collectionView.frame.width / 3
         let height = collectionView.frame.height / 3
         return CGSize(width: width, height: height)
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let padding: CGFloat = 30 * 2
-//        let sectionInsets: CGFloat = 10 * 2
-//        let cellCount: CGFloat = 3
-//        let width = (collectionView.frame.width - padding - sectionInsets) / cellCount
-//        let height = (collectionView.frame.height - sectionInsets) / 3
-//        return CGSize(width: width, height: height)
-//    }
-
-
 }

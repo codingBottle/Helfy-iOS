@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "지진해일 1.png",
+      "filename" : "Earthquake and tsunami 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "지진해일@2x.png",
+      "filename" : "Earthquake and tsunami@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "지진해일@3x.png",
+      "filename" : "Earthquake and tsunami@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

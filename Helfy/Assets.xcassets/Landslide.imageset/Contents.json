@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "산사태 1.png",
+      "filename" : "Landslide 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "산사태@2x 1.png",
+      "filename" : "Landslide@2x 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "산사태@3x.png",
+      "filename" : "Landslide@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
