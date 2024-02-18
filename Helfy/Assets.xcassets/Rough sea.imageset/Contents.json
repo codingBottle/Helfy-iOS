@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "풍랑 1.png",
+      "filename" : "Rough sea 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "풍랑@2x.png",
+      "filename" : "Rough sea@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "풍랑@3x.png",
+      "filename" : "Rough sea@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

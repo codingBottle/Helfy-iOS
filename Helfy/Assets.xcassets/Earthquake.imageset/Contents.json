@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "지진 1.png",
+      "filename" : "Earthquake 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "지진@2x.png",
+      "filename" : "Earthquake@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "지진@3x.png",
+      "filename" : "Earthquake@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

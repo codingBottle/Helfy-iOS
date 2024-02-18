@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "낙뢰.png",
+      "filename" : "Lightning 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "낙뢰@2x.png",
+      "filename" : "Lightning@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "낙뢰@3x.png",
+      "filename" : "Lightning@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

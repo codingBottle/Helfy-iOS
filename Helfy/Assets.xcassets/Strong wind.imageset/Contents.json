@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "강풍 1.png",
+      "filename" : "Strong wind 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "강풍@2x.png",
+      "filename" : "Strong wind@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "강풍@3x.png",
+      "filename" : "Strong wind@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

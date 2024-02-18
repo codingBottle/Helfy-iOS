@@ -62,6 +62,8 @@
 		C1CF0F342AED472F0052EC8F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */; };
 		C1CF0F362AEFA9E70052EC8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */; };
 		C1CF0F382AEFAA2C0052EC8F /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */; };
+		C1E521412B81ECEB0055D8BE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E521402B81ECEB0055D8BE /* CategoryModel.swift */; };
+		C1E521432B81ED190055D8BE /* CategoryAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E521422B81ED190055D8BE /* CategoryAPIHandler.swift */; };
 		C1F638E42B0DD24700D4F8C8 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E32B0DD24700D4F8C8 /* QuestionView.swift */; };
 		C1F638E62B0DD26600D4F8C8 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E52B0DD26600D4F8C8 /* QuestionModel.swift */; };
 		C1F638E82B0DD27D00D4F8C8 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F638E72B0DD27D00D4F8C8 /* QuestionViewController.swift */; };
@@ -140,6 +142,8 @@
 		C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		C1E521402B81ECEB0055D8BE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		C1E521422B81ED190055D8BE /* CategoryAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPIHandler.swift; sourceTree = "<group>"; };
 		C1F638E32B0DD24700D4F8C8 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		C1F638E52B0DD26600D4F8C8 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		C1F638E72B0DD27D00D4F8C8 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 				C10FC4592B70ADF800356F1B /* MainAPIHandler.swift */,
 				2658C04E2B7A2249002099FC /* CategoryPageAPIHandler.swift */,
 				2658C0502B7A2269002099FC /* ImageLoader.swift */,
+				C1E521422B81ED190055D8BE /* CategoryAPIHandler.swift */,
 			);
 			path = APIHandler;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				C1F638E52B0DD26600D4F8C8 /* QuestionModel.swift */,
 				C10FC4552B70AD7900356F1B /* MainModel.swift */,
 				2658C04A2B7A21C9002099FC /* CategoryPageModel.swift */,
+				C1E521402B81ECEB0055D8BE /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 				C1F638EC2B0F483100D4F8C8 /* ChoiceView.swift in Sources */,
 				C1F638E62B0DD26600D4F8C8 /* QuestionModel.swift in Sources */,
 				C1F638E42B0DD24700D4F8C8 /* QuestionView.swift in Sources */,
+				C1E521412B81ECEB0055D8BE /* CategoryModel.swift in Sources */,
 				C1F638EE2B0F484100D4F8C8 /* MultipleChoiceView.swift in Sources */,
 				C13470C52B6A043700626442 /* MyPageAPIHandler.swift in Sources */,
 				C1735B3E2AD042E5002FFB77 /* RankingView.swift in Sources */,
@@ -515,6 +522,7 @@
 				26094C022AD87577000AAD3B /* NavigationController.swift in Sources */,
 				C10FC4542B70635D00356F1B /* MainView.swift in Sources */,
 				26EA7E4C2AD1540300FFE7ED /* ReportViewController.swift in Sources */,
+				C1E521432B81ED190055D8BE /* CategoryAPIHandler.swift in Sources */,
 				2A99A26B2AD688660090155C /* TextView.swift in Sources */,
 				2658C04F2B7A2249002099FC /* CategoryPageAPIHandler.swift in Sources */,
 				C1F638E82B0DD27D00D4F8C8 /* QuestionViewController.swift in Sources */,

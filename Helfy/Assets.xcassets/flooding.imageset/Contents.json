@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "침수 3.png",
+      "filename" : "Flooding 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "침수@2x.png",
+      "filename" : "Flooding@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "침수@3x.png",
+      "filename" : "Flooding@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

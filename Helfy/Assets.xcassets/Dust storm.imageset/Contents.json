@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "황사 1.png",
+      "filename" : "Dust storm 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "황사@2x.png",
+      "filename" : "Dust storm@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "황사@3x.png",
+      "filename" : "Dust storm@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
