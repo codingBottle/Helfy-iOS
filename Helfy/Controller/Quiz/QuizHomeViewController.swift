@@ -21,9 +21,9 @@ class QuizHomeViewController: UIViewController {
         super.viewDidLoad()
         setData()
         
-//        if let tabBarViewController = parent as? TabBarViewController {
-//                print(tabBarViewController.selectedIndex)
-//            }
+        if let tabBarViewController = parent as? TabBarViewController {
+                print(tabBarViewController.selectedIndex)
+            }
 
         view.addSubview(quizHomeView)
         view.backgroundColor = .white
