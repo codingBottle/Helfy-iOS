@@ -55,7 +55,6 @@
 		C173D3D52B18751100F72A86 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C173D3D42B18751100F72A86 /* CategoryViewController.swift */; };
 		C173D42C2B19E62700F72A86 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C173D42B2B19E62700F72A86 /* GoogleSignIn */; };
 		C173D42E2B19E62700F72A86 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C173D42D2B19E62700F72A86 /* GoogleSignInSwift */; };
-		C1CF0F322AED41270052EC8F /* BottomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */; };
 		C1CF0F342AED472F0052EC8F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */; };
 		C1CF0F362AEFA9E70052EC8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */; };
 		C1CF0F382AEFAA2C0052EC8F /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */; };
@@ -137,7 +136,6 @@
 		C1735B412AD04532002FFB77 /* RankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingModel.swift; sourceTree = "<group>"; };
 		C173D3D22B1874CC00F72A86 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		C173D3D42B18751100F72A86 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBarView.swift; sourceTree = "<group>"; };
 		C1CF0F332AED472F0052EC8F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C1CF0F352AEFA9E70052EC8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C1CF0F372AEFAA2C0052EC8F /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 				C1735B3D2AD042E5002FFB77 /* RankingView.swift */,
 				2A99A2682AD6882F0090155C /* ReportView.swift */,
 				2A99A26A2AD688660090155C /* TextView.swift */,
-				C1CF0F312AED41270052EC8F /* BottomTabBarView.swift */,
 				26094BFA2AD69724000AAD3B /* NaviButtonView.swift */,
 				26094C032AD87943000AAD3B /* WriteView.swift */,
 				C141B8FA2AFB49D10000FFA8 /* MypageView.swift */,
@@ -520,7 +517,6 @@
 				C141B8FD2AFB4A750000FFA8 /* MypageModel.swift in Sources */,
 				C1E521512B82767C0055D8BE /* CorrectOrWrongViewController.swift in Sources */,
 				C1CF0F362AEFA9E70052EC8F /* HomeViewController.swift in Sources */,
-				C1CF0F322AED41270052EC8F /* BottomTabBarView.swift in Sources */,
 				C1E521582B8277330055D8BE /* TodayQuizViewController.swift in Sources */,
 				2A2E02E32AD54D970026C495 /* LoginViewController.swift in Sources */,
 				2AFDABEC2B0498A000A8E19C /* UserModel.swift in Sources */,
