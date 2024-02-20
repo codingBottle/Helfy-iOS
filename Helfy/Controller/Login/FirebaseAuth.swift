@@ -10,15 +10,15 @@ import UIKit
 
 extension LoginViewController {
     
-    private func showMainViewController() {
-        let mainViewController = MainViewController()
-        mainViewController.modalPresentationStyle = .fullScreen
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = windowScene.windows.first {
-                window.rootViewController?.show(mainViewController, sender: nil)
-            }
-        }
-    }
+//    private func showMainViewController() {
+//        let mainViewController = QuizHomeViewController()
+//        mainViewController.modalPresentationStyle = .fullScreen
+//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+//            if let window = windowScene.windows.first {
+//                window.rootViewController?.show(mainViewController, sender: nil)
+//            }
+//        }
+//    }
     
     // firebase
     func firebaseLogin(_ credential: AuthCredential) {
@@ -29,7 +29,16 @@ extension LoginViewController {
                 return
             }
             
-            self.showMainViewController()
+            DispatchQueue.main.async {
+                let tabBarViewController = TabBarViewController()
+                // 현재 활성화된 UINavigationController의 루트 뷰 컨트롤러로 설정합니다.
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let delegate = windowScene.delegate as? SceneDelegate,
+                   let window = delegate.window {
+                    window.rootViewController = tabBarViewController
+                    window.makeKeyAndVisible()
+                }
+            }
         }
         
         // idToken Refresh
@@ -43,6 +52,9 @@ extension LoginViewController {
                 print("ID token is nil")
                 return
             }
+            
+            UserDefaults.standard.set(idToken, forKey: "GoogleToken")
+            print("sendIDTokenToServer 저장 완료 \n UserDefaults : \(idToken)")
             
             sendIDTokenToServer(idToken)
         })
