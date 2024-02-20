@@ -11,8 +11,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var categoryView: CategoryView?
     let categoryApiHandler = CategoryAPIHandler()
     let categoryPageViewController = CategoryPageViewController()
-
-//    let categoryPageApiHandler = CategoryPageAPIHandler()
+    let categoryPageApiHandler = CategoryPageAPIHandler()
+    
     var categoryModelData: CategoryModel? {
         didSet {
             print("hi")
@@ -58,6 +58,11 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let tabBarViewController = parent as? TabBarViewController {
+                print(tabBarViewController.selectedIndex)
+            }
+        
         setData()
         view.backgroundColor = .white
         
@@ -170,26 +175,23 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                     print("key : \(key)")
                     
                     // key를 category로 전달
-//                    self.categoryPageApiHandler.getCategoryPageData(category: key) { [weak self] data in
-//                        guard let self = self else { return }
-//                        // 정의해둔 모델 객체에 할당
-//                        self.categoryPageViewController.categoryPageData = data
-//                        
-//                        // 데이터를 제대로 잘 받아왔다면
-//                        guard let data = self.categoryPageViewController.categoryPageData else {
-//                            return print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
-//                        }
-//                        
-//                        DispatchQueue.main.async {
-//                            let categoryPageViewController = CategoryPageViewController()
-//                            categoryPageViewController.presentCategory = key
-//
-//                            let categoryViewController = CategoryViewController()
-//                            let navigationController = UINavigationController(rootViewController: categoryViewController)
-//                            UIApplication.shared.windows.first?.rootViewController = navigationController
-//                            navigationController.pushViewController(categoryPageViewController, animated: true)
-//                        }
-//                    }
+                    self.categoryPageApiHandler.getCategoryPageData(category: key) { [weak self] data in
+                        guard let self = self else { return }
+                        // 정의해둔 모델 객체에 할당
+                        self.categoryPageViewController.categoryPageData = data
+                        
+                        // 데이터를 제대로 잘 받아왔다면
+                        guard let data = self.categoryPageViewController.categoryPageData else {
+                            return print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
+                        }
+                        DispatchQueue.main.async {
+                            let categoryPageViewController = CategoryPageViewController()
+                            categoryPageViewController.presentCategory = key
+                            categoryPageViewController.hidesBottomBarWhenPushed = true
+
+                            self.navigationController?.pushViewController(categoryPageViewController, animated: true)
+                        }
+                    }
                 }
             }
         }
