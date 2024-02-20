@@ -30,7 +30,7 @@ class BannerView: UIView, UIScrollViewDelegate {
         return pageControl
     }()
 
-    var banners: [(image: UIImage, text: String)] = [] {
+    var banners: [UIImage] = [] {
         didSet {
             pageControl.numberOfPages = banners.count
             pageControl.currentPage = 0
@@ -72,42 +72,29 @@ class BannerView: UIView, UIScrollViewDelegate {
 
                 pageControl.leadingAnchor.constraint(equalTo: leadingAnchor),
                 pageControl.trailingAnchor.constraint(equalTo: trailingAnchor),
-                pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-                pageControl.heightAnchor.constraint(equalToConstant: 50) // 페이지 컨트롤의 높이를 설정합니다.
+                pageControl.bottomAnchor.constraint(equalTo: bottomAnchor),
+                pageControl.heightAnchor.constraint(equalToConstant: 30) // 페이지 컨트롤의 높이를 설정합니다.
             ])
         }
     
 
     private func setupBanners() {
         for i in 0..<banners.count {
-            let imageView = UIImageView(image: banners[i].image)
+            let imageView = UIImageView(image: banners[i])
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
-            imageView.frame = CGRect(x: CGFloat(i) * frame.size.width, y: 0, width: frame.size.width, height: frame.size.height * 2 / 3)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.backgroundColor = .white
 
-            let label = UILabel()
-            label.text = banners[i].text
-            label.textAlignment = .center
-            label.numberOfLines = 0  // 줄바꿈을 허용합니다.
-            label.sizeToFit()
-            label.lineBreakMode = .byWordWrapping  // 단어 단위로 줄바꿈합니다.
-            label.backgroundColor = UIColor(red: 249/255, green: 223/255, blue: 86/255, alpha: 1.0)
-            label.font = UIFont.systemFont(ofSize: 25)
-            label.frame = CGRect(x: CGFloat(i) * frame.size.width, y: frame.size.height * 1.6 / 3, width: frame.size.width, height: frame.size.height * 1 / 3)
 
             scrollView.addSubview(imageView)
-            scrollView.addSubview(label)
+            
             NSLayoutConstraint.activate([
                         imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                        imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: CGFloat(i) * frame.size.width),
+                        imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant:  CGFloat(i) * frame.size.width),
                         imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-                        imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 2/3),
-                        
-                        label.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-                        label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: CGFloat(i) * frame.size.width),
-                        label.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-                        label.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1/3)
+                        imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+                       
                         
                     ])
         }
@@ -121,3 +108,4 @@ class BannerView: UIView, UIScrollViewDelegate {
     }
     
 }
+
