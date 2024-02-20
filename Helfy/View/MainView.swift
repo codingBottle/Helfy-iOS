@@ -9,9 +9,6 @@ import UIKit
 
 class MainView: UIView {
     
-    var categoryView: CategoryView!
-
-    
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -35,32 +32,7 @@ class MainView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    let weatherImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "camera.circle.fill")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
-        imageView.backgroundColor = UIColor.white
-        imageView.layer.cornerRadius = 25
-        imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    let weatherLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = false
-        label.isUserInteractionEnabled = true
-        label.numberOfLines = 0
-
-        label.minimumScaleFactor = 0.1
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
+   
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray
@@ -80,8 +52,6 @@ class MainView: UIView {
     private func setupUI() {
         addSubview(profileImageView)
         addSubview(nicknameLabel)
-        addSubview(weatherImageView)
-        addSubview(weatherLabel)
         
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
@@ -92,21 +62,10 @@ class MainView: UIView {
             nicknameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
             nicknameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
             
-            weatherImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
-            weatherImageView.leadingAnchor.constraint(equalTo: nicknameLabel.trailingAnchor, constant: 10),
-            weatherImageView.widthAnchor.constraint(equalToConstant: 50),
-            weatherImageView.heightAnchor.constraint(equalToConstant: 50),
             
-            weatherLabel.centerYAnchor.constraint(equalTo: weatherImageView.centerYAnchor),
-            weatherLabel.leadingAnchor.constraint(equalTo: weatherImageView.trailingAnchor, constant: 5),
-            weatherLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ])
     }
-    
-    func setCategoryView(_ categoryView: CategoryView) {
-            self.categoryView = categoryView
-            addSubview(categoryView)
-        }
+
 
 }
 
