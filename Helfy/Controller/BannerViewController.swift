@@ -32,7 +32,7 @@ class BannerViewController: UIViewController {
             banner.topAnchor.constraint(equalTo: view.topAnchor, constant: screenHeight * 0.3),
             banner.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             banner.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            banner.heightAnchor.constraint(equalToConstant: 500)
+            banner.heightAnchor.constraint(equalToConstant: 480)
         ])
     }
     
