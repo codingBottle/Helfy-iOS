@@ -10,14 +10,10 @@ class CategoryPageView: UIView {
     
     var newsURL = ""
     var youtubeURL = ""
-    
-    // API 사용하기 위한 객체
-    var CategoryApiHandler : APIHandler = APIHandler()
+    var isImageViewZoomed = false
 
-    // 데이터 모델 객체
-    var categoryPageData: CategoryPageModel?
     
-    private let categoryLabel: UILabel = {
+    let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Category"
         label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
@@ -26,7 +22,7 @@ class CategoryPageView: UIView {
         return label
     }()
     
-    private let categoryImageView: UIImageView = {
+    let categoryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +37,7 @@ class CategoryPageView: UIView {
         return imageView
     }()
     
-    private let contentView: UITextView = {
+    let contentView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = UIColor(red: 249/255, green: 223/255, blue: 86/255, alpha: 1.0)
         textView.isEditable = false
@@ -52,7 +48,7 @@ class CategoryPageView: UIView {
         return textView
     }()
     
-    private let newsButton: UIButton = {
+    let newsButton: UIButton = {
         let button = UIButton()
         button.setTitle("뉴스", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -62,7 +58,7 @@ class CategoryPageView: UIView {
         return button
     }()
     
-    private let youtubeButton: UIButton = {
+    let youtubeButton: UIButton = {
         let button = UIButton()
         button.setTitle("유튜브", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -75,15 +71,13 @@ class CategoryPageView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        setData()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
-        
     }
-    
+
     private func setupUI() {
         addSubview(categoryLabel)
         addSubview(categoryImageView)
@@ -113,7 +107,7 @@ class CategoryPageView: UIView {
             contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             contentView.widthAnchor.constraint(equalToConstant: 180),
-            contentView.heightAnchor.constraint(equalToConstant: 380),
+            contentView.heightAnchor.constraint(equalToConstant: 350),
             
             // News Button
             newsButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -80),
@@ -125,49 +119,12 @@ class CategoryPageView: UIView {
             youtubeButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 80),
             youtubeButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
             youtubeButton.widthAnchor.constraint(equalToConstant: 150),
-            youtubeButton.heightAnchor.constraint(equalToConstant: 50)
-            
-            
-            
+            youtubeButton.heightAnchor.constraint(equalToConstant: 50),
         ])
-    }
-    
-    
-    public func setData() {
-        DispatchQueue.global(qos: .userInteractive).async {
-            guard let data = self.categoryPageData else {
-                return
-            }
-            // API 통해 데이터 불러오기
-            self.CategoryApiHandler.getCategoryPageData(category: data.category) { data in
-                // 정의해둔 모델 객체에 할당
-                self.categoryPageData = data
-                
-                // 데이터를 제대로 잘 받아왔다면
-                guard let data = self.categoryPageData else {
-                    print("Failed to fetch category page data.")
-                    return
-                }
-                guard URL(string: data.image.imageURL) != nil else {
-                    print("Invalid URL")
-                    return
-                }
-                
-                print(data, "🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
-                
-                ImageLoader.loadImage(url: data.image.imageURL) { [weak self] image in
-                                // 메인 쓰레드임
-                                DispatchQueue.main.async {
-                                    print("Load")
-                                    self?.categoryLabel.text = data.category
-                                    self?.contentView.text = data.content
-                                    self?.newsURL = data.newsURL
-                                    self?.youtubeURL = data.youtubeURL
-                                    self?.categoryImageView.image = image
-                                }
-                }
-            }
-        }
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
+            categoryImageView.addGestureRecognizer(tapGestureRecognizer)
+            categoryImageView.isUserInteractionEnabled = true
+ 
     }
     
     func setNewsButtonTarget(_ target: Any?, action: Selector) {
@@ -185,5 +142,19 @@ class CategoryPageView: UIView {
     func getTextViewText() -> String {
         return contentView.text
     }
+    @objc private func imageViewTapped() {
+        isImageViewZoomed = !isImageViewZoomed
+        UIView.animate(withDuration: 0.3) {
+            if self.isImageViewZoomed {
+                // 이미지 뷰를 확대
+                self.categoryImageView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                self.bringSubviewToFront(self.categoryImageView) // 이미지 뷰를 가장 앞으로 가져옴
+            } else {
+                // 이미지 뷰를 원래 크기로 복구
+                self.categoryImageView.transform = CGAffineTransform.identity
+            }
+        }
+    }
+
 }
 
