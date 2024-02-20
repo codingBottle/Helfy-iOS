@@ -79,6 +79,7 @@ class QuizViewController: UIViewController {
 
             self.quizView.newChoice = currentQuiz.choices
             self.answer = currentQuiz.answer ?? ""
+            print("answer : \(currentQuiz.answer)")
             self.quizView.update(quizType)
             print("quizType : \(quizType)")
 
@@ -132,7 +133,7 @@ class QuizViewController: UIViewController {
     func handleChoiceSelection(_ choice: String) {
         guard let currentQuiz = quizModelData?[currentQuizNumber - 1] else { return }
         let answerType: AnswerType = choice == currentQuiz.answer ? .correct : .wrong
-        
+        print("choice : \(choice)")
         if answerType == .wrong {
             print("Wrong answer, quiz id : \(currentQuiz.id)")
         } else {
@@ -149,9 +150,7 @@ class QuizViewController: UIViewController {
         self.present(vc, animated: true) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 vc.dismiss(animated: true) {
-                    if answerType == .wrong {
-                        self.quizApiHandler.sendWrongAnswerStatus(id: String(currentQuiz.id), answerType: answerType) { _ in }
-                    }
+                    self.quizApiHandler.sendAnswerStatus(id: String(currentQuiz.id), answerType: answerType) { _ in }
                     self.loadNextQuestion()
                 }
             }

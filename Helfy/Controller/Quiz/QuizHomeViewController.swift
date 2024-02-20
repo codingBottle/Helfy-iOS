@@ -17,13 +17,13 @@ class QuizHomeViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setData()
-        
-        if let tabBarViewController = parent as? TabBarViewController {
-                print(tabBarViewController.selectedIndex)
-            }
 
         view.addSubview(quizHomeView)
         view.backgroundColor = .white
@@ -42,7 +42,6 @@ class QuizHomeViewController: UIViewController {
     }
     
     func setData() {
-        print("setData() is called")  // 로그 출력
 
         DispatchQueue.global(qos: .userInteractive).async {
             
@@ -60,6 +59,7 @@ class QuizHomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.quizHomeView.idLabel.text = data.nickname + " 님"
                     self.quizHomeView.scoreLabel.text = "나의 점수 : " + String(data.score)
+                    print("score : \(data.score)")
                 }
             }
         }

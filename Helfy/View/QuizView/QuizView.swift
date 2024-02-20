@@ -64,11 +64,7 @@ class QuizView: UIView {
     var didSelectChoice: ((String) -> Void)?
     
     @objc func buttonClicked(_ button: UIButton) {
-        guard let choice = button.titleLabel?.text else {
-            return
-        }
-        
-        didSelectChoice?(choice)
+        didSelectChoice?(String(button.tag))
     }
     
     func update(_ quizType: QuizType) {
