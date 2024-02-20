@@ -4,11 +4,13 @@
 //
 //  Created by YEOMI on 2/11/24.
 //
+
 import UIKit
 
 class SearchViewController: UIViewController {
-    let apiHandler = APIHandler()
+    let categoryPageApiHandler = CategoryPageAPIHandler()
     let categoryPageView = CategoryPageView()
+    let categoryPageViewController = CategoryPageViewController()
     
     let searchContainerView: UIView = {
         let view = UIView()
@@ -23,7 +25,7 @@ class SearchViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "카테고리를 입력하세요"
         textField.textColor = .black
-        textField.borderStyle = .none 
+        textField.borderStyle = .none
         return textField
     }()
     
@@ -92,19 +94,26 @@ class SearchViewController: UIViewController {
                 print("검색어: \(searchTerm)")
                 
                 // API 호출을 통해 카테고리 페이지 데이터 가져오기
-                apiHandler.getCategoryPageData(category: searchTerm) { [weak self] categoryPageModel in
+                self.categoryPageApiHandler.getCategoryPageData(category: searchTerm) { [weak self] data in
                     guard let self = self else { return }
+                    // 정의해둔 모델 객체에 할당
+                    self.categoryPageViewController.categoryPageData = data
+                    
+                    // 데이터를 제대로 잘 받아왔다면
+                    guard let data = self.categoryPageViewController.categoryPageData else {
+                        return print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
+                    }
+                    
                     // 카테고리 페이지 데이터를 가져왔을 때
                     DispatchQueue.main.async {
                         // 카테고리 페이지 데이터를 설정하고 업데이트
-                        let categoryPageView = CategoryPageView()
-                        categoryPageView.categoryPageData = categoryPageModel
-                        categoryPageView.setData()
-                        categoryPageView.backgroundColor = UIColor.white
-                        // 모달로 카테고리 페이지 뷰를 표시
                         let categoryPageViewController = CategoryPageViewController()
-                        categoryPageViewController.view = categoryPageView
-                        self.present(categoryPageViewController, animated: true, completion: nil)
+                        categoryPageViewController.presentCategory = searchTerm
+                        let searhViewController = SearchViewController()
+                        let categoryViewController = CategoryViewController()
+                        let navigationController = UINavigationController(rootViewController: categoryViewController)
+                        UIApplication.shared.windows.first?.rootViewController = navigationController
+                        navigationController.pushViewController(categoryPageViewController, animated: true)
                     }
                 }
             } else {
@@ -113,3 +122,4 @@ class SearchViewController: UIViewController {
         }
     }
     
+
