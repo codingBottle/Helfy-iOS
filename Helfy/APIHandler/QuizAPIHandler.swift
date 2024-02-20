@@ -96,39 +96,45 @@ class QuizAPIHandler {
         }.resume()
     }
     
-    func sendWrongAnswerStatus(id: String, answerType: AnswerType, completion: @escaping (Quiz) -> ()) {
-        if answerType == .wrong {
-            // URL 준비
-            guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/quiz/users/\(id)/result") else { return }
-            print("🔴🔴🔴ID : \(id)")
-            
-            // PUT 요청 생성
-            var request = URLRequest(url: url)
-            request.httpMethod = "PUT"
-            request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
-            request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "accept")
-            request.setValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
-            
-            // 필요한 경우 httpBody를 설정하여 요청에 데이터를 포함시킬 수 있습니다.
-            let parameters: [String: Any] = ["quizStatus": "WRONG"]
-            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
-            
-            // 요청 발행
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    print("Error: \(error)")
-                } else if let data = data {
-                    // 응답 데이터 처리
-                    let str = String(data: data, encoding: .utf8)
-                    print("Received data:\n\(str ?? "")")
-                }
-                
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("Response status code: \(httpResponse.statusCode)")
-                }
+    func sendAnswerStatus(id: String, answerType: AnswerType, completion: @escaping (Quiz) -> ()) {
+        var quizStatus: String
+        switch answerType {
+        case .correct:
+            quizStatus = "CORRECT"
+        case .wrong:
+            quizStatus = "WRONG"
+        }
+        
+        // URL 준비
+        guard let url = URL(string: "https://helfy-server.duckdns.org/api/v1/quiz/users/\(id)/result") else { return }
+        print("🔴🔴🔴ID : \(id)")
+        
+        // PUT 요청 생성
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "accept")
+        request.setValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+        
+        // 필요한 경우 httpBody를 설정하여 요청에 데이터를 포함시킬 수 있습니다.
+        let parameters: [String: Any] = ["quizStatus": quizStatus]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
+        
+        // 요청 발행
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let data = data {
+                // 응답 데이터 처리
+                let str = String(data: data, encoding: .utf8)
+                print("Received data:\n\(str ?? "")")
             }
             
-            task.resume()
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Response status code: \(httpResponse.statusCode)")
+            }
         }
+        
+        task.resume()
     }
 }
