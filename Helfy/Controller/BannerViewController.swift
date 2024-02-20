@@ -19,10 +19,11 @@ class BannerViewController: UIViewController {
         let banner = BannerView(frame: bannerFrame)
         banner.translatesAutoresizingMaskIntoConstraints = false
         banner.banners = [
-            (image: UIImage(named: "bg2")!, text: "재난시 대피요령"),
-            (image: UIImage(named: "img3")!, text: "재난시 대피요령 2"),
-            (image: UIImage(named: "img3")!, text: "재난시 대피요령 3")
+            UIImage(named: "img1")!,
+            UIImage(named: "img2")!,
+            UIImage(named: "img3")!
         ]
+
         view.addSubview(banner)
         
         view.backgroundColor = .white // 여기를 추가합니다.
@@ -37,3 +38,4 @@ class BannerViewController: UIViewController {
     
     
 }
+
