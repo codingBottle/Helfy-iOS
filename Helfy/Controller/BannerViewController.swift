@@ -23,19 +23,22 @@ class BannerViewController: UIViewController {
             UIImage(named: "img2")!,
             UIImage(named: "img3")!
         ]
-
+        banner.bannersLink = [
+            "https://www.youtube.com/watch?v=kdkcKESgRaU",
+            "https://www.youtube.com/watch?v=PZ2XJ-QjSDo",
+            "https://www.youtube.com/watch?v=5dUpQYvzByA"
+        ]
+        
         view.addSubview(banner)
         
-        view.backgroundColor = .white // 여기를 추가합니다.
+        view.backgroundColor = .white
         let screenHeight = UIScreen.main.bounds.height
         NSLayoutConstraint.activate([
-            banner.topAnchor.constraint(equalTo: view.topAnchor, constant: screenHeight * 0.3),
+            banner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             banner.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             banner.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             banner.heightAnchor.constraint(equalToConstant: 480)
         ])
     }
-    
-    
 }
 

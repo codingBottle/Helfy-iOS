@@ -14,7 +14,7 @@ class BannerView: UIView, UIScrollViewDelegate {
         scrollView.bounces = false
         scrollView.alwaysBounceVertical = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.clipsToBounds = true // 이 부분을 추가합니다.
+        scrollView.clipsToBounds = true
         return scrollView
     }()
     
@@ -24,7 +24,7 @@ class BannerView: UIView, UIScrollViewDelegate {
     
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.pageIndicatorTintColor = .lightGray  // 페이지 인디케이터의 색상을 설정합니다.
+        pageControl.pageIndicatorTintColor = .lightGray
         pageControl.currentPageIndicatorTintColor = .black
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         return pageControl
@@ -37,6 +37,7 @@ class BannerView: UIView, UIScrollViewDelegate {
             setupBanners()
         }
     }
+    var bannersLink: [String] = [] // 각 이미지에 대한 링크 정보
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -85,7 +86,12 @@ class BannerView: UIView, UIScrollViewDelegate {
             imageView.clipsToBounds = true
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.backgroundColor = .white
-
+            
+            // 이미지 뷰에 탭 제스처 추가
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleBannerTap(_:)))
+            imageView.isUserInteractionEnabled = true
+            imageView.addGestureRecognizer(tapGestureRecognizer)
+            imageView.tag = i // 이미지 뷰의 태그를 인덱스로 설정
 
             scrollView.addSubview(imageView)
             
@@ -100,6 +106,20 @@ class BannerView: UIView, UIScrollViewDelegate {
         }
 
         scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(banners.count), height: scrollView.frame.size.height)
+    }
+    @objc private func handleBannerTap(_ gesture: UITapGestureRecognizer) {
+        guard let imageView = gesture.view as? UIImageView else {
+            return
+        }
+        
+        let index = imageView.tag
+        
+        // index가 bannersLink 배열의 유효한 인덱스인지 확인
+        guard index < bannersLink.count, let url = URL(string: bannersLink[index]) else {
+            return
+        }
+        
+        UIApplication.shared.open(url)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
