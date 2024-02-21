@@ -9,25 +9,55 @@ import UIKit
 
 class MainView: UIView {
     
-    let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "person.crop.square.fill")?.withTintColor(UIColor(hexColor: "#F9DF56"), renderingMode: .alwaysOriginal)
-        imageView.isUserInteractionEnabled = true
-        imageView.layer.cornerRadius = 40
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    let profileButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "person.fill"), for: .normal)
+        button.tintColor = .black
+        button.imageView?.contentMode = .scaleAspectFit
+        button.contentMode = .center
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.clipsToBounds = true
+        button.isEnabled = true
+        button.isUserInteractionEnabled = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
-    
-    let nicknameLabel: UILabel = {
+
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.text = "HELFY"
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = false
         label.numberOfLines = 0
         label.isUserInteractionEnabled = true
+        label.minimumScaleFactor = 0.1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let weatherImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = UIColor.white
+        imageView.layer.cornerRadius = 25
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+        
+    let weatherLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = false
+        label.isUserInteractionEnabled = true
+        label.numberOfLines = 0
+        
         label.minimumScaleFactor = 0.1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -50,23 +80,29 @@ class MainView: UIView {
     }
     
     private func setupUI() {
-        addSubview(profileImageView)
-        addSubview(nicknameLabel)
+        addSubview(profileButton)
+        addSubview(nameLabel)
+        addSubview(weatherImageView)
+        addSubview(weatherLabel)
         
         NSLayoutConstraint.activate([
-            profileImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
-            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            profileImageView.widthAnchor.constraint(equalToConstant: 80),
-            profileImageView.heightAnchor.constraint(equalToConstant: 80),
+            nameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+            nameLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             
-            nicknameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
-            nicknameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
+            weatherImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+            weatherImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            weatherImageView.widthAnchor.constraint(equalToConstant: 40),
+            weatherImageView.heightAnchor.constraint(equalToConstant: 40),
             
+            weatherLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
+            weatherLabel.leadingAnchor.constraint(equalTo: weatherImageView.trailingAnchor, constant: 5),
             
+            profileButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
+            profileButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            profileButton.widthAnchor.constraint(equalToConstant: 50),
+            profileButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
-
-
 }
 
 extension UIColor {
@@ -88,4 +124,3 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 }
-
