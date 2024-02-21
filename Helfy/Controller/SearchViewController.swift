@@ -106,14 +106,11 @@ class SearchViewController: UIViewController {
                     
                     // 카테고리 페이지 데이터를 가져왔을 때
                     DispatchQueue.main.async {
-                        // 카테고리 페이지 데이터를 설정하고 업데이트
                         let categoryPageViewController = CategoryPageViewController()
                         categoryPageViewController.presentCategory = searchTerm
-                        let searhViewController = SearchViewController()
-                        let categoryViewController = CategoryViewController()
-                        let navigationController = UINavigationController(rootViewController: categoryViewController)
-                        UIApplication.shared.windows.first?.rootViewController = navigationController
-                        navigationController.pushViewController(categoryPageViewController, animated: true)
+                        categoryPageViewController.hidesBottomBarWhenPushed = true
+
+                        self.navigationController?.pushViewController(categoryPageViewController, animated: true)
                     }
                 }
             } else {

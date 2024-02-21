@@ -21,17 +21,33 @@ class MainViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // MainView가 보일 때 네비게이션 바를 숨깁니다.
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // MainView가 사라질 때 네비게이션 바를 다시 보이도록 설정합니다.
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
         setData()
+        setUI()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate), name: Notification.Name("profileUpdated"), object: nil)
-                
-        mainView.profileImageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openMyPage))
-        mainView.profileImageView.addGestureRecognizer(tapGesture)
+        mainView.profileButton.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate), name: Notification.Name("profileUpdated"), object: nil)
+//        mainView.profileImageView.isUserInteractionEnabled = true
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openMyPage))
+//        mainView.profileImageView.addGestureRecognizer(tapGesture)
         
     }
     
@@ -49,8 +65,8 @@ class MainViewController: UIViewController {
                 }
                 
                 DispatchQueue.main.async {
-                    self.mainView.nicknameLabel.text = data.userInfo.nickname
-                    self.updateWeatherImageView(with: data.weatherInfo.weatherCode)  // 이미지 뷰의 이미지를 갱신합니다.
+                    self.updateWeatherImageView(with: data.weatherInfo.weatherCode)
+                    self.mainView.weatherLabel.text = "\(data.weatherInfo.temp)℃ \n\(data.weatherInfo.humidity)%"
                 }
             }
         }
@@ -58,62 +74,50 @@ class MainViewController: UIViewController {
     
     func setUI() {
         view.backgroundColor = .white
+        
         // 배너 뷰 컨트롤러를 현재 뷰 컨트롤러에 추가
         addChild(bannerViewController)
         view.addSubview(bannerViewController.view)
         bannerViewController.didMove(toParent: self)
-
+        
         addChild(searchViewController)
         view.addSubview(searchViewController.view)
         searchViewController.didMove(toParent: self)
-
+        
         view.addSubview(mainView)
-
-        // 프로필 이미지 뷰 레이아웃 설정
-        mainView.profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            mainView.profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            mainView.profileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            mainView.profileImageView.widthAnchor.constraint(equalToConstant: 60), // 프로필 이미지의 너비 설정
-            mainView.profileImageView.heightAnchor.constraint(equalToConstant: 60) // 프로필 이미지의 높이 설정
-        ])
-
-        // 검색 뷰 컨트롤러 레이아웃 설정
-        searchViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            searchViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchViewController.view.leadingAnchor.constraint(equalTo: mainView.profileImageView.trailingAnchor, constant: -10),
-            searchViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
-            searchViewController.view.heightAnchor.constraint(equalToConstant: 60) // 검색 바의 높이 설정
-        ])
 
         // 메인 뷰 레이아웃 설정
         mainView.translatesAutoresizingMaskIntoConstraints = false
+        searchViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        bannerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
-            mainView.topAnchor.constraint(equalTo: searchViewController.view.topAnchor), // 검색 바 아래에 위치하도록 설정
-            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mainView.bottomAnchor.constraint(equalTo: bannerViewController.view.topAnchor)
+            mainView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mainView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+
+            searchViewController.view.topAnchor.constraint(equalTo: mainView.nameLabel.bottomAnchor, constant: 20),
+            searchViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            searchViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            searchViewController.view.heightAnchor.constraint(equalToConstant: 60),
+
+            bannerViewController.view.topAnchor.constraint(equalTo: searchViewController.view.bottomAnchor, constant: 50),
+            bannerViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bannerViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bannerViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
+            mainView.bottomAnchor.constraint(equalTo: bannerViewController.view.bottomAnchor)
         ])
+
     }
-
-
 
     @objc func openMyPage() {
         print("😀😀😀😀😀😀😀😀😀")
         let myPageViewController = MypageViewController()
-        let mainViewController = MainViewController()
-        let navigationController = UINavigationController(rootViewController: mainViewController)
-        UIApplication.shared.windows.first?.rootViewController = navigationController
-        navigationController.pushViewController(myPageViewController, animated: true)
-    }
-    
-    @objc func handleProfileUpdate(notification: NSNotification) {
-        DispatchQueue.main.async { [weak self] in
-            if let userInfo = notification.userInfo, let nickname = userInfo["nickname"] as? String {
-                self?.mainView.nicknameLabel.text = nickname
-            }
-        }
+        myPageViewController.hidesBottomBarWhenPushed = true
+        
+        // MainViewController가 내장된 네비게이션 컨트롤러의 pushViewController(_:animated:) 메서드를 호출하여 myPageViewController를 푸시합니다.
+        self.navigationController?.pushViewController(myPageViewController, animated: true)
     }
 
     func updateWeatherImageView(with weatherCode: String) {
@@ -137,6 +141,6 @@ class MainViewController: UIViewController {
             systemName = "questionmark.diamond.fill"  // 기본 이미지
         }
         
-       
+        mainView.weatherImageView.image = UIImage(systemName: systemName)?.withTintColor(.darkGray, renderingMode: .alwaysOriginal)
     }
 }
