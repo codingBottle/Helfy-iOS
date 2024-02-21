@@ -109,15 +109,15 @@ class MainViewController: UIViewController {
             profileButton.widthAnchor.constraint(equalToConstant: 50),
             profileButton.heightAnchor.constraint(equalToConstant: 50),
 
-            searchViewController.view.topAnchor.constraint(equalTo: mainView.nameLabel.bottomAnchor, constant: 20),
+            searchViewController.view.topAnchor.constraint(equalTo: mainView.nameLabel.bottomAnchor, constant: 15),
             searchViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             searchViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            searchViewController.view.heightAnchor.constraint(equalToConstant: 60),
+            searchViewController.view.heightAnchor.constraint(equalToConstant: 40),
 
             bannerViewController.view.topAnchor.constraint(equalTo: searchViewController.view.bottomAnchor, constant: 50),
             bannerViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             bannerViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            bannerViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bannerViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
