@@ -16,8 +16,7 @@ class CategoryPageView: UIView {
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Category"
-        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textAlignment = .center
         return label
     }()
