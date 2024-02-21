@@ -11,8 +11,24 @@ import GoogleSignIn
 
 class MainViewController: UIViewController {
     let searchViewController = SearchViewController()
-    let bannerViewController = BannerViewController() // 배너 뷰 컨트롤러 추가
+    let bannerViewController = BannerViewController()
     let mainView = MainView()
+    
+    let profileButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "person.fill"), for: .normal)
+        button.tintColor = .black
+        button.imageView?.contentMode = .scaleAspectFit
+        button.contentMode = .center
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.clipsToBounds = true
+        button.isEnabled = true
+        button.isUserInteractionEnabled = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     var mainApiHandler : MainAPIHandler = MainAPIHandler()
     var mainModelData: MainModel? {
@@ -24,14 +40,12 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // MainView가 보일 때 네비게이션 바를 숨깁니다.
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // MainView가 사라질 때 네비게이션 바를 다시 보이도록 설정합니다.
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
@@ -42,13 +56,7 @@ class MainViewController: UIViewController {
         setData()
         setUI()
         
-        mainView.profileButton.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(handleProfileUpdate), name: Notification.Name("profileUpdated"), object: nil)
-//        mainView.profileImageView.isUserInteractionEnabled = true
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openMyPage))
-//        mainView.profileImageView.addGestureRecognizer(tapGesture)
-        
+        self.profileButton.addTarget(self, action: #selector(openMyPage), for: .touchUpInside)
     }
     
     func setData() {
@@ -74,27 +82,32 @@ class MainViewController: UIViewController {
     
     func setUI() {
         view.backgroundColor = .white
-        
-        // 배너 뷰 컨트롤러를 현재 뷰 컨트롤러에 추가
-        addChild(bannerViewController)
-        view.addSubview(bannerViewController.view)
-        bannerViewController.didMove(toParent: self)
-        
-        addChild(searchViewController)
-        view.addSubview(searchViewController.view)
-        searchViewController.didMove(toParent: self)
-        
-        view.addSubview(mainView)
 
-        // 메인 뷰 레이아웃 설정
-        mainView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(mainView)
+        view.addSubview(profileButton)
+
+        addChild(bannerViewController)
+        view.insertSubview(bannerViewController.view, aboveSubview: mainView)
+        bannerViewController.didMove(toParent: self)
+
+        addChild(searchViewController)
+        view.insertSubview(searchViewController.view, aboveSubview: mainView)
+        searchViewController.didMove(toParent: self)
+
         searchViewController.view.translatesAutoresizingMaskIntoConstraints = false
         bannerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        mainView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mainView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            profileButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            profileButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            profileButton.widthAnchor.constraint(equalToConstant: 50),
+            profileButton.heightAnchor.constraint(equalToConstant: 50),
 
             searchViewController.view.topAnchor.constraint(equalTo: mainView.nameLabel.bottomAnchor, constant: 20),
             searchViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -105,18 +118,15 @@ class MainViewController: UIViewController {
             bannerViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             bannerViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             bannerViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-
-            mainView.bottomAnchor.constraint(equalTo: bannerViewController.view.bottomAnchor)
         ])
-
     }
+
 
     @objc func openMyPage() {
         print("😀😀😀😀😀😀😀😀😀")
         let myPageViewController = MypageViewController()
         myPageViewController.hidesBottomBarWhenPushed = true
         
-        // MainViewController가 내장된 네비게이션 컨트롤러의 pushViewController(_:animated:) 메서드를 호출하여 myPageViewController를 푸시합니다.
         self.navigationController?.pushViewController(myPageViewController, animated: true)
     }
 

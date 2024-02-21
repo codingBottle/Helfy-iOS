@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
     let categoryPageApiHandler = CategoryPageAPIHandler()
     let categoryPageView = CategoryPageView()
     let categoryPageViewController = CategoryPageViewController()
@@ -32,7 +32,7 @@ class SearchViewController: UIViewController {
     let searchButtonContainer: UIView = {
         let container = UIView()
         container.backgroundColor = UIColor(red: 249/255, green: 164/255, blue: 86/255, alpha: 1.0)
-        container.layer.cornerRadius = 22.5 // 반지름을 버튼 높이의 절반으로 설정
+        container.layer.cornerRadius = 22.5
         return container
     }()
     
@@ -48,6 +48,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         setupUI()
+        searchTextField.delegate = self
     }
     
     func setupUI() {
@@ -90,33 +91,60 @@ class SearchViewController: UIViewController {
     }
     
     @objc func searchButtonTapped() {
-            if let searchTerm = searchTextField.text, !searchTerm.isEmpty {
-                print("검색어: \(searchTerm)")
+        if let searchTerm = searchTextField.text, !searchTerm.isEmpty {
+            let uppercasedSearchTerm = searchTerm.uppercased()
+            print("검색어: \(uppercasedSearchTerm)")
+            
+            // API 호출을 통해 카테고리 페이지 데이터 가져오기
+            self.categoryPageApiHandler.getCategoryPageData(category: uppercasedSearchTerm) { [weak self] data in
+                guard let self = self else { return }
+                // 정의해둔 모델 객체에 할당
+                self.categoryPageViewController.categoryPageData = data
                 
-                // API 호출을 통해 카테고리 페이지 데이터 가져오기
-                self.categoryPageApiHandler.getCategoryPageData(category: searchTerm) { [weak self] data in
-                    guard let self = self else { return }
-                    // 정의해둔 모델 객체에 할당
-                    self.categoryPageViewController.categoryPageData = data
-                    
-                    // 데이터를 제대로 잘 받아왔다면
-                    guard let data = self.categoryPageViewController.categoryPageData else {
-                        return print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
-                    }
-                    
-                    // 카테고리 페이지 데이터를 가져왔을 때
-                    DispatchQueue.main.async {
-                        let categoryPageViewController = CategoryPageViewController()
-                        categoryPageViewController.presentCategory = searchTerm
-                        categoryPageViewController.hidesBottomBarWhenPushed = true
-
-                        self.navigationController?.pushViewController(categoryPageViewController, animated: true)
-                    }
+                // 데이터를 제대로 잘 받아왔다면
+                guard let data = self.categoryPageViewController.categoryPageData else {
+                    return print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
                 }
-            } else {
-                print("카테고리를 입력하세요.")
+                
+                // 카테고리 페이지 데이터를 가져왔을 때
+                DispatchQueue.main.async {
+                    self.categoryPageViewController.presentCategory = uppercasedSearchTerm
+                    self.categoryPageViewController.hidesBottomBarWhenPushed = true
+                    
+                    self.navigationController?.pushViewController(self.categoryPageViewController, animated: true)
+                    self.searchTextField.text = ""
+                }
+            }
+        } else {
+            print("카테고리를 입력하세요.")
+        }
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func setUpKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                }
             }
         }
     }
     
-
+    @objc func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+}
