@@ -123,7 +123,7 @@ class QuizView: UIView {
             falseButton.titleLabel?.font = .systemFont(ofSize: 50)
             falseButton.backgroundColor = UIColor(hexString: "#F9A456")
             falseButton.layer.cornerRadius = 20
-            falseButton.tag = 0
+            falseButton.tag = 2
             falseButton.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
             
             buttonStackView.addArrangedSubview(trueButton)

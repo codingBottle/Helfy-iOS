@@ -106,10 +106,10 @@ class QuizHomeView: UIView {
             exLabel.topAnchor.constraint(equalTo: idLabel.topAnchor, constant: 30),
             exLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             
-            containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            containerView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            containerView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            containerView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             
             buttonStack.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 50),
             buttonStack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
