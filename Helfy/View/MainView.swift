@@ -9,22 +9,6 @@ import UIKit
 
 class MainView: UIView {
     
-    let profileButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "person.fill"), for: .normal)
-        button.tintColor = .black
-        button.imageView?.contentMode = .scaleAspectFit
-        button.contentMode = .center
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
-        button.contentHorizontalAlignment = .fill
-        button.contentVerticalAlignment = .fill
-        button.clipsToBounds = true
-        button.isEnabled = true
-        button.isUserInteractionEnabled = true
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
     let nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -80,7 +64,6 @@ class MainView: UIView {
     }
     
     private func setupUI() {
-        addSubview(profileButton)
         addSubview(nameLabel)
         addSubview(weatherImageView)
         addSubview(weatherLabel)
@@ -96,11 +79,6 @@ class MainView: UIView {
             
             weatherLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
             weatherLabel.leadingAnchor.constraint(equalTo: weatherImageView.trailingAnchor, constant: 5),
-            
-            profileButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
-            profileButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            profileButton.widthAnchor.constraint(equalToConstant: 50),
-            profileButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }
