@@ -5,9 +5,6 @@
 
 ## 📌 프로젝트 소개
 <img width="982" alt="1" src="https://github.com/user-attachments/assets/7f6e5485-79b0-464c-aadb-a892c9f842b2" />
-<img width="982" alt="2" src="https://github.com/user-attachments/assets/efe0b1c5-6a1b-4485-b5b3-3935f7c6b730" />
-<img width="982" alt="3" src="https://github.com/user-attachments/assets/80bb5106-4581-454c-a0b7-d58463e72855" />
-
 
 **Helfy**는 사용자에게 재난, 사고, 건강 등 다양한 상황에 대한 **안전 정보를 제공하고**,  
 퀴즈를 통해 자연스럽게 학습할 수 있도록 돕는 **iOS 기반 안전 교육 앱**입니다.
